@@ -1,0 +1,41 @@
+.landing_page_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .logo_section {
+    margin-left: 8%;
+  }
+
+  .action_buttons {
+    margin-right: 8%;
+  }
+
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .logo {
+    font-family: cairo;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: inherit;
+    display: flex;
+    align-items: center;
+  }
+}
