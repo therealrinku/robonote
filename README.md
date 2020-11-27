@@ -3,7 +3,7 @@
 ### Live Website
 * https://havetodo.web.app
 
-### used technologies
+### Used technologies
 * React JS
 * HTML,CSS,JS and SASS
 * Firestore database
