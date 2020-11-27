@@ -1,6 +1,7 @@
 ## haveTodo is a simple but powerful todo application.
-## Live Website >> havetodo.web.app
 
+### Live Website
+*havetodo.web.app
 
 ### used technologies
 * React JS
