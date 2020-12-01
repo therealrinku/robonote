@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import LogoImage from "../Assets/logo.png";
-import { BiCaretDown } from "react-icons/all";
+import { BiCaretDown, CgArrowRightO, CgArrowLeftO } from "react-icons/all";
 import Footer from "./footer";
+import TodoBox from "../Components/TodoBox/TodoBox";
 
 import "../sass/todoApp.scss";
 
 const TodoApp = ({ history }) => {
-  const [todosVal, setTodosVal] = useState(["testing"]);
-
-  const todoValHandler = (e, i) => {
-    const todosValCopy = [...todosVal];
-    todosValCopy[i] = e.target.value;
-    setTodosVal(todosValCopy);
-  };
+  const [changedDays, setChangedDays] = useState(0);
 
   return (
     <Wrapper className="todo_app">
@@ -36,29 +31,20 @@ const TodoApp = ({ history }) => {
       </header>
 
       <main>
-        <section className="todo_box">
-          <div className="date">
-            <h4>FRIDAY</h4>
-            <p>27 Nov 2020</p>
-          </div>
+        <section className="arrow_left">
+          <button onClick={() => setChangedDays((prev) => prev - 1)}>
+            <CgArrowLeftO />
+          </button>
+        </section>
 
-          <div className="todos">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((e, i) => {
-              return (
-                <div key={e}>
-                  {(todosVal[i - 1] !== "" && todosVal[i] === "") || i === 0 ? (
-                    <input
-                      type="text"
-                      value={todosVal[i]}
-                      onChange={(e) => todoValHandler(e, i)}
-                    />
-                  ) : (
-                    <li>{i}</li>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+        <section className="todo_box">
+          <TodoBox changedDays={changedDays} />
+        </section>
+
+        <section className="arrow_right">
+          <button onClick={() => setChangedDays((prev) => prev + 1)}>
+            <CgArrowRightO />
+          </button>
         </section>
       </main>
 
