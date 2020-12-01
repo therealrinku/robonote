@@ -92,6 +92,7 @@ const TodoBox = ({ changedDays }) => {
                   e.preventDefault();
                   UpdateTodos("admin", formatedDate, todos).then((res) => {
                     getTodos();
+                    document.querySelector(".new_todo_input").focus();
                   });
                 }}
               >
@@ -120,6 +121,7 @@ const TodoBox = ({ changedDays }) => {
             type="text"
             value={todoIn}
             onChange={(e) => setTodoIn(e.target.value)}
+            className="new_todo_input"
           />
         </form>
 
