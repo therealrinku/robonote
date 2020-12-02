@@ -1,8 +1,8 @@
-import db from "../db/db";
+import db from "../firebase/db";
 
-const GetTodos = (username: string, date: string) => {
+const GetTodos = (userEmail: string, date: string) => {
   return new Promise((resolve) => {
-    db.collection(username)
+    db.collection(userEmail || "dummy@dummy.com")
       .doc(date)
       .onSnapshot((doc) => resolve(doc.data()?.todos ? doc.data()?.todos : []));
   });

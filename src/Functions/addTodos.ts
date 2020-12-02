@@ -1,14 +1,14 @@
-import db from "../db/db";
+import db from "../firebase/db";
 
 const AddTodos = (
-  username: string,
+  userEmail: string,
   date: string,
   initialTodos: [],
   addedTodos: []
 ) => {
   const updatedTodos = [...initialTodos, ...addedTodos];
   return new Promise((resolve) => {
-    db.collection(username)
+    db.collection(userEmail || "dummy@dummy.com")
       .doc(date)
       .set({ todos: updatedTodos })
       .then(() => {

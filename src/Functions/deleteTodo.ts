@@ -1,7 +1,7 @@
-import db from "../db/db";
+import db from "../firebase/db";
 
 const DeleteTodo = (
-  username: string,
+  userEmail: string,
   date: string,
   initialTodos: [],
   deletingTodoIndex: number
@@ -11,7 +11,7 @@ const DeleteTodo = (
     .concat(initialTodos.splice(deletingTodoIndex, 1));
 
   return new Promise((resolve) => {
-    db.collection(username)
+    db.collection(userEmail || "dummy@dummy.com")
       .doc(date)
       .update({
         todos: updatedTodos,

@@ -1,8 +1,8 @@
-import db from "../db/db";
+import db from "../firebase/db";
 
-const UpdateTodos = (username: string, date: string, updatedTodos: []) => {
+const UpdateTodos = (userEmail: string, date: string, updatedTodos: []) => {
   return new Promise((resolve) => {
-    db.collection(username)
+    db.collection(userEmail || "dummy@dummy.com")
       .doc(date)
       .set({
         todos: updatedTodos,

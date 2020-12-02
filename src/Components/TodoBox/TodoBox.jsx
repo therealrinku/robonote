@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Wrapper from "../../Wrapper/Wrapper";
 import "./TodoBox.scss";
 import Moment from "react-moment";
@@ -9,11 +9,13 @@ import AddTodos from "../../Functions/addTodos";
 import { MdClose } from "react-icons/all";
 import DeleteTodo from "../../Functions/deleteTodo";
 import UpdateTodos from "../../Functions/updateTodos";
+import Context from "../../context";
 
 const TodoBox = ({ changedDays }) => {
   const [todos, setTodos] = useState([{ done: false, value: "" }]);
   const [todoIn, setTodoIn] = useState("");
   const [shownDeleteBtnIndex, setShownDeleteBtnIndex] = useState("");
+  const { currentUserEmail } = useContext(Context);
 
   const [lines, setLines] = useState(
     [...Array(12)].map((e) => ~~(Math.random() * 40))
@@ -26,7 +28,7 @@ const TodoBox = ({ changedDays }) => {
   const formatedDate = moment(date).format("ll");
 
   const getTodos = () => {
-    GetTodos("admin", formatedDate).then((data) => {
+    GetTodos(currentUserEmail, formatedDate).then((data) => {
       setTodos(data);
       setLines(
         [...Array(data.length < 12 ? 12 - data.length : 1)].map(
@@ -45,7 +47,7 @@ const TodoBox = ({ changedDays }) => {
     e.preventDefault();
 
     if (todoIn.trim() !== "") {
-      AddTodos("admin", formatedDate, todos, [
+      AddTodos(currentUserEmail, formatedDate, todos, [
         { done: false, value: todoIn },
       ]).then((res) => {
         if (res !== "done") {
@@ -90,10 +92,12 @@ const TodoBox = ({ changedDays }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  UpdateTodos("admin", formatedDate, todos).then((res) => {
-                    getTodos();
-                    document.querySelector(".new_todo_input").focus();
-                  });
+                  UpdateTodos(currentUserEmail, formatedDate, todos).then(
+                    (res) => {
+                      getTodos();
+                      document.querySelector(".new_todo_input").focus();
+                    }
+                  );
                 }}
               >
                 <input
@@ -107,7 +111,9 @@ const TodoBox = ({ changedDays }) => {
                 <button
                   type="button"
                   style={shownDeleteBtnIndex !== i ? { display: "none" } : null}
-                  onClick={() => DeleteTodo("admin", formatedDate, todos, i)}
+                  onClick={() =>
+                    DeleteTodo(currentUserEmail, formatedDate, todos, i)
+                  }
                 >
                   <MdClose />
                 </button>

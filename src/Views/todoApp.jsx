@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import LogoImage from "../Assets/logo.png";
 import { BiCaretDown, CgArrowRightO, CgArrowLeftO } from "react-icons/all";
 import Footer from "./footer";
 import TodoBox from "../Components/TodoBox/TodoBox";
+import Context from "../context";
+import { Redirect } from "react-router-dom";
 
 import "../sass/todoApp.scss";
 
 const TodoApp = ({ history }) => {
   const [changedDays, setChangedDays] = useState(0);
+  const { currentUserEmail } = useContext(Context);
+
+  const redirectLine = currentUserEmail === "" ? <Redirect to="/" /> : null;
 
   return (
     <Wrapper className="todo_app">
@@ -23,7 +28,7 @@ const TodoApp = ({ history }) => {
 
           <section>
             <button>
-              <p>arcy2032</p>
+              <p>{currentUserEmail.slice(0, currentUserEmail.indexOf("@"))}</p>
               <BiCaretDown />
             </button>
           </section>
@@ -51,6 +56,8 @@ const TodoApp = ({ history }) => {
       <footer>
         <Footer />
       </footer>
+
+      {redirectLine}
     </Wrapper>
   );
 };
