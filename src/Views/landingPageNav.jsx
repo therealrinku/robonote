@@ -11,7 +11,7 @@ const LandingPageNav = ({ history, mode }) => {
       <section className="logo_section">
         <button className="logo" onClick={() => history.push("/")}>
           <img src={LogoImage} alt="logo" />
-          <p>haveTodo</p>
+          <p className="hide_me_on_small_screen">haveTodo</p>
         </button>
       </section>
 
@@ -19,7 +19,7 @@ const LandingPageNav = ({ history, mode }) => {
         <Button
           onClick={() => history.push("/signup")}
           hide={mode === "signup"}
-          name="Try for free"
+          name="Try now"
           className="navbar_signup__btn"
         />
         <Button

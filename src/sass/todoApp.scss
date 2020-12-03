@@ -64,3 +64,37 @@
   color: black;
   font-size: 40px;
 }
+
+@media (max-width: 990px) {
+  .todo_box {
+    width: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  .todo_box {
+    width: 100vw;
+
+    .todo__box {
+      border: none;
+    }
+  }
+
+  .todo_app {
+    width: 100%;
+
+    main {
+      width: 100%;
+
+      .arrow_left {
+        top: 90%;
+        left: 64%;
+      }
+
+      .arrow_right {
+        top: 90%;
+        right: 5%;
+      }
+    }
+  }
+}

@@ -39,3 +39,13 @@
     align-items: center;
   }
 }
+
+@media (max-width: 400px) {
+  .landing_page_nav {
+    height: 50px;
+  }
+
+  .hide_me_on_small_screen {
+    display: none;
+  }
+}

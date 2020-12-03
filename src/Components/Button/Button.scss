@@ -34,3 +34,20 @@
 .action_btn:hover {
   background: black;
 }
+
+@media (max-width: 400px) {
+  .action_btn {
+    padding: 15px 40px;
+  }
+}
+
+@media (max-width: 990px) {
+  .navbar_signup__btn {
+    margin-right: 5px;
+  }
+
+  .center_me {
+    width: inherit;
+    margin: auto;
+  }
+}

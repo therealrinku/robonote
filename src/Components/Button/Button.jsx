@@ -4,7 +4,7 @@ import "./Button.scss";
 const Button = ({ className, name, onClick, hide }) => {
   return (
     <button
-      className={className}
+      className={`${className}  center_me`}
       onClick={onClick}
       style={hide ? { display: "none" } : null}
     >
