@@ -6,9 +6,9 @@ const DeleteTodo = (
   initialTodos: [],
   deletingTodoIndex: number
 ) => {
-  const updatedTodos = initialTodos
-    .slice(0, deletingTodoIndex)
-    .concat(initialTodos.splice(deletingTodoIndex, 1));
+  const updatedTodos = initialTodos.filter((_, i) => {
+    return i !== deletingTodoIndex;
+  });
 
   return new Promise((resolve) => {
     db.collection(userEmail || "dummy@dummy.com")
@@ -17,9 +17,11 @@ const DeleteTodo = (
         todos: updatedTodos,
       })
       .then(() => {
+        console.log("deleted");
         resolve("done");
       })
       .catch((err) => {
+        console.log(err);
         throw err;
       });
   });

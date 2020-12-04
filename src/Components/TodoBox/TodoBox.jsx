@@ -108,16 +108,19 @@ const TodoBox = ({ changedDays }) => {
                   onDoubleClick={() => alert("double cllicked")}
                   className="todos_input"
                 />
-                <button
-                  type="button"
-                  style={shownDeleteBtnIndex !== i ? { display: "none" } : null}
-                  onClick={() =>
-                    DeleteTodo(currentUserEmail, formatedDate, todos, i)
-                  }
-                >
-                  <MdClose />
-                </button>
               </form>
+              <button
+                type="button"
+                onClick={() =>
+                  DeleteTodo(currentUserEmail, formatedDate, todos, i).then(
+                    (res) => {
+                      res === "done" ? getTodos() : alert(res);
+                    }
+                  )
+                }
+              >
+                <MdClose />
+              </button>
             </div>
           );
         })}
