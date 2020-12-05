@@ -28,14 +28,12 @@ const TodoBox = ({ changedDays }) => {
   const formatedDate = moment(date).format("ll");
 
   const getTodos = () => {
-    GetTodos(currentUserEmail, formatedDate).then((data) => {
-      setTodos(data);
-      setLines(
-        [...Array(data.length < 12 ? 12 - data.length : 1)].map(
-          (e) => ~~(Math.random() * 40)
-        )
-      );
-    });
+    GetTodos(currentUserEmail, formatedDate, setTodos);
+    setLines(
+      [...Array(todos.length < 12 ? 12 - todos.length : 1)].map(
+        (e) => ~~(Math.random() * 40)
+      )
+    );
   };
 
   useEffect(() => {
@@ -47,14 +45,12 @@ const TodoBox = ({ changedDays }) => {
     e.preventDefault();
 
     if (todoIn.trim() !== "") {
+      setTodoIn("");
       AddTodos(currentUserEmail, formatedDate, todos, [
         { done: false, value: todoIn },
       ]).then((res) => {
         if (res !== "done") {
           alert("Failed to save todo.");
-        } else {
-          setTodoIn("");
-          getTodos();
         }
       });
     } else {
@@ -94,7 +90,6 @@ const TodoBox = ({ changedDays }) => {
                   e.preventDefault();
                   UpdateTodos(currentUserEmail, formatedDate, todos).then(
                     (res) => {
-                      getTodos();
                       document.querySelector(".new_todo_input").focus();
                     }
                   );
@@ -114,7 +109,9 @@ const TodoBox = ({ changedDays }) => {
                 onClick={() =>
                   DeleteTodo(currentUserEmail, formatedDate, todos, i).then(
                     (res) => {
-                      res === "done" ? getTodos() : alert(res);
+                      if (res !== "done") {
+                        alert(res);
+                      }
                     }
                   )
                 }
