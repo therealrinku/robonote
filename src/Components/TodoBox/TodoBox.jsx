@@ -37,6 +37,7 @@ const TodoBox = ({ changedDays }) => {
   };
 
   useEffect(() => {
+    setTodos([]);
     setTodoIn("");
     getTodos();
   }, [timeDifference]);
@@ -58,12 +59,42 @@ const TodoBox = ({ changedDays }) => {
     }
   };
 
+  const doUndoUpdate = (indexToUpdate, slicingNum) => {
+    const todosCopy = [...todos];
+    const selectedTodo = todos[indexToUpdate];
+    selectedTodo.value = selectedTodo.value.slice(0, slicingNum);
+    selectedTodo.done = !selectedTodo.done;
+    todosCopy[indexToUpdate] = selectedTodo;
+    UpdateTodos(currentUserEmail, formatedDate, todosCopy).then((res) => {
+      if (res === "done") {
+        document.querySelector(".new_todo_input").focus();
+      }
+    });
+  };
+
   const todoUpdateHandler = (e, i) => {
     const todoCopy = [...todos];
     const selectedTodo = todos[i];
     selectedTodo.value = e.target.value;
     todoCopy[i] = selectedTodo;
     setTodos(todoCopy);
+  };
+
+  const todosChangeHandler = (e, i) => {
+    e.preventDefault();
+    if (todos[i].value.slice(-2) === "/d") {
+      DeleteTodo(currentUserEmail, formatedDate, todos, i);
+    } else if (todos[i].value.slice(-2) === "/c") {
+      doUndoUpdate(i, -2);
+    } else if (todos[i].value.slice(-3) === "/nc") {
+      doUndoUpdate(i, -3);
+    } else {
+      UpdateTodos(currentUserEmail, formatedDate, todos).then((res) => {
+        if (res === "done") {
+          document.querySelector(".new_todo_input").focus();
+        }
+      });
+    }
   };
 
   return (
@@ -86,38 +117,24 @@ const TodoBox = ({ changedDays }) => {
               onMouseLeave={() => setShownDeleteBtnIndex("")}
             >
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  UpdateTodos(currentUserEmail, formatedDate, todos).then(
-                    (res) => {
-                      document.querySelector(".new_todo_input").focus();
-                    }
-                  );
-                }}
+                onSubmit={(e) => todosChangeHandler(e, i)}
+                className="todo_form"
               >
                 <input
                   type="text"
                   value={todo.value}
-                  className={todo.done ? "done_todo" : ""}
+                  style={
+                    todo.done
+                      ? {
+                          color: "rgba(0,0,0,0.6)",
+                          textDecoration: "line-through",
+                        }
+                      : null
+                  }
                   onChange={(e) => todoUpdateHandler(e, i)}
-                  onDoubleClick={() => alert("double cllicked")}
                   className="todos_input"
                 />
               </form>
-              <button
-                type="button"
-                onClick={() =>
-                  DeleteTodo(currentUserEmail, formatedDate, todos, i).then(
-                    (res) => {
-                      if (res !== "done") {
-                        alert(res);
-                      }
-                    }
-                  )
-                }
-              >
-                <MdClose />
-              </button>
             </div>
           );
         })}
@@ -132,7 +149,7 @@ const TodoBox = ({ changedDays }) => {
         </form>
 
         <div className="lines">
-          {lines.map((line, i) => {
+          {lines.map((_, i) => {
             return <li key={i}></li>;
           })}
         </div>
