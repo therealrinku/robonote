@@ -5,7 +5,6 @@ const LoginTheUser = (email: string, password: string) => {
     firebaseAuth
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log(res.user);
         resolve("done");
       })
       .catch((err) => {
