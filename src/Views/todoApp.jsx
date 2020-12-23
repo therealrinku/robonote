@@ -1,7 +1,12 @@
 import React, { useState, useContext } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import LogoImage from "../Assets/logo.png";
-import { BiCaretDown, CgArrowRightO, CgArrowLeftO } from "react-icons/all";
+import {
+  BiCaretDown,
+  CgArrowRightO,
+  CgArrowLeftO,
+  RiLogoutCircleRLine,
+} from "react-icons/all";
 import Footer from "./footer";
 import TodoBox from "../Components/TodoBox/TodoBox";
 import Context from "../context";
@@ -12,8 +17,15 @@ import "../sass/todoApp.scss";
 const TodoApp = ({ history }) => {
   const [changedDays, setChangedDays] = useState(0);
   const { currentUserEmail } = useContext(Context);
+  const [showLogout, setShowLogout] = useState(false);
 
   const redirectLine = currentUserEmail === "" ? <Redirect to="/" /> : null;
+
+  const Logout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+    history.push("/");
+  };
 
   return (
     <Wrapper className="todo_app">
@@ -27,10 +39,20 @@ const TodoApp = ({ history }) => {
           </section>
 
           <section>
-            <button>
+            <button onClick={() => setShowLogout((prev) => !prev)}>
               <p>{currentUserEmail.slice(0, currentUserEmail.indexOf("@"))}</p>
               <BiCaretDown />
             </button>
+
+            <div
+              className="logout_dropdown"
+              style={!showLogout ? { display: "none" } : null}
+            >
+              <button onClick={Logout}>
+                <RiLogoutCircleRLine />
+                <p>Logout</p>
+              </button>
+            </div>
           </section>
         </nav>
       </header>

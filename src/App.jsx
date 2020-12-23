@@ -9,12 +9,15 @@ import Cryptr from "cryptr";
 
 function App() {
   const cryptr = new Cryptr("blahblahblah01235692");
-  const decryptedEmail = cryptr.decrypt(localStorage.getItem("token"));
+  const emailToken = localStorage.getItem("token");
+  const dataToDecrypt = emailToken !== null ? emailToken : "dumm";
+  const decryptedEmail =
+    emailToken !== null ? cryptr.decrypt(dataToDecrypt) : null;
   const [currentUserEmail, setCurrentUserEmail] = useState(
-    decryptedEmail || ""
+    emailToken !== null ? decryptedEmail : ""
   );
 
-  const redirectIfLoggedIn = decryptedEmail ? <Redirect to="/app" /> : "";
+  const redirectIfLoggedIn = emailToken !== null ? <Redirect to="/app" /> : "";
 
   return (
     <Wrapper className="App">
