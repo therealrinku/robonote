@@ -6,6 +6,7 @@ import { BsEye, BsEyeSlash } from "react-icons/all";
 import CreateUser from "../Functions/createUser";
 import LoginTheUser from "../Functions/loginTheUser";
 import Context from "../context";
+import Cryptr from "cryptr";
 
 import "../sass/loginSignupPage.scss";
 
@@ -39,6 +40,9 @@ const LoginSignupPage = ({ history }) => {
     e.preventDefault();
     LoginTheUser(email, password).then((res1) => {
       if (res1 === "done") {
+        const cryptr = new Cryptr("blahblahblah01235692");
+        const encrytedEmail = cryptr.encrypt(email);
+        localStorage.setItem("token", encrytedEmail);
         setCurrentUserEmail(email);
         history.push("/app");
       } else {
@@ -52,7 +56,7 @@ const LoginSignupPage = ({ history }) => {
       <LandingPageNav mode={mode} />
       <p className="title">
         {mode === "signup"
-          ? "You will haveTodo for 30 days completely free."
+          ? "You will haveTodo for 15 days completely free."
           : "Login because you haveTodo."}
       </p>
       <form onSubmit={mode === "signup" ? SignUp : Login}>
