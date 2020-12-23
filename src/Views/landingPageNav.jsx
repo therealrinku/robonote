@@ -21,6 +21,7 @@ const LandingPageNav = ({ history, mode }) => {
           hide={mode === "signup"}
           name="Try now"
           className="navbar_signup__btn"
+          id="signup_btn"
         />
         <Button
           onClick={() => history.push("/login")}
