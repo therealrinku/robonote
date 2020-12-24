@@ -1,12 +1,16 @@
 import firebaseAuth from "../firebase/auth";
 
-const LoginTheUser = async (email: string, password: string) => {
-  const response = await firebaseAuth
-    .signInWithEmailAndPassword(email, password)
-    .catch((err) => {
-      alert(err.message + "  hahahah");
-    });
-  console.log(response);
+const LoginTheUser = (email: string, password: string) => {
+  return new Promise((resolve) => {
+    firebaseAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        resolve("done");
+      })
+      .catch((err) => {
+        resolve(err.message);
+      });
+  });
 };
 
 export default LoginTheUser;

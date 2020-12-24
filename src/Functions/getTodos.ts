@@ -5,6 +5,7 @@ const GetTodos = (
   date: string,
   setFunction: (data: []) => {}
 ) => {
+  alert("fetched todos");
   return db
     .collection(userEmail || "dummy@dummy.com")
     .doc(date)

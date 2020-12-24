@@ -5,19 +5,11 @@ import LoginSignupPage from "./Views/loginSignupPage";
 import TodoApp from "./Views/todoApp";
 import Context from "./context";
 import { useState } from "react";
-import Cryptr from "cryptr";
 
-function App() {
-  const cryptr = new Cryptr("blahblahblah01235692");
-  const emailToken = localStorage.getItem("token");
-  const dataToDecrypt = emailToken !== null ? emailToken : "dumm";
-  const decryptedEmail =
-    emailToken !== null ? cryptr.decrypt(dataToDecrypt) : null;
+function App(props) {
   const [currentUserEmail, setCurrentUserEmail] = useState(
-    emailToken !== null ? decryptedEmail : ""
+    "rinkunited2032@gmail.com"
   );
-
-  const redirectIfLoggedIn = emailToken !== null ? <Redirect to="/app" /> : "";
 
   return (
     <Wrapper className="App">
@@ -33,7 +25,6 @@ function App() {
           <Route path="/login" exact component={LoginSignupPage} />
 
           <Route path="/app" exact component={TodoApp} />
-          {redirectIfLoggedIn}
         </Router>
       </Context.Provider>
     </Wrapper>
