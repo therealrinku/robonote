@@ -14,7 +14,7 @@ import { Tooltip } from "@material-ui/core";
 
 const TodoBox = ({ changedDays }) => {
   let isMounted = true;
-  const [todos, setTodos] = useState([{ done: false, value: "" }]);
+  const [todos, setTodos] = useState([]);
   const [todoIn, setTodoIn] = useState("");
   const [showToolTip, setShowToolTip] = useState(false);
   const { currentUserEmail } = useContext(Context);
@@ -28,19 +28,30 @@ const TodoBox = ({ changedDays }) => {
 
   const timeDifference = date.diff(todayDate, "days");
   const formatedDate = moment(date).format("ll");
+  const todosToShow = todos.filter((todo) => todo.date === formatedDate);
+
+  console.log(todosToShow);
 
   const getTodos = () => {
-    GetTodos(currentUserEmail, formatedDate, setTodos);
-    setLines(
-      [...Array(todos.length < 12 ? 12 - todos.length : 1)].map(
-        (e) => ~~(Math.random() * 40)
-      )
-    );
+    if (todos.findIndex((todo) => todo.date === formatedDate) < 0) {
+      GetTodos(currentUserEmail, formatedDate).then((data) => {
+        if (data) {
+          setTodos((prev) => [
+            ...prev,
+            { date: formatedDate, todos: data.todos },
+          ]);
+        }
+      });
+      setLines(
+        [...Array(todos.length < 12 ? 12 - todos.length : 1)].map(
+          (e) => ~~(Math.random() * 40)
+        )
+      );
+    }
   };
 
   useEffect(() => {
     if (isMounted) {
-      setTodos([]);
       setTodoIn("");
       getTodos();
     }
@@ -135,7 +146,7 @@ const TodoBox = ({ changedDays }) => {
       </div>
 
       <div className="todos">
-        {todos.map((todo, i) => {
+        {todosToShow[0]?.todos.map((todo, i) => {
           return (
             <div key={i} className="todos_div">
               <form

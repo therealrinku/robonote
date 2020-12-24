@@ -6,7 +6,7 @@ import TodoApp from "./Views/todoApp";
 import Context from "./context";
 import { useState } from "react";
 
-function App(props) {
+function App() {
   const [currentUserEmail, setCurrentUserEmail] = useState(
     "rinkunited2032@gmail.com"
   );
