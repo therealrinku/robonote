@@ -11,27 +11,6 @@
   margin-top: 85px;
 }
 
-.todo_app main .arrow_left,
-.todo_app main .arrow_right {
-  font-size: 40px;
-  position: fixed;
-  top: 50%;
-}
-
-.todo_app main .arrow_left {
-  left: 10%;
-}
-
-.todo_app main .arrow_right {
-  right: 10%;
-}
-
-.todo_app .arrow_left button,
-.todo_app .arrow_right button {
-  color: black;
-  font-size: 40px;
-}
-
 @media (max-width: 990px) {
   .todo_box {
     width: 75%;
@@ -52,17 +31,6 @@
 
     main {
       width: 100%;
-
-      .arrow_left {
-        top: 90%;
-        left: 67%;
-      }
-
-      .arrow_right {
-        top: 90%;
-        left: 67%;
-        margin-left: 50px;
-      }
     }
   }
 }
