@@ -3,8 +3,6 @@ import Wrapper from "../Wrapper/Wrapper";
 import Footer from "./footer";
 import LandingPageNav from "./landingPageNav";
 import { BsEye, BsEyeSlash } from "react-icons/all";
-import CreateUser from "../Functions/createUser";
-import LoginTheUser from "../Functions/loginTheUser";
 import Context from "../context";
 import Cryptr from "cryptr";
 
@@ -20,7 +18,7 @@ const LoginSignupPage = ({ history }) => {
 
   const SignUp = (e) => {
     e.preventDefault();
-    CreateUser(email, password).then((res) => {
+    /* CreateUser(email, password).then((res) => {
       if (res === "done") {
         LoginTheUser(email, password).then((res1) => {
           if (res1 === "done") {
@@ -33,12 +31,12 @@ const LoginSignupPage = ({ history }) => {
       } else {
         alert(res);
       }
-    });
+    });*/
   };
 
   const Login = (e) => {
     e.preventDefault();
-    LoginTheUser(email, password).then((res1) => {
+    /*LoginTheUser(email, password).then((res1) => {
       if (res1 === "done") {
         const cryptr = new Cryptr("blahblahblah01235692");
         const encrytedEmail = cryptr.encrypt(email);
@@ -48,7 +46,7 @@ const LoginSignupPage = ({ history }) => {
       } else {
         alert(res1);
       }
-    });
+    });*/
   };
 
   return (

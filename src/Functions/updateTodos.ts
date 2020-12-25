@@ -1,4 +1,4 @@
-import db from "../firebase/db";
+import db from "../firebase/firebaseDB";
 
 const UpdateTodos = (userEmail: string, date: string, updatedTodos: []) => {
   return new Promise((resolve) => {

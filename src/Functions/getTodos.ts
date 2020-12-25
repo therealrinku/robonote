@@ -1,4 +1,4 @@
-import db from "../firebase/db";
+import db from "../firebase/firebaseDB";
 
 const GetTodos = (userEmail: string, date: string) => {
   alert("fetched todos");

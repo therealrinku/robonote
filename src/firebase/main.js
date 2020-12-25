@@ -1,3 +1,7 @@
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDk2c5NRpbO702KpX-XrgakLs40m70jt3E",
   authDomain: "havetodoo.firebaseapp.com",
@@ -9,4 +13,6 @@ const firebaseConfig = {
   measurementId: "G-TM8WP3JPG1",
 };
 
-export default firebaseConfig;
+const firebaseService = firebase.initializeApp(firebaseConfig);
+
+export default firebaseService;
