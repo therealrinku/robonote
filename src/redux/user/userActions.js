@@ -1,6 +1,6 @@
 import userActionTypes from "./userActionTypes";
 
-export const LogIn = async (userEmail, dispatch) => {
+export const LOGIN = async (userEmail, dispatch) => {
   try {
     dispatch({ type: userActionTypes.LOGGED_IN, payload: userEmail });
   } catch (err) {

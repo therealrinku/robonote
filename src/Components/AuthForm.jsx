@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/all";
 import Wrapper from "../Wrapper/Wrapper";
 
-const AuthForm = ({ signingUp }) => {
-  const [visiblePassword, setVisiblePassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+const AuthForm = ({
+  signingUp,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  visiblePassword,
+  setVisiblePassword,
+}) => {
   return (
     <Wrapper className="auth_form_page">
       <p className="title">
