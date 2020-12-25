@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import Footer from "./footer";
-import TodoBox from "../Components/TodoBox";
+import Todos from "../Components/Todos";
 import { connect } from "react-redux";
 import * as userActions from "../redux/user/userActions";
 import HomeNav from "../Components/HomeNav";
 import Arrows from "../Components/Arrows";
+import moment from "moment";
 
 const Homepage = ({ history, currentUser, SIGNOUT, todos }) => {
   const [changedDays, setChangedDays] = useState(0);
-  const [showLogout, setShowLogout] = useState(false);
+  const formatedDate = moment(
+    moment(new Date()).add({ days: changedDays })
+  ).format("ll");
 
   return (
-    <Wrapper className="todo_app">
+    <Wrapper>
       <HomeNav SIGNOUT={SIGNOUT} currentUser={currentUser} history={history} />
       <Arrows setChangedDays={setChangedDays} />
-      <TodoBox changedDays={changedDays} currentUser={currentUser} />
-
-      <footer>
-        <Footer />
-      </footer>
+      <Todos
+        formatedDate={formatedDate}
+        currentUser={currentUser}
+        todos={todos ? todos[0].todos : []}
+      />
+      <Footer />
     </Wrapper>
   );
 };

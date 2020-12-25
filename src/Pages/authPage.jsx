@@ -2,8 +2,6 @@ import React, { Fragment, useState } from "react";
 import Footer from "./footer";
 import LandingPageNav from "./landingPageNav";
 import * as userActions from "../redux/user/userActions";
-
-import "../sass/_authForm.scss";
 import Form from "../Components/AuthForm";
 import { connect } from "react-redux";
 
