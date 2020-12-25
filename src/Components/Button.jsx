@@ -1,6 +1,3 @@
-import React from "react";
-import "./Button.scss";
-
 const Button = ({ className, id, name, onClick, hide }) => {
   return (
     <button

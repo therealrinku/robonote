@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Wrapper from "../../Wrapper/Wrapper";
-import "./TodoBox.scss";
+import Wrapper from "../Wrapper/Wrapper";
 import Moment from "react-moment";
 import moment from "moment";
-import GetTodos from "../../Functions/getTodos";
-import AddTodos from "../../Functions/addTodos";
+import GetTodos from "../Functions/getTodos";
+import AddTodos from "../Functions/addTodos";
 
 import { IoMdInformationCircleOutline } from "react-icons/all";
-import DeleteTodo from "../../Functions/deleteTodo";
-import UpdateTodos from "../../Functions/updateTodos";
+import DeleteTodo from "../Functions/deleteTodo";
+import UpdateTodos from "../Functions/updateTodos";
 import { Tooltip } from "@material-ui/core";
 
 const TodoBox = ({ changedDays, currentUser }) => {
@@ -182,9 +181,9 @@ const TodoBox = ({ changedDays, currentUser }) => {
         </form>
 
         <div className="lines">
-          {lines.map((_, i) => {
+          {/*lines.map((_, i) => {
             return <li key={i}></li>;
-          })}
+          })*/}
         </div>
       </div>
     </Wrapper>

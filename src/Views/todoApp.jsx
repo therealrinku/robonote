@@ -8,8 +8,7 @@ import {
   RiLogoutCircleRLine,
 } from "react-icons/all";
 import Footer from "./footer";
-import TodoBox from "../Components/TodoBox/TodoBox";
-import { Redirect } from "react-router-dom";
+import TodoBox from "../Components/TodoBox";
 
 import "../sass/todoApp.scss";
 import { connect } from "react-redux";
@@ -19,7 +18,6 @@ const TodoApp = ({ history, currentUser, SIGNOUT }) => {
   const [changedDays, setChangedDays] = useState(0);
   const [showLogout, setShowLogout] = useState(false);
 
-  const redirectLine = !currentUser ? <Redirect to="/" /> : null;
   return (
     <Wrapper className="todo_app">
       <header>
@@ -71,8 +69,6 @@ const TodoApp = ({ history, currentUser, SIGNOUT }) => {
       <footer>
         <Footer />
       </footer>
-
-      {redirectLine}
     </Wrapper>
   );
 };

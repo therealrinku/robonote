@@ -2,8 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import LogoImage from "../Assets/logo.png";
-import Button from "../Components/Button/Button";
-import "../sass/landingPageNav.scss";
+import Button from "../Components/Button";
 
 const LandingPageNav = ({ history, mode }) => {
   return (

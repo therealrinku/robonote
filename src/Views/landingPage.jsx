@@ -7,8 +7,7 @@ import MainIllsutration from "../Assets/main.svg";
 import ReviewStarImage from "../Assets/rating.png";
 import Img from "../Assets/feature_img_test.png";
 
-import "../sass/landingPage.scss";
-import Button from "../Components/Button/Button";
+import Button from "../Components/Button";
 
 const Landingpage = ({ history }) => {
   return (

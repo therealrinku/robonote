@@ -4,6 +4,7 @@ import Landingpage from "./Views/landingPage";
 import AuthPage from "./Views/authPage";
 import TodoApp from "./Views/todoApp";
 import { connect } from "react-redux";
+import "./sass/main.scss";
 
 function App({ currentUser }) {
   return (
