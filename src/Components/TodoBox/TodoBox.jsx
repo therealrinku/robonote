@@ -40,6 +40,8 @@ const TodoBox = ({ changedDays }) => {
             ...prev,
             { date: formatedDate, todos: data.todos },
           ]);
+        } else {
+          setTodos((prev) => [...prev, { date: formatedDate, todos: [] }]);
         }
       });
       setLines(

@@ -5,11 +5,14 @@ import LoginSignupPage from "./Views/loginSignupPage";
 import TodoApp from "./Views/todoApp";
 import Context from "./context";
 import { useState } from "react";
+import { connect } from "react-redux";
 
-function App() {
+function App(props) {
   const [currentUserEmail, setCurrentUserEmail] = useState(
     "rinkunited2032@gmail.com"
   );
+
+  console.log(props);
 
   return (
     <Wrapper className="App">
@@ -31,4 +34,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+    todos: state.todos.todos,
+  };
+};
+
+export default connect(mapStateToProps)(App);
