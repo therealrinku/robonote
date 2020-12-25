@@ -1,5 +1,5 @@
 import React from "react";
-import { BiCaretDown, RiLogoutCircleRLine } from "react-icons/all";
+import { RiLogoutCircleRLine } from "react-icons/all";
 import LogoImage from "../Assets/logo.png";
 
 const HomeNav = ({ currentUser, SIGNOUT, history }) => {
