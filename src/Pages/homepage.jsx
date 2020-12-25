@@ -1,53 +1,21 @@
 import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
-import LogoImage from "../Assets/logo.png";
-import {
-  BiCaretDown,
-  CgArrowRightO,
-  CgArrowLeftO,
-  RiLogoutCircleRLine,
-} from "react-icons/all";
+import { CgArrowRightO, CgArrowLeftO } from "react-icons/all";
 import Footer from "./footer";
 import TodoBox from "../Components/TodoBox";
 
 import "../sass/todoApp.scss";
 import { connect } from "react-redux";
 import * as userActions from "../redux/user/userActions";
+import HomeNav from "../Components/HomeNav";
 
-const TodoApp = ({ history, currentUser, SIGNOUT }) => {
+const Homepage = ({ history, currentUser, SIGNOUT, todos }) => {
   const [changedDays, setChangedDays] = useState(0);
   const [showLogout, setShowLogout] = useState(false);
 
   return (
     <Wrapper className="todo_app">
-      <header>
-        <nav>
-          <section>
-            <button className="logo" onClick={() => history.push("/app")}>
-              <img src={LogoImage} alt="logo" />
-              <p>haveTodo</p>
-            </button>
-          </section>
-
-          <section>
-            <button onClick={() => setShowLogout((prev) => !prev)}>
-              <p>{currentUser.slice(0, currentUser.indexOf("@"))}</p>
-              <BiCaretDown />
-            </button>
-
-            <div
-              className="logout_dropdown"
-              style={!showLogout ? { display: "none" } : null}
-            >
-              <button onClick={SIGNOUT}>
-                <RiLogoutCircleRLine />
-                <p>Logout</p>
-              </button>
-            </div>
-          </section>
-        </nav>
-      </header>
-
+      <HomeNav SIGNOUT={SIGNOUT} currentUser={currentUser} history={history} />
       <main>
         <section className="arrow_left">
           <button onClick={() => setChangedDays((prev) => prev - 1)}>
@@ -76,7 +44,7 @@ const TodoApp = ({ history, currentUser, SIGNOUT }) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    todos: state.todos.todos.filter((todo) => todo.date === "boom"),
+    todos: state.todos.todos.filter((todo) => todo.date === "Dec 25, 2020"),
   };
 };
 
@@ -86,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
