@@ -1,6 +1,7 @@
 const userActionTypes = {
-  LOGGED_IN: "LOGGED_IN",
+  LOGIN: "LOGIN",
   LOGIN_FAILURE: "LOGIN_FAILURE",
+  SIGNOUT: "SIGNOUT",
 };
 
 export default userActionTypes;

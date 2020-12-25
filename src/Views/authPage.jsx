@@ -1,16 +1,26 @@
 import React, { Fragment, useState } from "react";
 import Footer from "./footer";
 import LandingPageNav from "./landingPageNav";
-import { LOGIN } from "../redux/user/userActions";
+import * as userActions from "../redux/user/userActions";
 
 import "../sass/_authForm.scss";
 import Form from "../Components/AuthForm";
+import { connect } from "react-redux";
 
-const AuthPage = ({ history }) => {
+const AuthPage = ({ history, LOGIN, SIGNUP }) => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const signingUp = history.location.pathname === "/signup";
+
+  const AuthHandler = (e) => {
+    e.preventDefault();
+    if (signingUp) {
+      SIGNUP(email, password);
+    } else {
+      LOGIN(email, password);
+    }
+  };
 
   return (
     <Fragment>
@@ -23,6 +33,7 @@ const AuthPage = ({ history }) => {
         setPassword={setPassword}
         visiblePassword={visiblePassword}
         setVisiblePassword={setVisiblePassword}
+        authHandler={AuthHandler}
       />
       <Footer />
     </Fragment>
@@ -31,8 +42,9 @@ const AuthPage = ({ history }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    LOGIN: () => dispatch(LOGIN()),
+    LOGIN: (email, password) => dispatch(userActions.LOGIN(email, password)),
+    SIGNUP: (email, password) => dispatch(userActions.SIGNUP(email, password)),
   };
 };
 
-export default AuthPage;
+export default connect(null, mapDispatchToProps)(AuthPage);

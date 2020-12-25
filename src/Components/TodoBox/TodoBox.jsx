@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "../../Wrapper/Wrapper";
 import "./TodoBox.scss";
 import Moment from "react-moment";
@@ -9,15 +9,13 @@ import AddTodos from "../../Functions/addTodos";
 import { IoMdInformationCircleOutline } from "react-icons/all";
 import DeleteTodo from "../../Functions/deleteTodo";
 import UpdateTodos from "../../Functions/updateTodos";
-import Context from "../../context";
 import { Tooltip } from "@material-ui/core";
 
-const TodoBox = ({ changedDays }) => {
+const TodoBox = ({ changedDays, currentUser }) => {
   let isMounted = true;
   const [todos, setTodos] = useState([]);
   const [todoIn, setTodoIn] = useState("");
   const [showToolTip, setShowToolTip] = useState(false);
-  const { currentUserEmail } = useContext(Context);
 
   const [lines, setLines] = useState(
     [...Array(12)].map((e) => ~~(Math.random() * 40))
@@ -34,7 +32,7 @@ const TodoBox = ({ changedDays }) => {
 
   const getTodos = () => {
     if (todos.findIndex((todo) => todo.date === formatedDate) < 0) {
-      GetTodos(currentUserEmail, formatedDate).then((data) => {
+      GetTodos(currentUser, formatedDate).then((data) => {
         if (data) {
           setTodos((prev) => [
             ...prev,
@@ -68,7 +66,7 @@ const TodoBox = ({ changedDays }) => {
 
     if (todoIn.trim() !== "") {
       setTodoIn("");
-      AddTodos(currentUserEmail, formatedDate, todos, [
+      AddTodos(currentUser, formatedDate, todos, [
         { done: false, value: todoIn },
       ]).then((res) => {
         if (res !== "done") {
@@ -86,7 +84,7 @@ const TodoBox = ({ changedDays }) => {
     selectedTodo.value = selectedTodo.value.slice(0, slicingNum);
     selectedTodo.done = !selectedTodo.done;
     todosCopy[indexToUpdate] = selectedTodo;
-    UpdateTodos(currentUserEmail, formatedDate, todosCopy).then((res) => {
+    UpdateTodos(currentUser, formatedDate, todosCopy).then((res) => {
       if (res === "done") {
         document.querySelector(".new_todo_input").focus();
       }
@@ -104,13 +102,13 @@ const TodoBox = ({ changedDays }) => {
   const todosChangeHandler = (e, i) => {
     e.preventDefault();
     if (todos[i].value.slice(-2) === "/d") {
-      DeleteTodo(currentUserEmail, formatedDate, todos, i);
+      DeleteTodo(currentUser, formatedDate, todos, i);
     } else if (todos[i].value.slice(-2) === "/c") {
       doUndoUpdate(i, -2);
     } else if (todos[i].value.slice(-3) === "/nc") {
       doUndoUpdate(i, -3);
     } else {
-      UpdateTodos(currentUserEmail, formatedDate, todos).then((res) => {
+      UpdateTodos(currentUser, formatedDate, todos).then((res) => {
         if (res === "done") {
           document.querySelector(".new_todo_input").focus();
         }

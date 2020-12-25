@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import LogoImage from "../Assets/logo.png";
 import {
@@ -9,24 +9,17 @@ import {
 } from "react-icons/all";
 import Footer from "./footer";
 import TodoBox from "../Components/TodoBox/TodoBox";
-import Context from "../context";
 import { Redirect } from "react-router-dom";
 
 import "../sass/todoApp.scss";
+import { connect } from "react-redux";
+import * as userActions from "../redux/user/userActions";
 
-const TodoApp = ({ history }) => {
+const TodoApp = ({ history, currentUser, SIGNOUT }) => {
   const [changedDays, setChangedDays] = useState(0);
-  const { currentUserEmail } = useContext(Context);
   const [showLogout, setShowLogout] = useState(false);
 
-  const redirectLine = currentUserEmail === "" ? <Redirect to="/" /> : null;
-
-  const Logout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-    history.push("/");
-  };
-
+  const redirectLine = !currentUser ? <Redirect to="/" /> : null;
   return (
     <Wrapper className="todo_app">
       <header>
@@ -40,7 +33,7 @@ const TodoApp = ({ history }) => {
 
           <section>
             <button onClick={() => setShowLogout((prev) => !prev)}>
-              <p>{currentUserEmail.slice(0, currentUserEmail.indexOf("@"))}</p>
+              <p>{currentUser.slice(0, currentUser.indexOf("@"))}</p>
               <BiCaretDown />
             </button>
 
@@ -48,7 +41,7 @@ const TodoApp = ({ history }) => {
               className="logout_dropdown"
               style={!showLogout ? { display: "none" } : null}
             >
-              <button onClick={Logout}>
+              <button onClick={SIGNOUT}>
                 <RiLogoutCircleRLine />
                 <p>Logout</p>
               </button>
@@ -65,7 +58,7 @@ const TodoApp = ({ history }) => {
         </section>
 
         <section className="todo_box">
-          <TodoBox changedDays={changedDays} />
+          <TodoBox changedDays={changedDays} currentUser={currentUser} />
         </section>
 
         <section className="arrow_right">
@@ -84,4 +77,17 @@ const TodoApp = ({ history }) => {
   );
 };
 
-export default TodoApp;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+    todos: state.todos.todos.filter((todo) => todo.date === "boom"),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    SIGNOUT: () => dispatch(userActions.SIGNOUT()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);

@@ -10,6 +10,7 @@ const AuthForm = ({
   setPassword,
   visiblePassword,
   setVisiblePassword,
+  authHandler,
 }) => {
   return (
     <Wrapper className="auth_form_page">
@@ -18,7 +19,7 @@ const AuthForm = ({
           ? "You will haveTodo for 15 days completely free."
           : "Login because you haveTodo."}
       </p>
-      <form className="auth_form">
+      <form className="auth_form" onClick={authHandler}>
         <div className="email">
           <label htmlFor="email">email</label>
           <input
