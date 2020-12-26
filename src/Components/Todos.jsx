@@ -44,6 +44,11 @@ const Todos = ({ todos, formatedDate }) => {
           />
         </form>
       </div>
+
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </Wrapper>
   );
 };

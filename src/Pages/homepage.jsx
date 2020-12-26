@@ -12,7 +12,7 @@ const Homepage = ({ history, currentUser, SIGNOUT, todos }) => {
   const [changedDays, setChangedDays] = useState(0);
   const formatedDate = moment(
     moment(new Date()).add({ days: changedDays })
-  ).format("ll");
+  ).format("ddd MMM Do YYYY");
 
   return (
     <Wrapper>
