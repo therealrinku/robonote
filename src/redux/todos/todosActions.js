@@ -1,6 +1,7 @@
 import todosActionTypes from "./todosActionTypes";
 import AddTodo from "../../Functions/addTodo";
 import FetchTodos from "../../Functions/fetchTodos";
+import DeleteTodo from "../../Functions/deleteTodo";
 
 export const ADD__INNER__TODO = (
   currentUser,
@@ -18,8 +19,8 @@ export const ADD__INNER__TODO = (
     ]);
   } catch (err) {
     dispatch({
-      type: todosActionTypes.ERROR_SAVING,
-      payload: "Something went wrong",
+      type: todosActionTypes.ERROR_FOUND,
+      payload: "Something went wrong while saving todo.",
     });
   }
 };
@@ -28,6 +29,7 @@ export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {
   try {
     dispatch({ type: todosActionTypes.FETCHING_TODOS });
     const todos = await FetchTodos(currentUser, date);
+    console.log(todos);
 
     dispatch({
       type: todosActionTypes.ADD_OUTER_TODOS,
@@ -35,8 +37,8 @@ export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: todosActionTypes.ERROR_FETCHING,
-      payload: "Something went wrong",
+      type: todosActionTypes.ERROR_FOUND,
+      payload: "Something went wrong while fetching todos.",
     });
   }
 };
@@ -50,13 +52,24 @@ export const UPDATE__INNER__TODO = (date, value, dispatch) => {
   };
 };
 
-export const DELETE__INNER__TODO = (date, value, dispatch) => {
-  return (dispatch) => {
+export const DELETE__INNER__TODO = (
+  currentUser,
+  initialTodos,
+  date,
+  todo
+) => async (dispatch) => {
+  try {
     dispatch({
       type: todosActionTypes.DELETE_INNER_TODO,
-      payload: { date, value },
+      payload: { date, todo },
     });
-  };
+    await DeleteTodo(currentUser, date, initialTodos, todo);
+  } catch (err) {
+    dispatch({
+      type: todosActionTypes.ERROR_FOUND,
+      payload: "Something went wrong while deleting todo.",
+    });
+  }
 };
 
 export const DATE__INCREMENT = () => (dispatch) => {

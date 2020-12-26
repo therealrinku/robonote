@@ -9,17 +9,11 @@ const initialState = {
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
-    case todosActionTypes.ERROR_FETCHING: {
+    case todosActionTypes.ERROR_FOUND: {
       return {
         ...state,
         error: action.payload,
-      };
-    }
-
-    case todosActionTypes.ERROR_SAVING: {
-      return {
-        ...state,
-        error: action.payload,
+        fetching: false,
       };
     }
 
@@ -51,7 +45,6 @@ const todosReducer = (state = initialState, action) => {
         { value: action.payload.todo, done: false },
       ];
       todosCopyA[selectedTodoListCopyIndexA] = selectedTodoListCopyA[0];
-      console.log(selectedTodoListCopyA);
 
       return {
         ...state,
@@ -79,12 +72,20 @@ const todosReducer = (state = initialState, action) => {
       };
 
     case todosActionTypes.DELETE_INNER_TODO:
-      const UPDATED_TODOS = state.todos.filter(
-        (todo) => todo.date !== action.payload.date
+      const todosCopyC = [...state.todos];
+      const selectedTodoListCopyIndexC = todosCopyC.findIndex(
+        (todos) => todos.date === action.payload.date
       );
+      const selectedTodoListCopyC = todosCopyC.filter(
+        (todos) => todos.date === action.payload.date
+      );
+      selectedTodoListCopyC[0].todos.filter((todo) => {
+        return todo.value !== action.payload.todo;
+      });
+      todosCopyC[selectedTodoListCopyIndexC] = selectedTodoListCopyC[0];
       return {
         ...state,
-        todos: UPDATED_TODOS,
+        todos: todosCopyC,
         fetching: false,
         error: false,
       };

@@ -20,15 +20,13 @@ const Homepage = ({
   FETCH_TODOS,
   loading,
   ADD_TODO,
+  DELETE_TODO,
 }) => {
   const formatedDate = moment(
     moment(new Date()).add({ days: dateDifference })
   ).format("ddd MMM Do YYYY");
 
   const selectedTodos = todos.filter((todos) => todos.date === formatedDate);
-
-  console.log(selectedTodos);
-
   const [newTodo, setNewTodo] = useState("");
 
   useEffect(() => {
@@ -39,8 +37,30 @@ const Homepage = ({
 
   const AddTodo = (e) => {
     e.preventDefault();
-    ADD_TODO(currentUser, selectedTodos[0]?.todos || [], formatedDate, newTodo);
+    if (newTodo.trim() !== "") {
+      if (
+        selectedTodos[0]?.todos.findIndex((todo) => todo.value === newTodo) >= 0
+      ) {
+        alert(`${newTodo} already exists`);
+      } else {
+        ADD_TODO(
+          currentUser,
+          selectedTodos[0]?.todos || [],
+          formatedDate,
+          newTodo
+        );
+      }
+    }
     setNewTodo("");
+  };
+
+  const DeleteTodo = (value) => {
+    DELETE_TODO(
+      currentUser,
+      selectedTodos[0]?.todos || [],
+      formatedDate,
+      value
+    );
   };
 
   return (
@@ -58,6 +78,7 @@ const Homepage = ({
         AddTodo={AddTodo}
         newTodo={newTodo}
         setNewTodo={setNewTodo}
+        DeleteTodo={DeleteTodo}
       />
       <Footer />
     </Wrapper>
@@ -84,6 +105,10 @@ const mapDispatchToProps = (dispatch) => {
     ADD_TODO: (currentUser, selectedTodos, date, todo) =>
       dispatch(
         todosActions.ADD__INNER__TODO(currentUser, selectedTodos, date, todo)
+      ),
+    DELETE_TODO: (currentUser, selectedTodos, date, todo) =>
+      dispatch(
+        todosActions.DELETE__INNER__TODO(currentUser, selectedTodos, date, todo)
       ),
   };
 };

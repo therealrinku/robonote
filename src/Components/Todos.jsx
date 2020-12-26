@@ -10,6 +10,7 @@ const Todos = ({
   AddTodo,
   newTodo,
   setNewTodo,
+  DeleteTodo,
 }) => {
   return (
     <Wrapper className="todos_page">
@@ -23,7 +24,7 @@ const Todos = ({
         {todos.map((todo, i) => {
           return (
             <div key={i} className="todos_div">
-              <li>{todo.value}</li>
+              <li onDoubleClick={() => DeleteTodo(todo.value)}>{todo.value}</li>
             </div>
           );
         })}
