@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import HelpTooltip from "./HelpTooltip";
+import ProgressBar from "./ProgressBar";
 
-const Todos = ({ todos, formatedDate }) => {
+const Todos = ({ todos, formatedDate, loading }) => {
   const [todoIn, setTodoIn] = useState("");
 
   return (
     <Wrapper className="todos_page">
+      {loading?<ProgressBar/>:null}
       <div className="date">
         <h4>{formatedDate}</h4>
         <HelpTooltip />

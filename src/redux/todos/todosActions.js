@@ -14,6 +14,7 @@ export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {
   try {
     dispatch({ type: todosActionTypes.FETCHING_TODOS });
     const response = await FetchTodos(currentUser, date);
+
     dispatch({
       type: todosActionTypes.ADD_OUTER_TODOS,
       payload: { todos: response?.todos || [], date: date },

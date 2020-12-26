@@ -18,6 +18,7 @@ const Homepage = ({
   DATE_DECREMENT,
   DATE_INCREMENT,
   FETCH_TODOS,
+  loading,
 }) => {
   const formatedDate = moment(
     moment(new Date()).add({ days: dateDifference })
@@ -44,6 +45,7 @@ const Homepage = ({
         formatedDate={formatedDate}
         currentUser={currentUser}
         todos={selectedTodos[0]?.todos || []}
+        loading={loading}
       />
       <Footer />
     </Wrapper>
@@ -56,6 +58,7 @@ const mapStateToProps = (state) => {
     dateDifference: state.todos.dateDifference,
     reduxDate: state.todos.currentDate,
     todos: state.todos.todos,
+    loading: state.todos.fetching,
   };
 };
 
