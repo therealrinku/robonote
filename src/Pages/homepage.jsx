@@ -17,15 +17,21 @@ const Homepage = ({
   dateDifference,
   DATE_DECREMENT,
   DATE_INCREMENT,
-  FILTER_SELECTED_DATE_TODOS,
+  FETCH_TODOS,
 }) => {
   const formatedDate = moment(
     moment(new Date()).add({ days: dateDifference })
   ).format("ddd MMM Do YYYY");
 
+  const selectedTodos = todos.filter((todos) => todos.date === formatedDate);
+
   useEffect(() => {
-    FILTER_SELECTED_DATE_TODOS(formatedDate);
+    if (selectedTodos[0]?.date !== formatedDate) {
+      FETCH_TODOS(currentUser, formatedDate);
+    }
   }, [formatedDate]);
+
+  console.log(selectedTodos);
 
   return (
     <Wrapper>
@@ -37,7 +43,7 @@ const Homepage = ({
       <Todos
         formatedDate={formatedDate}
         currentUser={currentUser}
-        todos={todos[0]?.todos || []}
+        todos={selectedTodos[0]?.todos || []}
       />
       <Footer />
     </Wrapper>
@@ -49,7 +55,7 @@ const mapStateToProps = (state) => {
     currentUser: state.user.currentUser,
     dateDifference: state.todos.dateDifference,
     reduxDate: state.todos.currentDate,
-    todos: state.todos.selectedDateTodos,
+    todos: state.todos.todos,
   };
 };
 
@@ -58,8 +64,8 @@ const mapDispatchToProps = (dispatch) => {
     SIGNOUT: () => dispatch(userActions.SIGNOUT()),
     DATE_INCREMENT: () => dispatch(todosActions.DATE__INCREMENT()),
     DATE_DECREMENT: () => dispatch(todosActions.DATE__DECREMENT()),
-    FILTER_SELECTED_DATE_TODOS: (date) =>
-      dispatch(todosActions.FILTER__SELECTED__DATE__TODOS(date)),
+    FETCH_TODOS: (currentUser, date) =>
+      dispatch(todosActions.ADD__OUTER__TODOS(currentUser, date)),
   };
 };
 

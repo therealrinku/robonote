@@ -16,21 +16,7 @@ const Todos = ({ todos, formatedDate }) => {
         {todos.map((todo, i) => {
           return (
             <div key={i} className="todos_div">
-              <form className="todo_form">
-                <input
-                  type="text"
-                  value={todo.value}
-                  style={
-                    todo.done
-                      ? {
-                          color: "rgba(0,0,0,0.6)",
-                          textDecoration: "line-through",
-                        }
-                      : null
-                  }
-                  className="todos_input"
-                />
-              </form>
+              <li>{todo.value}</li>
             </div>
           );
         })}

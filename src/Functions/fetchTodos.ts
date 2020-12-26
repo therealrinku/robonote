@@ -1,14 +1,17 @@
 import db from "../firebase/firebaseDB";
 
-const GetTodos = (userEmail: string, date: string) => {
-  alert("fetched todos");
-  return new Promise((resolve) => {
-    db.collection(userEmail || "dummy@dummy.com")
-      .doc(date)
-      .onSnapshot((doc) => {
-        resolve(doc.data());
-      });
-  });
+const FetchTodos = (currentUser: string, date: string) => {
+  try {
+    return new Promise((resolve) => {
+      db.collection(currentUser || "dummy@dummy.com")
+        .doc(date)
+        .onSnapshot((doc) => {
+          resolve(doc.data());
+        });
+    });
+  } catch (err) {
+    throw err;
+  }
 };
 
-export default GetTodos;
+export default FetchTodos;

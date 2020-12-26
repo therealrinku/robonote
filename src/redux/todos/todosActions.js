@@ -1,11 +1,5 @@
+import FetchTodos from "../../Functions/fetchTodos";
 import todosActionTypes from "./todosActionTypes";
-
-export const FILTER__SELECTED__DATE__TODOS = (date) => (dispatch) => {
-  return dispatch({
-    type: todosActionTypes.FILTER_SELECTED_DATE_TODOS,
-    payload: date,
-  });
-};
 
 export const ADD__INNER__TODO = (date, todo, dispatch) => {
   return (dispatch) => {
@@ -16,10 +10,20 @@ export const ADD__INNER__TODO = (date, todo, dispatch) => {
   };
 };
 
-export const ADD__OUTER__TODOS = (date, dispatch) => {
-  return (dispatch) => {
-    dispatch({ type: todosActionTypes.ADD_OUTER_TODOS, payload: { date } });
-  };
+export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {
+  try {
+    dispatch({ type: todosActionTypes.FETCHING_TODOS });
+    const response = await FetchTodos(currentUser, date);
+    dispatch({
+      type: todosActionTypes.ADD_OUTER_TODOS,
+      payload: { todos: response?.todos || [], date: date },
+    });
+  } catch (err) {
+    dispatch({
+      type: todosActionTypes.ERROR_FETCHING,
+      payload: "Something went wrong",
+    });
+  }
 };
 
 export const UPDATE__INNER__TODO = (date, value, dispatch) => {

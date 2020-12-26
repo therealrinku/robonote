@@ -1,27 +1,34 @@
 import todosActionTypes from "./todosActionTypes";
 
 const initialState = {
-  todos: [
-    {
-      date: "Sat Dec 26th 2020",
-      todos: [
-        { value: "brush a teeth", done: false },
-        { value: "remake todo app", done: true },
-      ],
-    },
-  ],
-  fetchingTodos: false,
-  error: false,
+  todos: [],
+  fetching: false,
+  error: null,
   dateDifference: 0,
-  selectedDateTodos: [],
 };
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case todosActionTypes.ERROR_FETCHING: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
+    case todosActionTypes.FETCHING_TODOS: {
+      return {
+        ...state,
+        fetching: true,
+      };
+    }
+
     case todosActionTypes.ADD_OUTER_TODOS:
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        fetching: false,
+        error: false,
       };
 
     case todosActionTypes.ADD_INNER_TODO:
@@ -37,6 +44,8 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: TODOS_COPY_A,
+        fetching: false,
+        error: false,
       };
 
     case todosActionTypes.UPDATE_INNER_TODO:
@@ -53,6 +62,8 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: TODOS_COPY_B,
+        fetching: false,
+        error: false,
       };
 
     case todosActionTypes.DELETE_INNER_TODO:
@@ -62,6 +73,8 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: UPDATED_TODOS,
+        fetching: false,
+        error: false,
       };
 
     case todosActionTypes.DATE_INCREMENT:
@@ -74,14 +87,6 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         dateDifference: state.dateDifference - 1,
-      };
-
-    case todosActionTypes.FILTER_SELECTED_DATE_TODOS:
-      return {
-        ...state,
-        selectedDateTodos: state.todos.filter(
-          (todos) => todos.date === action.payload
-        ),
       };
 
     default:
