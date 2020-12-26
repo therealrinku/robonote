@@ -3,7 +3,7 @@ import todosActionTypes from "./todosActionTypes";
 const initialTodoList = {
   todos: [
     {
-      date: "Dec 25, 2020",
+      date: "Dec 26, 2020",
       todos: [
         { value: "brush a teeth", done: false },
         { value: "remake todo app", done: true },

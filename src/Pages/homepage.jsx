@@ -21,7 +21,7 @@ const Homepage = ({ history, currentUser, SIGNOUT, todos }) => {
       <Todos
         formatedDate={formatedDate}
         currentUser={currentUser}
-        todos={todos ? todos[0].todos : []}
+        todos={todos[0]?.todos || []}
       />
       <Footer />
     </Wrapper>
@@ -31,7 +31,7 @@ const Homepage = ({ history, currentUser, SIGNOUT, todos }) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    todos: state.todos.todos.filter((todo) => todo.date === "Dec 25, 2020"),
+    todos: state.todos.todos.filter((todo) => todo.date === "Dec 26, 2020"),
   };
 };
 
