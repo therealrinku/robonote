@@ -93,3 +93,10 @@
     color: rgba(0, 0, 0, 0.2);
   }
 }
+
+@media (max-width: 600px) {
+  .todos_page {
+    width: 100%;
+    border: none;
+  }
+}
