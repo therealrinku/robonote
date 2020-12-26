@@ -1,36 +1,15 @@
 import React, { useState } from "react";
 import Wrapper from "../Wrapper/Wrapper";
-
-import { IoMdInformationCircleOutline } from "react-icons/all";
-import { Tooltip } from "@material-ui/core";
+import HelpTooltip from "./HelpTooltip";
 
 const Todos = ({ todos, formatedDate }) => {
   const [todoIn, setTodoIn] = useState("");
-  const [showToolTip, setShowToolTip] = useState(false);
 
   return (
     <Wrapper className="todos_page">
       <div className="date">
         <h4>{formatedDate}</h4>
-        <Tooltip
-          open={showToolTip}
-          onOpen={() => setShowToolTip(true)}
-          onClose={() => setShowToolTip(false)}
-          leaveTouchDelay={5000}
-          title={
-            <div style={{ fontSize: "18px" }}>
-              Quick tips
-              <p>1.Press enter to save</p>
-              <p>2.enter /d at the end of todo to delete </p>
-              <p>3.enter /c at the end of todo to toggle done status of todo</p>
-            </div>
-          }
-          arrow
-        >
-          <button onClick={() => setShowToolTip((prev) => !prev)}>
-            <IoMdInformationCircleOutline />
-          </button>
-        </Tooltip>
+        <HelpTooltip />
       </div>
 
       <div className="todos">
