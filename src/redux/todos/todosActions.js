@@ -1,13 +1,11 @@
 import FetchTodos from "../../Functions/fetchTodos";
 import todosActionTypes from "./todosActionTypes";
 
-export const ADD__INNER__TODO = (date, todo, dispatch) => {
-  return (dispatch) => {
-    dispatch({
-      type: todosActionTypes.ADD_INNER_TODO,
-      payload: { date, todo },
-    });
-  };
+export const ADD__INNER__TODO = (currentUser, date, todo) => (dispatch) => {
+  dispatch({
+    type: todosActionTypes.ADD_INNER_TODO,
+    payload: { date, todo },
+  });
 };
 
 export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {

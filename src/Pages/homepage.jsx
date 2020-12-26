@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import Footer from "./footer";
 import Todos from "../Components/Todos";
@@ -19,6 +19,7 @@ const Homepage = ({
   DATE_INCREMENT,
   FETCH_TODOS,
   loading,
+  ADD_TODO,
 }) => {
   const formatedDate = moment(
     moment(new Date()).add({ days: dateDifference })
@@ -26,13 +27,21 @@ const Homepage = ({
 
   const selectedTodos = todos.filter((todos) => todos.date === formatedDate);
 
+  console.log(selectedTodos);
+
+  const [newTodo, setNewTodo] = useState("");
+
   useEffect(() => {
     if (selectedTodos[0]?.date !== formatedDate) {
       FETCH_TODOS(currentUser, formatedDate);
     }
   }, [formatedDate]);
 
-  console.log(selectedTodos);
+  const AddTodo = (e) => {
+    e.preventDefault();
+    ADD_TODO(currentUser, formatedDate, newTodo);
+    setNewTodo("");
+  };
 
   return (
     <Wrapper>
@@ -46,6 +55,9 @@ const Homepage = ({
         currentUser={currentUser}
         todos={selectedTodos[0]?.todos || []}
         loading={loading}
+        AddTodo={AddTodo}
+        newTodo={newTodo}
+        setNewTodo={setNewTodo}
       />
       <Footer />
     </Wrapper>
@@ -69,6 +81,8 @@ const mapDispatchToProps = (dispatch) => {
     DATE_DECREMENT: () => dispatch(todosActions.DATE__DECREMENT()),
     FETCH_TODOS: (currentUser, date) =>
       dispatch(todosActions.ADD__OUTER__TODOS(currentUser, date)),
+    ADD_TODO: (currentUser, date, todo) =>
+      dispatch(todosActions.ADD__INNER__TODO(currentUser, date, todo)),
   };
 };
 

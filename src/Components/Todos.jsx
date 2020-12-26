@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import HelpTooltip from "./HelpTooltip";
 import ProgressBar from "./ProgressBar";
 
-const Todos = ({ todos, formatedDate, loading }) => {
-  const [todoIn, setTodoIn] = useState("");
-
+const Todos = ({
+  todos,
+  formatedDate,
+  loading,
+  AddTodo,
+  newTodo,
+  setNewTodo,
+}) => {
   return (
     <Wrapper className="todos_page">
-      {loading?<ProgressBar/>:null}
+      {loading ? <ProgressBar /> : null}
       <div className="date">
         <h4>{formatedDate}</h4>
         <HelpTooltip />
@@ -23,11 +28,11 @@ const Todos = ({ todos, formatedDate, loading }) => {
           );
         })}
 
-        <form className="new_todo_form">
+        <form className="new_todo_form" onSubmit={AddTodo}>
           <input
             type="text"
-            value={todoIn}
-            onChange={(e) => setTodoIn(e.target.value)}
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
             className="new_todo_input"
           />
         </form>

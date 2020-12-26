@@ -32,18 +32,23 @@ const todosReducer = (state = initialState, action) => {
       };
 
     case todosActionTypes.ADD_INNER_TODO:
-      const TODOS_COPY_A = [...state.todos];
-      const SELECTED_TODOS_A = TODOS_COPY_A.filter(
+      const todosCopyA = [...state.todos];
+      const selectedTodoListCopyIndexA = todosCopyA.findIndex(
         (todos) => todos.date === action.payload.date
       );
-      const SELECTED_TODOS_INDEX_A = TODOS_COPY_A.findIndex(
+      const selectedTodoListCopyA = todosCopyA.filter(
         (todos) => todos.date === action.payload.date
       );
-      SELECTED_TODOS_A[0].todos = [...SELECTED_TODOS_A, action.payload];
-      TODOS_COPY_A[SELECTED_TODOS_INDEX_A] = SELECTED_TODOS_A;
+      selectedTodoListCopyA[0].todos = [
+        ...selectedTodoListCopyA[0].todos,
+        { value: action.payload.todo, done: false },
+      ];
+      todosCopyA[selectedTodoListCopyIndexA] = selectedTodoListCopyA[0];
+      console.log(selectedTodoListCopyA);
+
       return {
         ...state,
-        todos: TODOS_COPY_A,
+        todos: todosCopyA,
         fetching: false,
         error: false,
       };
