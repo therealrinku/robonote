@@ -1,11 +1,6 @@
 import db from "../firebase/firebaseDB";
 
-const AddTodos = (
-  userEmail: string,
-  date: string,
-  initialTodos: [],
-  addedTodos: []
-) => {
+const AddTodo = (userEmail, date, initialTodos, addedTodos) => {
   const updatedTodos = [...initialTodos, ...addedTodos];
   return new Promise((resolve) => {
     db.collection(userEmail || "dummy@dummy.com")
@@ -17,4 +12,4 @@ const AddTodos = (
   });
 };
 
-export default AddTodos;
+export default AddTodo;

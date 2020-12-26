@@ -39,7 +39,7 @@ const Homepage = ({
 
   const AddTodo = (e) => {
     e.preventDefault();
-    ADD_TODO(currentUser, formatedDate, newTodo);
+    ADD_TODO(currentUser, selectedTodos[0]?.todos || [], formatedDate, newTodo);
     setNewTodo("");
   };
 
@@ -81,8 +81,10 @@ const mapDispatchToProps = (dispatch) => {
     DATE_DECREMENT: () => dispatch(todosActions.DATE__DECREMENT()),
     FETCH_TODOS: (currentUser, date) =>
       dispatch(todosActions.ADD__OUTER__TODOS(currentUser, date)),
-    ADD_TODO: (currentUser, date, todo) =>
-      dispatch(todosActions.ADD__INNER__TODO(currentUser, date, todo)),
+    ADD_TODO: (currentUser, selectedTodos, date, todo) =>
+      dispatch(
+        todosActions.ADD__INNER__TODO(currentUser, selectedTodos, date, todo)
+      ),
   };
 };
 

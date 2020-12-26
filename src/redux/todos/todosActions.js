@@ -1,21 +1,37 @@
-import FetchTodos from "../../Functions/fetchTodos";
 import todosActionTypes from "./todosActionTypes";
+import AddTodo from "../../Functions/addTodo";
+import FetchTodos from "../../Functions/fetchTodos";
 
-export const ADD__INNER__TODO = (currentUser, date, todo) => (dispatch) => {
-  dispatch({
-    type: todosActionTypes.ADD_INNER_TODO,
-    payload: { date, todo },
-  });
+export const ADD__INNER__TODO = (
+  currentUser,
+  initialTodos,
+  date,
+  todo
+) => async (dispatch) => {
+  try {
+    dispatch({
+      type: todosActionTypes.ADD_INNER_TODO,
+      payload: { date, todo },
+    });
+    await AddTodo(currentUser, date, initialTodos, [
+      { done: false, value: todo },
+    ]);
+  } catch (err) {
+    dispatch({
+      type: todosActionTypes.ERROR_SAVING,
+      payload: "Something went wrong",
+    });
+  }
 };
 
 export const ADD__OUTER__TODOS = (currentUser, date) => async (dispatch) => {
   try {
     dispatch({ type: todosActionTypes.FETCHING_TODOS });
-    const response = await FetchTodos(currentUser, date);
+    const todos = await FetchTodos(currentUser, date);
 
     dispatch({
       type: todosActionTypes.ADD_OUTER_TODOS,
-      payload: { todos: response?.todos || [], date: date },
+      payload: { todos, date },
     });
   } catch (err) {
     dispatch({

@@ -7,6 +7,7 @@ const todosActionTypes = {
   DATE_DECREMENT: "DATE_DECREMENT",
   FETCHING_TODOS: "FETCHING_TODOS",
   ERROR_FETCHING: "ERROR_FETCHING",
+  ERROR_SAVING: "ERROR_SAVING",
 };
 
 export default todosActionTypes;

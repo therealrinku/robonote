@@ -16,6 +16,13 @@ const todosReducer = (state = initialState, action) => {
       };
     }
 
+    case todosActionTypes.ERROR_SAVING: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
     case todosActionTypes.FETCHING_TODOS: {
       return {
         ...state,
