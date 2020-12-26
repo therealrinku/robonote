@@ -12,6 +12,7 @@ const initialTodoList = {
   ],
   fetchingTodos: false,
   error: false,
+  dateDifference: 0,
 };
 
 const todosReducer = (state = initialTodoList, action) => {
@@ -61,6 +62,19 @@ const todosReducer = (state = initialTodoList, action) => {
         ...state,
         todos: UPDATED_TODOS,
       };
+
+    case todosActionTypes.DATE_INCREMENT:
+      return {
+        ...state,
+        dateDifference: state.dateDifference + 1,
+      };
+
+    case todosActionTypes.DATE_DECREMENT:
+      return {
+        ...state,
+        dateDifference: state.dateDifference - 1,
+      };
+
     default:
       return state;
   }

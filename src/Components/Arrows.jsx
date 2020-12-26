@@ -2,17 +2,17 @@ import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import { CgArrowRightO, CgArrowLeftO } from "react-icons/all";
 
-const Arrows = ({ setChangedDays }) => {
+const Arrows = ({ DATE_INCREMENTER, DATE_DECREMENTER }) => {
   return (
     <Wrapper>
       <div className="arrow_left">
-        <button onClick={() => setChangedDays((prev) => prev - 1)}>
+        <button onClick={DATE_DECREMENTER}>
           <CgArrowLeftO />
         </button>
       </div>
 
       <div className="arrow_right">
-        <button onClick={() => setChangedDays((prev) => prev + 1)}>
+        <button onClick={DATE_INCREMENTER}>
           <CgArrowRightO />
         </button>
       </div>

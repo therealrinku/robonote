@@ -1,30 +1,39 @@
-import {
-  ADD_INNER_TODO,
-  ADD_OUTER_TODOS,
-  DELETE_INNER_TODO,
-  UPDATE_INNER_TODO,
-} from "./todosActionTypes";
+import todosActionTypes from "./todosActionTypes";
 
-export const AddInnerTodo = (date, todo, dispatch) => {
+export const ADD__INNER__TODO = (date, todo, dispatch) => {
   return (dispatch) => {
-    dispatch({ type: ADD_INNER_TODO, payload: { date, todo } });
+    dispatch({ type: todoActionTypes.ADD_INNER_TODO, payload: { date, todo } });
   };
 };
 
-export const AddOuterTodos = (date, dispatch) => {
+export const ADD__OUTER__TODOS = (date, dispatch) => {
   return (dispatch) => {
-    dispatch({ type: ADD_OUTER_TODOS, payload: { date } });
+    dispatch({ type: todosActionTypes.ADD_OUTER_TODOS, payload: { date } });
   };
 };
 
-export const UpdateInnerTodo = (date, value, dispatch) => {
+export const UPDATE__INNER__TODO = (date, value, dispatch) => {
   return (dispatch) => {
-    dispatch({ type: UPDATE_INNER_TODO, payload: { date, value } });
+    dispatch({
+      type: todosActionTypes.UPDATE_INNER_TODO,
+      payload: { date, value },
+    });
   };
 };
 
-export const DeleteInnerTodo = (date, value, dispatch) => {
+export const DELETE__INNER__TODO = (date, value, dispatch) => {
   return (dispatch) => {
-    dispatch({ type: DELETE_INNER_TODO, payload: { date, value } });
+    dispatch({
+      type: todosActionTypes.DELETE_INNER_TODO,
+      payload: { date, value },
+    });
   };
+};
+
+export const DATE__INCREMENT = () => (dispatch) => {
+  return dispatch({ type: todosActionTypes.DATE_INCREMENT });
+};
+
+export const DATE__DECREMENT = () => (dispatch) => {
+  return dispatch({ type: todosActionTypes.DATE_DECREMENT });
 };
