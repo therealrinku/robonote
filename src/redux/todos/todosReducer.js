@@ -1,9 +1,9 @@
 import todosActionTypes from "./todosActionTypes";
 
-const initialTodoList = {
+const initialState = {
   todos: [
     {
-      date: "Dec 26, 2020",
+      date: "Sat Dec 26th 2020",
       todos: [
         { value: "brush a teeth", done: false },
         { value: "remake todo app", done: true },
@@ -13,9 +13,10 @@ const initialTodoList = {
   fetchingTodos: false,
   error: false,
   dateDifference: 0,
+  selectedDateTodos: [],
 };
 
-const todosReducer = (state = initialTodoList, action) => {
+const todosReducer = (state = initialState, action) => {
   switch (action.type) {
     case todosActionTypes.ADD_OUTER_TODOS:
       return {
@@ -73,6 +74,14 @@ const todosReducer = (state = initialTodoList, action) => {
       return {
         ...state,
         dateDifference: state.dateDifference - 1,
+      };
+
+    case todosActionTypes.FILTER_SELECTED_DATE_TODOS:
+      return {
+        ...state,
+        selectedDateTodos: state.todos.filter(
+          (todos) => todos.date === action.payload
+        ),
       };
 
     default:

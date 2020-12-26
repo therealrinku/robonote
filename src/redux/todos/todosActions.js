@@ -1,8 +1,18 @@
 import todosActionTypes from "./todosActionTypes";
 
+export const FILTER__SELECTED__DATE__TODOS = (date) => (dispatch) => {
+  return dispatch({
+    type: todosActionTypes.FILTER_SELECTED_DATE_TODOS,
+    payload: date,
+  });
+};
+
 export const ADD__INNER__TODO = (date, todo, dispatch) => {
   return (dispatch) => {
-    dispatch({ type: todoActionTypes.ADD_INNER_TODO, payload: { date, todo } });
+    dispatch({
+      type: todosActionTypes.ADD_INNER_TODO,
+      payload: { date, todo },
+    });
   };
 };
 

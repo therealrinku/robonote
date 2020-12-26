@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import Footer from "./footer";
 import Todos from "../Components/Todos";
@@ -17,10 +17,15 @@ const Homepage = ({
   dateDifference,
   DATE_DECREMENT,
   DATE_INCREMENT,
+  FILTER_SELECTED_DATE_TODOS,
 }) => {
   const formatedDate = moment(
     moment(new Date()).add({ days: dateDifference })
   ).format("ddd MMM Do YYYY");
+
+  useEffect(() => {
+    FILTER_SELECTED_DATE_TODOS(formatedDate);
+  }, [formatedDate]);
 
   return (
     <Wrapper>
@@ -42,8 +47,9 @@ const Homepage = ({
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    todos: state.todos.todos.filter((todo) => todo.date === "Dec 26, 2020"),
     dateDifference: state.todos.dateDifference,
+    reduxDate: state.todos.currentDate,
+    todos: state.todos.selectedDateTodos,
   };
 };
 
@@ -52,6 +58,8 @@ const mapDispatchToProps = (dispatch) => {
     SIGNOUT: () => dispatch(userActions.SIGNOUT()),
     DATE_INCREMENT: () => dispatch(todosActions.DATE__INCREMENT()),
     DATE_DECREMENT: () => dispatch(todosActions.DATE__DECREMENT()),
+    FILTER_SELECTED_DATE_TODOS: (date) =>
+      dispatch(todosActions.FILTER__SELECTED__DATE__TODOS(date)),
   };
 };
 
