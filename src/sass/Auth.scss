@@ -13,6 +13,10 @@
     background: black;
   }
 
+  .auth--submit-button--loading:hover {
+    cursor: none;
+  }
+
   .auth--form {
     width: 40%;
     margin: auto;

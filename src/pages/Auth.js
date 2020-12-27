@@ -6,6 +6,7 @@ import ErrorViewer from "../components/ErrorViewer";
 
 import * as userActions from "../redux/user/userActions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
   const signupMode = history.location.pathname === "/signup";
@@ -15,10 +16,12 @@ const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
 
   const FormSubmitHandler = (e) => {
     e.preventDefault();
-    if (signupMode) {
-      SIGNUP(email, password);
-    } else {
-      LOGIN(email, password);
+    if (!LOADING) {
+      if (signupMode) {
+        SIGNUP(email, password);
+      } else {
+        LOGIN(email, password);
+      }
     }
   };
 
@@ -64,14 +67,25 @@ const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
           </div>
         </div>
 
-        <button className="auth--submit-button">
-          {signupMode ? "I want to haveTodo" : "I haveTodo"}
+        <button
+          className={
+            LOADING
+              ? "auth--submit-button-loading auth-submit-button"
+              : "auth--submit-button"
+          }
+        >
+          {LOADING
+            ? "please wait..."
+            : signupMode
+            ? "I want to haveTodo"
+            : "I haveTodo"}
         </button>
 
         {ERROR ? <ErrorViewer error={ERROR} /> : null}
       </form>
-
       <Footer />
+
+      {CURRENTUSER ? <Redirect to="/home" /> : null}
     </div>
   );
 };
