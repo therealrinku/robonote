@@ -1,7 +1,11 @@
 import React from "react";
 
 const ActionButton = ({ text }) => {
-  return <button className="action--button">{text}</button>;
+  return (
+    <a href="/signup" className="action--button">
+      {text}
+    </a>
+  );
 };
 
 export default ActionButton;
