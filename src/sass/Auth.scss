@@ -8,6 +8,11 @@
     margin-bottom: 50px;
   }
 
+  .auth--submit-button:hover {
+    cursor: pointer;
+    background: black;
+  }
+
   .auth--form {
     width: 35%;
     margin: auto;
@@ -19,7 +24,7 @@
     input {
       border: none;
       outline: none;
-      width: 85%;
+      width: 100%;
       font-size: 18px;
     }
 
@@ -41,11 +46,6 @@
       padding: 18px;
       border-radius: 5px;
       font-size: 20px;
-    }
-
-    button:hover {
-      background: black;
-      cursor: pointer;
     }
 
     div {

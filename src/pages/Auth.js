@@ -51,7 +51,9 @@ const Auth = ({ history }) => {
           </div>
         </div>
 
-        <button>{signupMode ? "I want to haveTodo" : "I haveTodo"}</button>
+        <button className="auth--submit-button">
+          {signupMode ? "I want to haveTodo" : "I haveTodo"}
+        </button>
       </form>
 
       <Footer />
