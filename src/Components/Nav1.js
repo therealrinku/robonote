@@ -13,8 +13,8 @@ const Nav1 = () => {
       </div>
 
       <div>
-        <NavLink to="/login">Try for free</NavLink>
-        <NavLink to="/signup">Signup</NavLink>
+        <NavLink to="/signup">Try for free</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </div>
     </nav>
   );
