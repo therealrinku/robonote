@@ -8,3 +8,5 @@ const firebaseConfig = {
   appId: "1:50413760936:web:898c32ebd42b4a8b4d6d9d",
   measurementId: "G-TM8WP3JPG1",
 };
+
+export default firebaseConfig;

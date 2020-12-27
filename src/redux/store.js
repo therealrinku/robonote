@@ -2,6 +2,19 @@ import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const LOGGER_MIDDLEWARE = (store) => {
+  return (next) => {
+    return (action) => {
+      next(action);
+      console.log(action.type);
+      console.log(store.todos);
+    };
+  };
+};
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, LOGGER_MIDDLEWARE)
+);
 
 export default store;

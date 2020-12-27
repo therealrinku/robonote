@@ -3,7 +3,7 @@ import userActionTypes from "./userActionTypes";
 const initialState = {
   currentUser: null,
   loading: false,
-  error: false,
+  error: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -12,22 +12,21 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: false,
+        error: null,
       };
 
     case userActionTypes.LOGIN:
-    case userActionTypes.SIGNUP:
       return {
         ...state,
-        currentUser: action.payload.email,
-        error: false,
+        currentUser: action.payload,
+        error: null,
         loading: false,
       };
 
     case userActionTypes.SOMETHING_WENT_WRONG:
       return {
         ...state,
-        error: true,
+        error: action.payload,
         loading: false,
       };
 
@@ -36,7 +35,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: null,
         loading: false,
-        error: false,
+        error: null,
       };
 
     default:
