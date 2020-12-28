@@ -6,8 +6,9 @@ import Nav2 from "../components/Nav2";
 import TodoPage from "../components/TodoPage";
 import * as userActions from "../redux/user/userActions";
 import moment from "moment";
+import { Redirect } from "react-router-dom";
 
-const Homepage = ({ CURRENTUSER }) => {
+const Homepage = ({ CURRENTUSER, SIGNOUT }) => {
   const [datePlus, setDatePlus] = useState(0);
 
   const formatedDate = moment(
@@ -18,7 +19,7 @@ const Homepage = ({ CURRENTUSER }) => {
 
   return (
     <div className="homepage">
-      <Nav2 currentUser={CURRENTUSER} />
+      <Nav2 currentUser={CURRENTUSER} SIGNOUT={SIGNOUT} />
       <TodoPage
         todos={[
           { value: "hello", done: true },
@@ -30,6 +31,7 @@ const Homepage = ({ CURRENTUSER }) => {
         datePlus={datePlus}
       />
       <Arrows setDatePlus={setDatePlus} />
+      {!CURRENTUSER ? <Redirect to="/" /> : null}
       <Footer />
     </div>
   );

@@ -15,8 +15,8 @@ const Nav2 = ({ history, currentUser, SIGNOUT }) => {
 
       <section>
         <HelpTooltip />
-        <p>{currentUser.slice(0, currentUser.indexOf("@"))}</p>
-        <button onclick={SIGNOUT}>Logout</button>
+        <p>{currentUser?.slice(0, currentUser?.indexOf("@"))}</p>
+        <button onClick={SIGNOUT}>Logout</button>
       </section>
     </nav>
   );
