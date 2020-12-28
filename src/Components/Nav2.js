@@ -1,5 +1,4 @@
 import React from "react";
-import { RiLogoutCircleRLine } from "react-icons/all";
 
 import LogoImage from "../assets/Logo.png";
 
@@ -14,12 +13,9 @@ const Nav2 = ({ history, currentUser, SIGNOUT }) => {
       </section>
 
       <section>
-        <button>{currentUser.slice(0, currentUser.indexOf("@"))}</button>
+        <p>{currentUser.slice(0, currentUser.indexOf("@"))}</p>
 
-        <button onclick={SIGNOUT}>
-          <RiLogoutCircleRLine />
-          <p>Logout</p>
-        </button>
+        <button onclick={SIGNOUT}>Logout</button>
       </section>
     </nav>
   );

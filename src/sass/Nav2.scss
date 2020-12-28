@@ -20,13 +20,13 @@
     color: white;
     position: relative;
 
-    :hover {
-      cursor: pointer;
-    }
-
     p {
       margin: 0 5px;
     }
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 
   img {
@@ -37,5 +37,10 @@
   section {
     display: flex;
     align-items: center;
+  }
+
+  section:last-child p {
+    font-size: 13px;
+    margin-right: 5px;
   }
 }
