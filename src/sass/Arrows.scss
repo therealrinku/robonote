@@ -1,0 +1,40 @@
+.arrows {
+  section {
+    position: fixed;
+    font-size: 40px;
+    top: 50%;
+  }
+
+  section:first-child {
+    left: 10%;
+  }
+
+  section:last-child {
+    right: 10%;
+  }
+
+  button {
+    color: black;
+    font-size: 40px;
+    border: none;
+    background: inherit;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .arrows {
+    section:first-child {
+      top: 90%;
+      left: 67%;
+    }
+    section:last-child {
+      top: 90%;
+      left: 67%;
+      margin-left: 50px;
+    }
+  }
+}

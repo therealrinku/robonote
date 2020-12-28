@@ -7,7 +7,7 @@ const Nav2 = ({ history, currentUser, SIGNOUT }) => {
   return (
     <nav className="homepage--nav">
       <section>
-        <button className="logo" onClick={() => history.push("/app")}>
+        <button className="logo" onClick={() => history.push("/home")}>
           <img src={LogoImage} alt="logo" />
           <p>haveTodo</p>
         </button>
