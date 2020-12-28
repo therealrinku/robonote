@@ -1,0 +1,19 @@
+.todo--date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    color: black;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background: inherit;
+    margin-top: 8px;
+  }
+
+  h4 {
+    margin-right: 7px;
+    font-size: 20px;
+  }
+}

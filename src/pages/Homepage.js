@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Arrows from "../components/Arrows";
 import Footer from "../components/Footer";
@@ -12,10 +12,20 @@ const Homepage = ({ CURRENTUSER }) => {
     "ddd MMM Do YYYY"
   );
 
+  const [newTodo, setNewTodo] = useState("");
+
   return (
     <div className="homepage">
       <Nav2 currentUser={CURRENTUSER} />
-      <TodoPage todos={[]} formatedDate={formatedDate} />
+      <TodoPage
+        todos={[
+          { value: "hello", done: true },
+          { value: "testing", done: false },
+        ]}
+        formatedDate={formatedDate}
+        newTodo={newTodo}
+        setNewTodo={setNewTodo}
+      />
       <Arrows />
       <Footer />
     </div>

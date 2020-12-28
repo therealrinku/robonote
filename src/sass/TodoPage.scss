@@ -4,100 +4,11 @@
   border: solid 1px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   position: relative;
-
-  div:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    button {
-      color: black;
-      font-size: 20px;
-      outline: none;
-      border: none;
-      background: inherit;
-      margin-top: 8px;
-    }
-
-    h4 {
-      margin-right: 7px;
-    }
-  }
-
-  div:last-child {
-    width: 100%;
-    margin: auto;
-
-    text-align: center;
-    height: auto;
-    font-family: arial;
-
-    display: flex;
-    flex-direction: column;
-
-    div:last-child {
-      border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-    }
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      border-top: solid 1px rgba(0, 0, 0, 0.2);
-    }
-
-    li {
-      border: none;
-      display: flex;
-      flex-direction: column;
-      height: 30px;
-      padding-left: 5px;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    li:hover {
-      cursor: grabbing;
-    }
-  }
-
-  h4 {
-    font-size: 20px;
-  }
-
-  li {
-    border-top: solid 1px rgba(0, 0, 0, 0.2);
-    list-style: none;
-    height: 30px;
-  }
-
-  input {
-    border: none;
-    border-top: solid 1px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    height: 30px;
-    padding-left: 5px;
-    font-size: 14px;
-  }
-
-  .todos_input {
-    border: none;
-    border-top: none;
-    width: 85%;
-    background: inherit;
-  }
-
-  .done_todo {
-    color: rgba(0, 0, 0, 0.2);
-  }
+  font-family: arial;
 }
 
 @media (max-width: 600px) {
-  .todos_page {
+  .todo--page {
     width: 100%;
     border: none;
   }
