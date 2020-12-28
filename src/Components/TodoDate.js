@@ -1,11 +1,10 @@
 import React from "react";
-import HelpTooltip from "./HelpTooltip";
 
-const TodoDate = ({ formatedDate }) => {
+const TodoDate = ({ formatedDate, datePlus }) => {
   return (
     <div className="todo--date">
-      <h4>{formatedDate}</h4>
-      <HelpTooltip />
+      <i className={datePlus === 0 ? "date-today" : null}></i>
+      <h4 className={datePlus < 0 ? "date-backward" : null}>{formatedDate}</h4>
     </div>
   );
 };

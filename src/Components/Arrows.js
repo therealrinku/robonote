@@ -1,17 +1,17 @@
 import React from "react";
 import { CgArrowRightO, CgArrowLeftO } from "react-icons/all";
 
-const Arrows = ({ DATE_INCREMENTER, DATE_DECREMENTER }) => {
+const Arrows = ({ setDatePlus }) => {
   return (
     <div className="arrows">
       <section>
-        <button onClick={DATE_DECREMENTER}>
+        <button onClick={() => setDatePlus((prev) => prev - 1)}>
           <CgArrowLeftO />
         </button>
       </section>
 
       <section>
-        <button onClick={DATE_INCREMENTER}>
+        <button onClick={() => setDatePlus((prev) => prev + 1)}>
           <CgArrowRightO />
         </button>
       </section>

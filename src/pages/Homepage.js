@@ -8,9 +8,11 @@ import * as userActions from "../redux/user/userActions";
 import moment from "moment";
 
 const Homepage = ({ CURRENTUSER }) => {
-  const formatedDate = moment(moment(new Date()).add({ days: 0 })).format(
-    "ddd MMM Do YYYY"
-  );
+  const [datePlus, setDatePlus] = useState(0);
+
+  const formatedDate = moment(
+    moment(new Date()).add({ days: datePlus })
+  ).format("ddd MMM Do YYYY");
 
   const [newTodo, setNewTodo] = useState("");
 
@@ -25,8 +27,9 @@ const Homepage = ({ CURRENTUSER }) => {
         formatedDate={formatedDate}
         newTodo={newTodo}
         setNewTodo={setNewTodo}
+        datePlus={datePlus}
       />
-      <Arrows />
+      <Arrows setDatePlus={setDatePlus} />
       <Footer />
     </div>
   );

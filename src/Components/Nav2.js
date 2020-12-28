@@ -1,6 +1,7 @@
 import React from "react";
 
 import LogoImage from "../assets/Logo.png";
+import HelpTooltip from "./HelpTooltip";
 
 const Nav2 = ({ history, currentUser, SIGNOUT }) => {
   return (
@@ -13,8 +14,8 @@ const Nav2 = ({ history, currentUser, SIGNOUT }) => {
       </section>
 
       <section>
+        <HelpTooltip />
         <p>{currentUser.slice(0, currentUser.indexOf("@"))}</p>
-
         <button onclick={SIGNOUT}>Logout</button>
       </section>
     </nav>

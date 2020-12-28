@@ -10,10 +10,11 @@ const TodoPage = ({
   todos,
   newTodo,
   setNewTodo,
+  datePlus,
 }) => {
   return (
     <main className="todo--page">
-      <TodoDate formatedDate={formatedDate} />
+      <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
       <TodoList todos={todos} />
       <TodoAddForm newTodo={newTodo} setNewTodo={setNewTodo} />
     </main>
