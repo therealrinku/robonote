@@ -1,10 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const ActionButton = ({ text }) => {
   return (
-    <a href="/signup" className="action--button">
+    <NavLink to="/signup" className="action--button">
       {text}
-    </a>
+    </NavLink>
   );
 };
 
