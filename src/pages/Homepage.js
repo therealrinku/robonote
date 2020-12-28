@@ -24,6 +24,7 @@ const Homepage = ({ CURRENTUSER, SIGNOUT }) => {
         todos={[
           { value: "hello", done: true },
           { value: "testing", done: false },
+          { value: "hii there", done: true },
         ]}
         formatedDate={formatedDate}
         newTodo={newTodo}
