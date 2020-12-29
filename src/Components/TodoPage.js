@@ -3,6 +3,7 @@ import TodoDate from "./TodoDate";
 import TodoList from "./TodoList";
 import TodoAddForm from "./TodoAddForm";
 import DummyLines from "./DummyLines";
+import Loader from "./Loader";
 
 const TodoPage = ({
   formatedDate,
@@ -12,9 +13,11 @@ const TodoPage = ({
   newTodo,
   setNewTodo,
   datePlus,
+  loading,
 }) => {
   return (
     <main className="todo--page">
+      {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
       <TodoList todos={todos} />
       <TodoAddForm newTodo={newTodo} setNewTodo={setNewTodo} />

@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const todoReducer = (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case todoActionTypes.LOADING_TODOS: {
       return {
         ...state,
@@ -17,8 +17,15 @@ const todoReducer = (state = initialState, action) => {
       };
     }
 
-    case todoActionTypes.ADD_TODO:
     case todoActionTypes.FETCH_TODOS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: [...state.todos, action.payload],
+      };
+
+    case todoActionTypes.ADD_TODO:
     case todoActionTypes.DELETE_TODO:
       return {
         ...state,

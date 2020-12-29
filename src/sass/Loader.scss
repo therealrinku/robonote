@@ -1,0 +1,24 @@
+.loader {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  animation: colorchange linear 2s infinite;
+}
+
+@keyframes colorchange {
+  0% {
+    background: linear-gradient(to right, red, green);
+  }
+  25% {
+    background: linear-gradient(to right, green, red);
+  }
+  50% {
+    background: linear-gradient(to right, red, green);
+  }
+  100% {
+    background: linear-gradient(to right, green, red);
+  }
+}
