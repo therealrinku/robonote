@@ -16,6 +16,7 @@ const Homepage = ({
   FETCH_TODOS,
   LOADING,
   ERROR,
+  ADD_TODO,
 }) => {
   const [newTodo, setNewTodo] = useState("");
   const [datePlus, setDatePlus] = useState(0);
@@ -31,6 +32,17 @@ const Homepage = ({
     }
   }, [formatedDate]);
 
+  const AddNewTodo = (e) => {
+    e.preventDefault();
+    if (
+      newTodo.trim() !== "" &&
+      todosObject[0]?.todos.findIndex((todo) => todo.value === newTodo) < 0
+    ) {
+      ADD_TODO(CURRENTUSER, formatedDate, FULLTODOLIST, newTodo);
+      setNewTodo("");
+    }
+  };
+
   return (
     <div className="homepage">
       <Nav2 currentUser={CURRENTUSER} SIGNOUT={SIGNOUT} />
@@ -41,6 +53,7 @@ const Homepage = ({
         newTodo={newTodo}
         setNewTodo={setNewTodo}
         datePlus={datePlus}
+        AddTodo={AddNewTodo}
       />
       <Arrows setDatePlus={setDatePlus} />
       {!CURRENTUSER ? <Redirect to="/" /> : null}
@@ -60,6 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    ADD_TODO: (user, date, fulltodolist, newtodo) =>
+      dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
     FETCH_TODOS: (currentUser, date) =>
       dispatch(todosActions.FETCH_TODOS(currentUser, date)),
     SIGNOUT: () => dispatch(userActions.SIGNOUT()),

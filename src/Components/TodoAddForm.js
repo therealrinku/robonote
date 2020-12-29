@@ -1,8 +1,8 @@
 import React from "react";
 
-const TodoAddForm = ({ newTodo, setNewTodo }) => {
+const TodoAddForm = ({ AddTodo, newTodo, setNewTodo }) => {
   return (
-    <form className="todo--add-form">
+    <form className="todo--add-form" onSubmit={AddTodo}>
       <input
         type="text"
         value={newTodo}
