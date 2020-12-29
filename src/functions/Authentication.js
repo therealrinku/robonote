@@ -1,4 +1,4 @@
-import firebaseAuthService from "../firebase/authService";
+import firebaseAuthService from "../firebase/auth";
 
 export const SignupUser = async (email, password) => {
   try {
