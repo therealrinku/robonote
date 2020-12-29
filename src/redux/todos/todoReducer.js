@@ -1,9 +1,10 @@
+import todosActionTypes from "./todosActionTypes";
 import todoActionTypes from "./todosActionTypes";
 
 const initialState = {
   todos: [],
   loading: false,
-  error: false,
+  error: null,
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -17,13 +18,20 @@ const todoReducer = (state = initialState, action) => {
     }
 
     case todoActionTypes.ADD_TODO:
-    case todoActionTypes.SET_TODO:
+    case todoActionTypes.FETCH_TODOS:
     case todoActionTypes.DELETE_TODO:
       return {
         ...state,
         loading: false,
-        error: false,
+        error: null,
         todos: action.payload,
+      };
+
+    case todosActionTypes.SOMETHING_WENT_WRONG:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
 
     default:

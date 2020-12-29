@@ -1,8 +1,9 @@
 const todosActionTypes = {
   ADD_TODO: "ADD_TODO",
   DELETE_TODO: "DELETE_TODO",
-  SET_TODO: "SET_TODO",
+  FETCH_TODOS: "FETCH_TODOS",
   LOADING_TODOS: "LOADING_TODOS",
+  SOMETHING_WENT_WRONG: "SOMETHING_WENT_WRONG",
 };
 
 export default todosActionTypes;
