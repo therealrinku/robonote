@@ -27,6 +27,7 @@ const Homepage = ({
   const todosObject = FULLTODOLIST.filter((data) => data.date === formatedDate);
 
   useEffect(() => {
+    setNewTodo("")
     if (!todosObject[0]?.date) {
       FETCH_TODOS(CURRENTUSER, formatedDate);
     }
