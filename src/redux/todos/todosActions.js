@@ -47,16 +47,12 @@ export const ADD_TODO = (
   newTodo
 ) => async (dispatch) => {
   try {
-    const updatedTodoList = Concat(initialFullTodos, todosDate, newTodo);
-    const updatedTodosForThatDate = updatedTodoList.filter(
-      (e) => e.date === todosDate
-    );
-    await UpdateTodos(
-      currentUser,
-      todosDate,
-      updatedTodosForThatDate[0]?.todos
-    );
-    dispatch({ type: todosActionTypes.ADD_TODO, payload: updatedTodoList });
+    const response = Concat(initialFullTodos, todosDate, newTodo);
+    await UpdateTodos(currentUser, todosDate, response.updatedTodos);
+    dispatch({
+      type: todosActionTypes.ADD_TODO,
+      payload: response.updatedTodoList,
+    });
   } catch (err) {
     dispatch({
       type: todosActionTypes.SOMETHING_WENT_WRONG,

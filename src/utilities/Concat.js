@@ -8,7 +8,7 @@ const Concat = (initialTodoList, lookingDate, newTodo) => {
     { value: newTodo, done: false },
   ];
   todoListCopy[indexToConcat].todos = updatedTodos;
-  return todoListCopy;
+  return { updatedTodoList: todoListCopy, updatedTodos: updatedTodos };
 };
 
 export default Concat;
