@@ -18,6 +18,7 @@ const Homepage = ({
   ERROR,
   ADD_TODO,
   UPDATE_TODO,
+  DELETE_TODO,
 }) => {
   const [newTodo, setNewTodo] = useState("");
   const [datePlus, setDatePlus] = useState(0);
@@ -33,6 +34,10 @@ const Homepage = ({
       FETCH_TODOS(CURRENTUSER, formatedDate);
     }
   }, [formatedDate]);
+
+  const DeleteTodo = (todoValue) => {
+    DELETE_TODO(CURRENTUSER, formatedDate, FULLTODOLIST, todoValue);
+  };
 
   const UpdateTodo = (todoValue) => {
     UPDATE_TODO(CURRENTUSER, formatedDate, FULLTODOLIST, todoValue);
@@ -61,6 +66,7 @@ const Homepage = ({
         datePlus={datePlus}
         AddTodo={AddNewTodo}
         UpdateTodo={UpdateTodo}
+        DeleteTodo={DeleteTodo}
       />
       <Arrows setDatePlus={setDatePlus} />
       {!CURRENTUSER ? <Redirect to="/" /> : null}
@@ -80,6 +86,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    DELETE_TODO: (user, date, fulltodolist, todovalue) =>
+      dispatch(todosActions.DELETE_TODO(user, date, fulltodolist, todovalue)),
     UPDATE_TODO: (user, date, fulltodolist, todovalue) =>
       dispatch(todosActions.UPDATE_TODO(user, date, fulltodolist, todovalue)),
     ADD_TODO: (user, date, fulltodolist, newtodo) =>

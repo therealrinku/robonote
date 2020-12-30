@@ -20,7 +20,7 @@ const TodoPage = ({
     <main className="todo--page">
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-      <TodoList todos={todos} UpdateTodo={UpdateTodo} />
+      <TodoList todos={todos} UpdateTodo={UpdateTodo} DeleteTodo={DeleteTodo} />
       <TodoAddForm
         newTodo={newTodo}
         setNewTodo={setNewTodo}
