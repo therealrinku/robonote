@@ -17,6 +17,7 @@ const Homepage = ({
   LOADING,
   ERROR,
   ADD_TODO,
+  UPDATE_TODO,
 }) => {
   const [newTodo, setNewTodo] = useState("");
   const [datePlus, setDatePlus] = useState(0);
@@ -27,11 +28,15 @@ const Homepage = ({
   const todosObject = FULLTODOLIST.filter((data) => data.date === formatedDate);
 
   useEffect(() => {
-    setNewTodo("")
+    setNewTodo("");
     if (!todosObject[0]?.date) {
       FETCH_TODOS(CURRENTUSER, formatedDate);
     }
   }, [formatedDate]);
+
+  const UpdateTodo = (todoValue) => {
+    UPDATE_TODO(CURRENTUSER, formatedDate, FULLTODOLIST, todoValue);
+  };
 
   const AddNewTodo = (e) => {
     e.preventDefault();
@@ -55,6 +60,7 @@ const Homepage = ({
         setNewTodo={setNewTodo}
         datePlus={datePlus}
         AddTodo={AddNewTodo}
+        UpdateTodo={UpdateTodo}
       />
       <Arrows setDatePlus={setDatePlus} />
       {!CURRENTUSER ? <Redirect to="/" /> : null}
@@ -74,6 +80,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    UPDATE_TODO: (user, date, fulltodolist, todovalue) =>
+      dispatch(todosActions.UPDATE_TODO(user, date, fulltodolist, todovalue)),
     ADD_TODO: (user, date, fulltodolist, newtodo) =>
       dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
     FETCH_TODOS: (currentUser, date) =>

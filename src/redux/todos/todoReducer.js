@@ -26,6 +26,7 @@ const todoReducer = (state = initialState, action) => {
       };
 
     case todoActionTypes.ADD_TODO:
+    case todoActionTypes.UPDATE_TODO:
     case todoActionTypes.DELETE_TODO:
       return {
         ...state,

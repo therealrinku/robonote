@@ -7,6 +7,7 @@ import Loader from "./Loader";
 
 const TodoPage = ({
   formatedDate,
+  UpdateTodo,
   DeleteTodo,
   AddTodo,
   todos,
@@ -19,7 +20,7 @@ const TodoPage = ({
     <main className="todo--page">
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} UpdateTodo={UpdateTodo} />
       <TodoAddForm
         newTodo={newTodo}
         setNewTodo={setNewTodo}
