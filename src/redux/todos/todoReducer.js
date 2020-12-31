@@ -9,11 +9,19 @@ const initialState = {
 
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
+    case todoActionTypes.CLEAR_TODO_LIST: {
+      return {
+        ...state,
+        todos: [],
+        loading: false,
+        error: null,
+      };
+    }
     case todoActionTypes.LOADING_TODOS: {
       return {
         ...state,
         loading: true,
-        error: false,
+        error: null,
       };
     }
 

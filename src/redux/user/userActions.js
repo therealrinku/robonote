@@ -1,4 +1,5 @@
 import { LoginUser, SignupUser } from "../../functions/Authentication";
+import todosActionTypes from "../todos/todosActionTypes";
 import userActionTypes from "./userActionTypes";
 
 export const SIGNUP = (email, password) => async (dispatch) => {
@@ -29,4 +30,5 @@ export const LOGIN = (email, password) => async (dispatch) => {
 
 export const SIGNOUT = () => (dispatch) => {
   dispatch({ type: userActionTypes.SIGNOUT });
+  dispatch({ type: todosActionTypes.CLEAR_TODO_LIST });
 };

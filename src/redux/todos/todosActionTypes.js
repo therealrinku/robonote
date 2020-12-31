@@ -5,6 +5,7 @@ const todosActionTypes = {
   FETCH_TODOS: "FETCH_TODOS",
   LOADING_TODOS: "LOADING_TODOS",
   SOMETHING_WENT_WRONG: "SOMETHING_WENT_WRONG",
+  CLEAR_TODO_LIST: "CLEAR_TODO_LIST",
 };
 
 export default todosActionTypes;
