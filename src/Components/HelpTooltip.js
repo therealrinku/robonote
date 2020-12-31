@@ -13,9 +13,9 @@ const HelpTooltip = () => {
       title={
         <div style={{ fontSize: "18px" }}>
           Quick tips
-          <p>1.Press enter to save</p>
-          <p>2.enter /d at the end of todo to delete </p>
-          <p>3.enter /c at the end of todo to toggle done status of todo</p>
+          <p>1.Press on line below the last todo and press enter to save.</p>
+          <p>2.Click on todo to mark toggle completed or uncompleted. </p>
+          <p>3.Double click on todo to delete.</p>
         </div>
       }
       arrow
