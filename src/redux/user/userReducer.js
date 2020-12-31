@@ -1,7 +1,7 @@
 import userActionTypes from "./userActionTypes";
 
 const initialState = {
-  currentUser: "rinkunited2032@gmail.com",
+  currentUser: null,
   loading: false,
   error: null,
 };
