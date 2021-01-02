@@ -8,6 +8,14 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case userActionTypes.LOGIN_WITH_EMAIL:
+      return {
+        ...state,
+        currentUser: action.payload,
+        error: false,
+        loading: false,
+      };
+
     case userActionTypes.LOADING:
       return {
         ...state,

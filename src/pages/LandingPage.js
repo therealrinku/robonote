@@ -6,8 +6,10 @@ import ActionButton from "../components/ActionButton";
 import MainIllustration from "../assets/Main.svg";
 import StarImage from "../assets/Stars.png";
 import MobileImage from "../assets/Mobile.png";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPage = ({ CURRENTUSER }) => {
   return (
     <Fragment>
       <Nav1 />
@@ -92,8 +94,15 @@ const LandingPage = () => {
       </main>
 
       <Footer />
+      {CURRENTUSER ? <Redirect to="/home" /> : null}
     </Fragment>
   );
 };
 
-export default LandingPage;
+const mapStateToProps = (state) => {
+  return {
+    CURRENTUSER: state.user.currentUser,
+  };
+};
+
+export default connect(mapStateToProps)(LandingPage);
