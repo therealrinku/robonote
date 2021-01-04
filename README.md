@@ -4,15 +4,12 @@
 * https://havetodoo.web.app
 
 ### Used technologies
-* React JS
-* HTML,CSS,JS and SASS
+* React and Redux
 * Firestore database
 * Firebase hosting
 
 
 ### Features
 * User login,signup and authentication
-* Add,edit and delete todos
-* Move todos to another days
-* Move and add todos to future through calendar
+* Add,mark done,undone and delete todos
 * Simple and easy to use interface
