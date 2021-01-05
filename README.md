@@ -5,11 +5,13 @@
 
 ### Used technologies
 * React and Redux
+* Firebase Authentication
 * Firestore database
 * Firebase hosting
+* Sass
 
 
 ### Features
-* User login,signup and authentication
-* Add,mark done,undone and delete todos
+* User authentication
+* Add,mark done or undone and delete todos
 * Simple and easy to use interface
