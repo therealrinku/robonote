@@ -33,7 +33,7 @@
 
 @media (max-width: 990px) {
   .landingpage--section-one {
-    margin-top: 120px;
+    margin-top: -100px;
     justify-content: center;
     align-items: center;
     width: 95%;
@@ -85,6 +85,7 @@
 @media (max-width: 990px) {
   .landingpage--section-two {
     width: 95%;
+    margin-top: 70px;
 
     section {
       flex-direction: column;
@@ -122,6 +123,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
 
     img {
       margin: auto;
@@ -161,5 +163,12 @@
 
   div p {
     margin-top: -10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .landingpage--section-four {
+    margin-top: 70px;
+    margin-bottom: 10px;
   }
 }
