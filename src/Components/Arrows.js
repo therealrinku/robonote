@@ -1,18 +1,18 @@
 import React from "react";
-import { CgArrowRightO, CgArrowLeftO } from "react-icons/all";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/all";
 
 const Arrows = ({ setDatePlus }) => {
   return (
     <div className="arrows">
       <section>
         <button onClick={() => setDatePlus((prev) => prev - 1)}>
-          <CgArrowLeftO />
+          <AiOutlineArrowLeft />
         </button>
       </section>
 
       <section>
         <button onClick={() => setDatePlus((prev) => prev + 1)}>
-          <CgArrowRightO />
+          <AiOutlineArrowRight />
         </button>
       </section>
     </div>
