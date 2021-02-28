@@ -24,7 +24,7 @@ const Homepage = ({
   const [datePlus, setDatePlus] = useState(0);
   const formatedDate = moment(
     moment(new Date()).add({ days: datePlus })
-  ).format("ddd MMM Do YYYY");
+  ).format("dddd MMM Do YYYY");
 
   const createDate = (addNum) => {
     return moment(moment(new Date()).add({ days: addNum })).format(
