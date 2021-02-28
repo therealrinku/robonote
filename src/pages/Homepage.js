@@ -32,7 +32,13 @@ const Homepage = ({
     );
   };
 
-  const dateArrays = [-1, 0, 1, 2, 3].map((e) => createDate(e));
+  const dateArrays = [
+    datePlus - 1,
+    datePlus,
+    datePlus + 1,
+    datePlus + 2,
+    datePlus + 3,
+  ].map((e) => createDate(e));
 
   const todosObject = FULLTODOLIST.filter((data) => data.date === formatedDate);
 
