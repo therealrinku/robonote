@@ -10,6 +10,7 @@ const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
             className={todo.done ? "done--todo" : null}
             onClick={() => UpdateTodo(todo.value)}
             onDoubleClick={() => DeleteTodo(todo.value)}
+            draggable="true"
           >
             {todo.value}
           </li>
