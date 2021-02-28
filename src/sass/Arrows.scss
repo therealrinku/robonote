@@ -6,11 +6,11 @@
   }
 
   section:first-child {
-    left: 0.2%;
+    left: 0.15%;
   }
 
   section:last-child {
-    right: 0.2%;
+    right: 0.15%;
   }
 
   button {
@@ -21,23 +21,6 @@
 
     :hover {
       cursor: pointer;
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .arrows {
-    button {
-      font-size: 50px;
-    }
-    section:first-child {
-      top: 88%;
-      left: 74%;
-    }
-    section:last-child {
-      top: 88%;
-      left: 75%;
-      margin-left: 50px;
     }
   }
 }
