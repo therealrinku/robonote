@@ -26,6 +26,14 @@ const Homepage = ({
     moment(new Date()).add({ days: datePlus })
   ).format("ddd MMM Do YYYY");
 
+  const createDate = (addNum) => {
+    return moment(moment(new Date()).add({ days: addNum })).format(
+      "ddd MMM Do YYYY"
+    );
+  };
+
+  const dateArrays = [-1, 0, 1, 2, 3].map((e) => createDate(e));
+
   const todosObject = FULLTODOLIST.filter((data) => data.date === formatedDate);
 
   useEffect(() => {
@@ -57,17 +65,26 @@ const Homepage = ({
   return (
     <div className="homepage">
       <Nav2 currentUser={CURRENTUSER} SIGNOUT={SIGNOUT} />
-      <TodoPage
-        loading={LOADING}
-        todos={todosObject[0]?.todos || []}
-        formatedDate={formatedDate}
-        newTodo={newTodo}
-        setNewTodo={setNewTodo}
-        datePlus={datePlus}
-        AddTodo={AddNewTodo}
-        UpdateTodo={UpdateTodo}
-        DeleteTodo={DeleteTodo}
-      />
+
+      <div className="daily--todo-list">
+        {dateArrays.map((e) => {
+          return (
+            <TodoPage
+              key={new Date() * Math.random()}
+              loading={LOADING}
+              todos={todosObject[0]?.todos || []}
+              formatedDate={e}
+              newTodo={newTodo}
+              setNewTodo={setNewTodo}
+              datePlus={datePlus}
+              AddTodo={AddNewTodo}
+              UpdateTodo={UpdateTodo}
+              DeleteTodo={DeleteTodo}
+            />
+          );
+        })}
+      </div>
+
       <Arrows setDatePlus={setDatePlus} />
       {!CURRENTUSER ? <Redirect to="/" /> : null}
       <Footer />
