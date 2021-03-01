@@ -54,7 +54,11 @@ const TodoPage = ({
     <main className="todo--page">
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-      <TodoList todos={todos} UpdateTodo={UpdateTodo} DeleteTodo={DeleteTodo} />
+      <TodoList
+        todos={todosObject[0]?.todos || []}
+        UpdateTodo={UpdateTodo}
+        DeleteTodo={DeleteTodo}
+      />
       <TodoAddForm
         newTodo={newTodo}
         setNewTodo={setNewTodo}
