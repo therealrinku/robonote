@@ -1,5 +1,3 @@
-import React from "react";
-
 const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
   return (
     <div className="todo--list">
@@ -7,7 +5,7 @@ const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
         return (
           <li
             key={i}
-            className={todo.done ? "done--todo" : null}
+            className={todo.done ? "done--todo draggable" : "draggable"}
             onClick={() => UpdateTodo(todo.value)}
             onDoubleClick={() => DeleteTodo(todo.value)}
             draggable="true"

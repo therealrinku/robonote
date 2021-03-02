@@ -59,12 +59,14 @@ const TodoPage = ({
         UpdateTodo={UpdateTodo}
         DeleteTodo={DeleteTodo}
       />
-      <TodoAddForm
-        newTodo={newTodo}
-        setNewTodo={setNewTodo}
-        AddTodo={AddNewTodo}
-      />
-      <DummyLines todosLength={todos.length} />
+      {todosObject[0]?.todos.length <= 12 || !todosObject[0]?.todos ? (
+        <TodoAddForm
+          newTodo={newTodo}
+          setNewTodo={setNewTodo}
+          AddTodo={AddNewTodo}
+        />
+      ) : null}
+      <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
     </main>
   );
 };
