@@ -50,8 +50,15 @@ const TodoPage = ({
     }
   };
 
+  const DragOverAction = (e) => {
+    e.preventDefault();
+    const draggedItem = document.querySelector(".dragging");
+    const todoList = e.currentTarget.querySelector(".todo--list");
+    todoList.appendChild(draggedItem);
+  };
+
   return (
-    <main className="todo--page container">
+    <main className="todo--page container" onDragOver={DragOverAction}>
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
       <TodoList
