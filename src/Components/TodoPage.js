@@ -51,7 +51,7 @@ const TodoPage = ({
   };
 
   return (
-    <main className="todo--page">
+    <main className="todo--page container">
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
       <TodoList

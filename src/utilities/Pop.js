@@ -9,8 +9,6 @@ const Pop = (initialTodoList, lookingDate, todoValue) => {
     (todo) => todo.value !== todoValue
   );
 
-  console.log(selectedDateTodosCopy);
-
   todoListCopy[indexToUpdate] = {
     date: lookingDate,
     todos: updatedTodosCopy,
