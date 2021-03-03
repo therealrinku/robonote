@@ -1,4 +1,6 @@
 const Concat = (initialTodoList, lookingDate, newTodo) => {
+  console.log(initialTodoList, lookingDate, newTodo);
+
   const todoListCopy = [...initialTodoList];
   const indexToConcat = initialTodoList.findIndex(
     (i) => i.date === lookingDate

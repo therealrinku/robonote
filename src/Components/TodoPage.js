@@ -53,6 +53,9 @@ const TodoPage = ({
   const DragOverAction = (e) => {
     e.preventDefault();
     const draggedItem = document.querySelector(".dragging");
+
+    //push to dragged container
+
     const todoList = e.currentTarget.querySelector(".todo--list");
     todoList.appendChild(draggedItem);
   };
@@ -66,13 +69,13 @@ const TodoPage = ({
         UpdateTodo={UpdateTodo}
         DeleteTodo={DeleteTodo}
       />
-      {todosObject[0]?.todos.length <= 12 || !todosObject[0]?.todos ? (
+      {todosObject[0]?.todos.length === 12 ? null : (
         <TodoAddForm
           newTodo={newTodo}
           setNewTodo={setNewTodo}
           AddTodo={AddNewTodo}
         />
-      ) : null}
+      )}
       <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
     </main>
   );

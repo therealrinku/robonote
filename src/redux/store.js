@@ -6,7 +6,7 @@ const LOGGER_MIDDLEWARE = (store) => {
   return (next) => {
     return (action) => {
       next(action);
-      console.log(action.type);
+      console.log(store.getState());
     };
   };
 };
