@@ -19,7 +19,6 @@ const TodoPage = ({
   fetchTodos,
   addTodo,
 }) => {
-  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
   const todosObject = allTodos.filter((data) => data.date === formatedDate);
