@@ -25,8 +25,25 @@ const TodoPage = ({
   const [datesToUpdate, setDatesToUpdate] = useState([]);
 
   useEffect(() => {
-    console.log(datesToUpdate);
-  }, [datesToUpdate]);
+    if (!loading) {
+      if (datesToUpdate.length === 2) {
+        /*deleteTodo(
+          currentUser,
+          datesToUpdate[0].date,
+          allTodos,
+          datesToUpdate[0].todoValue
+        );
+        addTodo(
+          currentUser,
+          datesToUpdate[1].date,
+          allTodos,
+          datesToUpdate[1].todoValue
+        );*/
+        console.log("shit");
+        setDatesToUpdate([]);
+      }
+    }
+  }, [datesToUpdate.length]);
 
   useEffect(() => {
     setNewTodo("");
@@ -67,7 +84,10 @@ const TodoPage = ({
     const draggedFromDateExists = datesToUpdate.findIndex(
       (date) => date === draggedFromDate
     );
-    if (draggedFromDateExists < 0) setDatesToUpdate([draggedFromDate]);
+    if (draggedFromDateExists < 0)
+      setDatesToUpdate([
+        { date: draggedFromDate, todoValue: draggedItem.innerText },
+      ]);
 
     //push to dragged container
 
@@ -82,7 +102,10 @@ const TodoPage = ({
       (date) => date === draggedToDate
     );
     if (draggedToDateExists < 0)
-      setDatesToUpdate((prev) => [...prev, draggedToDate]);
+      setDatesToUpdate((prev) => [
+        ...prev,
+        { date: draggedToDate, todoValue: draggedItem.innerText },
+      ]);
   };
 
   return (
