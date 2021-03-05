@@ -22,6 +22,11 @@ const TodoPage = ({
   const [newTodo, setNewTodo] = useState("");
 
   const todosObject = allTodos.filter((data) => data.date === formatedDate);
+  const [datesToUpdate, setDatesToUpdate] = useState([]);
+
+  useEffect(() => {
+    console.log(datesToUpdate);
+  }, [datesToUpdate]);
 
   useEffect(() => {
     setNewTodo("");
@@ -51,12 +56,33 @@ const TodoPage = ({
 
   const DragOverAction = (e) => {
     e.preventDefault();
+
     const draggedItem = document.querySelector(".dragging");
+
+    //draggedFromDate
+    const draggedFromDate = draggedItem.parentElement.parentElement
+      .querySelector(".todo--date")
+      .querySelector("p").innerText;
+    //push to date to update array if already not there
+    const draggedFromDateExists = datesToUpdate.findIndex(
+      (date) => date === draggedFromDate
+    );
+    if (draggedFromDateExists < 0) setDatesToUpdate([draggedFromDate]);
 
     //push to dragged container
 
     const todoList = e.currentTarget.querySelector(".todo--list");
+    const draggedToDate = e.currentTarget
+      .querySelector(".todo--date")
+      .querySelector("p").innerText;
+
     todoList.appendChild(draggedItem);
+    //push to date to update if not there
+    const draggedToDateExists = datesToUpdate.findIndex(
+      (date) => date === draggedToDate
+    );
+    if (draggedToDateExists < 0)
+      setDatesToUpdate((prev) => [...prev, draggedToDate]);
   };
 
   return (
