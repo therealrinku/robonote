@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const TodoDate = ({ formatedDate, datePlus }) => {
+const TodoDate = ({ formatedDate }) => {
   const formatedTodaysDate = moment(moment(new Date())).format(
     "ddd MMM Do YYYY"
   );
@@ -9,7 +9,7 @@ const TodoDate = ({ formatedDate, datePlus }) => {
   return (
     <div className="todo--date">
       <i className={isToday ? "date-today" : null}></i>
-      <p className={!isToday ? "date-backward" : null}>{formatedDate}</p>
+      <p>{formatedDate}</p>
     </div>
   );
 };
