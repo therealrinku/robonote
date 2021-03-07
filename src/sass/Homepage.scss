@@ -7,3 +7,15 @@
   border-bottom: solid 1px rgba(0, 0, 0, 0.4);
   border-top: solid 1px rgba(0, 0, 0, 0.4);
 }
+
+@media (max-width: 750px) {
+  .homepage .daily--todo-list main {
+    display: none;
+  }
+
+  .homepage .daily--todo-list main:nth-child(2) {
+    display: block;
+    width: 100%;
+    border-right: solid 1px rgba(0, 0, 0, 0.4);
+  }
+}
