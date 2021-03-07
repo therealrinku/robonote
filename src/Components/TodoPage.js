@@ -22,28 +22,6 @@ const TodoPage = ({
   const [newTodo, setNewTodo] = useState("");
 
   const todosObject = allTodos.filter((data) => data.date === formatedDate);
-  const [datesToUpdate, setDatesToUpdate] = useState([]);
-
-  useEffect(() => {
-    if (!loading) {
-      if (datesToUpdate.length === 2) {
-        /*deleteTodo(
-          currentUser,
-          datesToUpdate[0].date,
-          allTodos,
-          datesToUpdate[0].todoValue
-        );
-        addTodo(
-          currentUser,
-          datesToUpdate[1].date,
-          allTodos,
-          datesToUpdate[1].todoValue
-        );*/
-        console.log("shit");
-        setDatesToUpdate([]);
-      }
-    }
-  }, [datesToUpdate.length]);
 
   useEffect(() => {
     setNewTodo("");
@@ -76,36 +54,9 @@ const TodoPage = ({
 
     const draggedItem = document.querySelector(".dragging");
 
-    //draggedFromDate
-    const draggedFromDate = draggedItem.parentElement.parentElement
-      .querySelector(".todo--date")
-      .querySelector("p").innerText;
-    //push to date to update array if already not there
-    const draggedFromDateExists = datesToUpdate.findIndex(
-      (date) => date === draggedFromDate
-    );
-    if (draggedFromDateExists < 0)
-      setDatesToUpdate([
-        { date: draggedFromDate, todoValue: draggedItem.innerText },
-      ]);
-
-    //push to dragged container
-
     const todoList = e.currentTarget.querySelector(".todo--list");
-    const draggedToDate = e.currentTarget
-      .querySelector(".todo--date")
-      .querySelector("p").innerText;
 
     todoList.appendChild(draggedItem);
-    //push to date to update if not there
-    const draggedToDateExists = datesToUpdate.findIndex(
-      (date) => date === draggedToDate
-    );
-    if (draggedToDateExists < 0)
-      setDatesToUpdate((prev) => [
-        ...prev,
-        { date: draggedToDate, todoValue: draggedItem.innerText },
-      ]);
   };
 
   return (
