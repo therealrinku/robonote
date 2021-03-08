@@ -20,7 +20,6 @@ const TodoPage = ({
   addTodo,
 }) => {
   const [newTodo, setNewTodo] = useState("");
-
   const todosObject = allTodos.filter((data) => data.date === formatedDate);
 
   useEffect(() => {
@@ -51,16 +50,35 @@ const TodoPage = ({
 
   const DragOverAction = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
 
     const draggedItem = document.querySelector(".dragging");
 
     const todoList = e.currentTarget.querySelector(".todo--list");
 
+    //adding to the new list
+    const addedListDate = e.currentTarget
+      .querySelector(".todo--date")
+      .querySelector("p").innerText;
+    //removing from last list
+    const draggedItemDate = draggedItem.parentElement.parentElement
+      .querySelector(".todo--date")
+      .querySelector("p").innerText;
+    console.log("heeeeeeeelo");
+
+    if (addedListDate !== draggedItemDate) {
+      console.log(addedListDate, draggedItemDate);
+
+      /*deleteTodo(currentUser, draggedItemDate, allTodos, draggedItem.innerText);
+      addTodo(currentUser, addedListDate, allTodos, draggedItem.innerHTML);*/
+    }
+
     todoList.appendChild(draggedItem);
   };
 
   return (
-    <main className="todo--page container" onDragOver={DragOverAction}>
+    <main className="todo--page container" onDragOverCapture={DragOverAction}>
       {loading ? <Loader /> : null}
       <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
       <TodoList
