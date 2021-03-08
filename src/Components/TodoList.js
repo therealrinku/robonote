@@ -1,14 +1,4 @@
-import { useState } from "react";
-
 const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
-  const [loaded, setLoaded] = useState(false);
-
-  if (loaded) {
-    const todosLength =
-      document.querySelector(".todo--list").childElementCount || 0;
-    console.log(todosLength);
-  }
-
   const AddDraggingClass = (e) => {
     const draggingElement = e.target;
     draggingElement.classList.add("dragging");
@@ -20,7 +10,7 @@ const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
   };
 
   return (
-    <div className="todo--list" onLoad={() => setLoaded(true)}>
+    <div className="todo--list">
       {todos.map((todo, i) => {
         return (
           <li

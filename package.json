@@ -10,6 +10,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.13",
     "cryptr": "^6.0.2",
+    "drag-drop": "^7.0.0",
     "firebase": "^8.1.1",
     "firebase-tools": "^8.16.2",
     "moment": "^2.29.1",
