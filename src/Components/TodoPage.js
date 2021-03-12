@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import { connect } from "react-redux";
 import * as todosActions from "../redux/todos/todosActions";
 import { useEffect, useState } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const TodoPage = ({
   formatedDate,
@@ -46,26 +47,41 @@ const TodoPage = ({
       addTodo(currentUser, formatedDate, allTodos, newTodo);
       setNewTodo("");
     }
-  }
+  };
+
+  const dragEndActions = (result) => {
+    console.log(result.destination);
+  };
 
   return (
-    <main className="todo--page container" >
-      {loading ? <Loader /> : null}
-      <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-      <TodoList
-        todos={todosObject[0]?.todos || []}
-        UpdateTodo={UpdateTodo}
-        DeleteTodo={DeleteTodo}
-      />
-      {todosObject[0]?.todos.length === 12 ? null : (
-        <TodoAddForm
-          newTodo={newTodo}
-          setNewTodo={setNewTodo}
-          AddTodo={AddNewTodo}
-        />
-      )}
-      <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
-    </main>
+    <DragDropContext onDragEnd={dragEndActions}>
+      <Droppable droppableId={"droppable" + Math.random()}>
+        {(provided) => (
+          <main
+            className="todo--page container"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {loading ? <Loader /> : null}
+            <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
+            <TodoList
+              todos={todosObject[0]?.todos || []}
+              UpdateTodo={UpdateTodo}
+              DeleteTodo={DeleteTodo}
+            />
+            {todosObject[0]?.todos.length === 12 ? null : (
+              <TodoAddForm
+                newTodo={newTodo}
+                setNewTodo={setNewTodo}
+                AddTodo={AddNewTodo}
+              />
+            )}
+            <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
+            {provided.placeholder}
+          </main>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 };
 
