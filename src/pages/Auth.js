@@ -3,7 +3,6 @@ import { BsEye, BsEyeSlash } from "react-icons/all";
 import Nav1 from "../components/Nav1";
 import Footer from "../components/Footer";
 import ErrorViewer from "../components/ErrorViewer";
-
 import * as userActions from "../redux/user/userActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
