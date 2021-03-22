@@ -50,12 +50,12 @@ const TodoPage = ({
   };
 
   const dragEndActions = (result) => {
-    console.log(result.destination);
+    console.log(result.source);
   };
 
   return (
     <DragDropContext onDragEnd={dragEndActions}>
-      <Droppable droppableId={"droppable" + Math.random()}>
+      <Droppable droppableId={formatedDate}>
         {(provided) => (
           <main
             className="todo--page container"
