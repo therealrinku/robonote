@@ -8,8 +8,9 @@ import * as userActions from "../redux/user/userActions";
 import moment from "moment";
 import { Redirect } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
+import * as todosActions from "../redux/todos/todosActions";
 
-const Homepage = ({ signOut, currentUser }) => {
+const Homepage = ({ signOut, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
   const [datePlus, setDatePlus] = useState(0);
 
   const createDate = (addNum) => {
@@ -31,7 +32,17 @@ const Homepage = ({ signOut, currentUser }) => {
       <div className="daily--todo-list">
         <DragDropContext onDragEnd={dragEndActions}>
           {dateArrays.map((e, i) => {
-            return <TodoPage key={i} formatedDate={e} datePlus={datePlus} />;
+            return (
+              <TodoPage
+                key={i}
+                formatedDate={e}
+                datePlus={datePlus}
+                fetchTodos={fetchTodos}
+                updateTodo={updateTodo}
+                deleteTodo={deleteTodo}
+                addTodo={addTodo}
+              />
+            );
           })}
         </DragDropContext>
       </div>
@@ -52,6 +63,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(userActions.SIGNOUT()),
+    deleteTodo: (user, date, fulltodolist, todovalue) =>
+      dispatch(todosActions.DELETE_TODO(user, date, fulltodolist, todovalue)),
+    updateTodo: (user, date, fulltodolist, todovalue) =>
+      dispatch(todosActions.UPDATE_TODO(user, date, fulltodolist, todovalue)),
+    addTodo: (user, date, fulltodolist, newtodo) => dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
+    fetchTodos: (currentUser, date) => dispatch(todosActions.FETCH_TODOS(currentUser, date)),
   };
 };
 

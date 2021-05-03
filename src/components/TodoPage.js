@@ -4,7 +4,6 @@ import TodoAddForm from "./TodoAddForm";
 import DummyLines from "./DummyLines";
 import Loader from "./Loader";
 import { connect } from "react-redux";
-import * as todosActions from "../redux/todos/todosActions";
 import { useEffect, useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
 
@@ -73,15 +72,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteTodo: (user, date, fulltodolist, todovalue) =>
-      dispatch(todosActions.DELETE_TODO(user, date, fulltodolist, todovalue)),
-    updateTodo: (user, date, fulltodolist, todovalue) =>
-      dispatch(todosActions.UPDATE_TODO(user, date, fulltodolist, todovalue)),
-    addTodo: (user, date, fulltodolist, newtodo) => dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
-    fetchTodos: (currentUser, date) => dispatch(todosActions.FETCH_TODOS(currentUser, date)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoPage);
+export default connect(mapStateToProps)(TodoPage);
