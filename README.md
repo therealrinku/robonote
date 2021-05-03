@@ -8,7 +8,7 @@
 * Firebase Authentication
 * Firestore database
 * Firebase hosting
-* Sass
+* SASS
 
 
 ### Features
