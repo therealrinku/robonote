@@ -6,7 +6,7 @@ import Loader from "./Loader";
 import { connect } from "react-redux";
 import * as todosActions from "../redux/todos/todosActions";
 import { useEffect, useState } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 
 const TodoPage = ({
   formatedDate,
@@ -40,48 +40,27 @@ const TodoPage = ({
 
   const AddNewTodo = (e) => {
     e.preventDefault();
-    if (
-      newTodo.trim() !== "" &&
-      todosObject[0]?.todos.findIndex((todo) => todo.value === newTodo) < 0
-    ) {
+    if (newTodo.trim() !== "" && todosObject[0]?.todos.findIndex((todo) => todo.value === newTodo) < 0) {
       addTodo(currentUser, formatedDate, allTodos, newTodo);
       setNewTodo("");
     }
   };
 
-  const dragEndActions = (result) => {
-    console.log(result.source);
-  };
-
   return (
-    <DragDropContext onDragEnd={dragEndActions}>
-      <Droppable droppableId={formatedDate}>
-        {(provided) => (
-          <main
-            className="todo--page container"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {loading ? <Loader /> : null}
-            <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-            <TodoList
-              todos={todosObject[0]?.todos || []}
-              UpdateTodo={UpdateTodo}
-              DeleteTodo={DeleteTodo}
-            />
-            {todosObject[0]?.todos.length === 12 ? null : (
-              <TodoAddForm
-                newTodo={newTodo}
-                setNewTodo={setNewTodo}
-                AddTodo={AddNewTodo}
-              />
-            )}
-            <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
-            {provided.placeholder}
-          </main>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <Droppable droppableId={formatedDate}>
+      {(provided) => (
+        <main className="todo--page container" {...provided.droppableProps} ref={provided.innerRef}>
+          {loading ? <Loader /> : null}
+          <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
+          <TodoList todos={todosObject[0]?.todos || []} UpdateTodo={UpdateTodo} DeleteTodo={DeleteTodo} />
+          {todosObject[0]?.todos.length === 12 ? null : (
+            <TodoAddForm newTodo={newTodo} setNewTodo={setNewTodo} AddTodo={AddNewTodo} />
+          )}
+          <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
+          {provided.placeholder}
+        </main>
+      )}
+    </Droppable>
   );
 };
 
@@ -100,10 +79,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(todosActions.DELETE_TODO(user, date, fulltodolist, todovalue)),
     updateTodo: (user, date, fulltodolist, todovalue) =>
       dispatch(todosActions.UPDATE_TODO(user, date, fulltodolist, todovalue)),
-    addTodo: (user, date, fulltodolist, newtodo) =>
-      dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
-    fetchTodos: (currentUser, date) =>
-      dispatch(todosActions.FETCH_TODOS(currentUser, date)),
+    addTodo: (user, date, fulltodolist, newtodo) => dispatch(todosActions.ADD_TODO(user, date, fulltodolist, newtodo)),
+    fetchTodos: (currentUser, date) => dispatch(todosActions.FETCH_TODOS(currentUser, date)),
   };
 };
 
