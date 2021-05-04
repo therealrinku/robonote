@@ -17,16 +17,16 @@
     line-height: 30px;
   }
 
+  .done--todo {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   li:hover {
-    cursor: grab;
+    cursor: pointer;
   }
 
   li:active {
     cursor: grabbing;
-  }
-
-  .done--todo {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.4);
   }
 }

@@ -10,7 +10,7 @@ import { Redirect } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import * as todosActions from "../redux/todos/todosActions";
 
-const Homepage = ({ signOut, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
+const Homepage = ({ allTodos, signOut, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
   const [datePlus, setDatePlus] = useState(0);
 
   const createDate = (addNum) => {
@@ -20,9 +20,11 @@ const Homepage = ({ signOut, currentUser, fetchTodos, addTodo, deleteTodo, updat
   const dateArrays = [datePlus - 1, datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
 
   const dragEndActions = (result) => {
-    console.log(result.source);
-    console.log(result.destination);
-    console.log(result);
+    if (result.source.droppableId !== result.destination.droppableId) {
+      //console.log(currentUser, result.source.droppableId, allTodos, result.draggableId);
+      addTodo(currentUser, result.destination.droppableId, allTodos, result.draggableId);
+      deleteTodo(currentUser, result.source.droppableId, allTodos, result.draggableId);
+    }
   };
 
   return (
@@ -56,6 +58,7 @@ const Homepage = ({ signOut, currentUser, fetchTodos, addTodo, deleteTodo, updat
 
 const mapStateToProps = (state) => {
   return {
+    allTodos: state.todos.todos,
     currentUser: state.user.currentUser,
   };
 };
