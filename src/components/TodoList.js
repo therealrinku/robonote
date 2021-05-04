@@ -6,7 +6,7 @@ const TodoList = ({ todos, UpdateTodo, DeleteTodo }) => {
       {todos.map((todo, i) => {
         return (
           <Draggable draggableId={todo.value} key={i} index={i}>
-            {(provided) => (
+            {(provided, snapshot) => (
               <li
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}

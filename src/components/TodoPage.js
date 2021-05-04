@@ -47,8 +47,13 @@ const TodoPage = ({
 
   return (
     <Droppable droppableId={formatedDate}>
-      {(provided) => (
-        <main className="todo--page container" {...provided.droppableProps} ref={provided.innerRef}>
+      {(provided, snapshot) => (
+        <main
+          className="todo--page container"
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+          style={snapshot.isDraggingOver ? { background: "lightgreen" } : null}
+        >
           {loading ? <Loader /> : null}
           <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
           <TodoList todos={todosObject[0]?.todos || []} UpdateTodo={UpdateTodo} DeleteTodo={DeleteTodo} />
