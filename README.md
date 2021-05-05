@@ -1,7 +1,7 @@
-## Compiti is a simple but powerful todo application.
+## Falloora is a simple but powerful todo application.
 
 ### Live Website
-* https://havetodoo.web.app
+* https://falloora.web.app
 
 ### Used technologies
 * React and Redux
