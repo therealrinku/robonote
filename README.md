@@ -1,4 +1,4 @@
-## haveTodo is a simple but powerful todo application.
+## Compiti is a simple but powerful todo application.
 
 ### Live Website
 * https://havetodoo.web.app
