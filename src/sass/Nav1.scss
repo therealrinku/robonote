@@ -11,6 +11,11 @@
   background: white;
   font-family: arial;
 
+  p {
+    font-weight: bold;
+    font-size: 17px;
+  }
+
   div:first-child {
     margin-left: 8%;
   }
@@ -49,7 +54,7 @@
   }
 
   div:last-child a:first-child {
-    background: #ec5858;
+    background: #000;
     color: white;
     border: none;
   }
