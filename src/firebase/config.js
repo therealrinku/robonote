@@ -1,12 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDk2c5NRpbO702KpX-XrgakLs40m70jt3E",
-  authDomain: "havetodoo.firebaseapp.com",
-  databaseURL: "https://havetodoo.firebaseio.com",
-  projectId: "havetodoo",
-  storageBucket: "havetodoo.appspot.com",
-  messagingSenderId: "50413760936",
-  appId: "1:50413760936:web:898c32ebd42b4a8b4d6d9d",
-  measurementId: "G-TM8WP3JPG1",
+  apiKey: "AIzaSyCQQAerqsP-w6DNkFoEDj-GbE6pAAJAyBI",
+  authDomain: "falloora.firebaseapp.com",
+  projectId: "falloora",
+  storageBucket: "falloora.appspot.com",
+  messagingSenderId: "94750665045",
+  appId: "1:94750665045:web:867f21ab560f11bc0ce7dc",
+  measurementId: "G-G9TE7QWBY1",
 };
 
 export default firebaseConfig;
