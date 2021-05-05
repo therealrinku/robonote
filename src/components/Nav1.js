@@ -8,7 +8,7 @@ const Nav1 = () => {
       <div>
         <NavLink to="/">
           <img src={LogoImage} alt="logo" />
-          <p>Compiti</p>
+          <p>Falloora</p>
         </NavLink>
       </div>
 
