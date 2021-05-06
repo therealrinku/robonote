@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/all";
 import Nav1 from "../components/Nav1";
 import Footer from "../components/Footer";
@@ -12,6 +12,12 @@ const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visiblePassword, setVisiblePassword] = useState(false);
+
+  useEffect(() => {
+    if (history.location.search.includes("email")) {
+      setEmail(history.location.search.slice(history.location.search.indexOf("=") + 1));
+    }
+  }, [history.location.search]);
 
   const FormSubmitHandler = (e) => {
     e.preventDefault();
