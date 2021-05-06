@@ -9,7 +9,7 @@ const Nav2 = ({ history, currentUser, signOut }) => {
       <section>
         <button className="logo" onClick={() => history.push("/home")}>
           <img src={LogoImage} alt="logo" />
-          <p>haveTodo</p>
+          <p>Falloora</p>
         </button>
       </section>
 
