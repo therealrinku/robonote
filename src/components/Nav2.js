@@ -1,5 +1,3 @@
-import React from "react";
-
 import LogoImage from "../assets/Logo.png";
 import HelpTooltip from "./HelpTooltip";
 
