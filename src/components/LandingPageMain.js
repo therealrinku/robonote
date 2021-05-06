@@ -48,6 +48,8 @@ const LandingPageMain = () => {
           <p>“What makes it so great is that it’s clean and slick and not too complicated.”</p>
         </div>
       </section>
+
+      <section></section>
     </main>
   );
 };

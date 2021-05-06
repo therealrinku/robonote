@@ -1,8 +1,8 @@
 .landing-main {
   max-width: 1200px;
-  width: 90%;
   margin: auto;
   margin-top: 150px;
+  width: 90%;
 
   section:first-child {
     display: flex;
@@ -42,7 +42,7 @@
     }
 
     div {
-      width: 250px;
+      width: 220px;
 
       p {
         font-size: 18px;
@@ -50,11 +50,16 @@
       }
     }
   }
-}
 
-@media (max-width: 900px) {
-  .landing-main {
-    width: 95%;
+  section:nth-child(3) {
+    margin-top: 140px;
+    height: 200px;
+    width: 100%;
+    background: whitesmoke;
+
+    h2 {
+      text-align: center;
+    }
   }
 }
 
