@@ -1,6 +1,7 @@
 import MainImage from "../assets/main.svg";
 import { useHistory } from "react-router-dom";
 import FiveStarImage from "../assets/Stars.png";
+import { FcOk } from "react-icons/all";
 
 const LandingPageMain = () => {
   const history = useHistory();
@@ -49,7 +50,22 @@ const LandingPageMain = () => {
         </div>
       </section>
 
-      <section></section>
+      <section>
+        <div>
+          <FcOk />
+          <p>Clean and Easy to use interface</p>
+        </div>
+
+        <div>
+          <FcOk />
+          <p>Drag and drop tasks to any day</p>
+        </div>
+
+        <div>
+          <FcOk />
+          <p>Priotize tasks according to their importance</p>
+        </div>
+      </section>
     </main>
   );
 };
