@@ -1,12 +1,10 @@
 import MainImage from "../assets/main.svg";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FiveStarImage from "../assets/Stars.png";
 import { FcOk } from "react-icons/all";
 import { useState } from "react";
 
 const LandingPageMain = () => {
-  const history = useHistory();
-
   const [email, setEmail] = useState("");
 
   return (
@@ -21,7 +19,7 @@ const LandingPageMain = () => {
             Fallora is your new daily task manager
             <br /> to take you to the moon.
           </h2>
-          <button onClick={() => history.push("/signup")}>Start 15 days free trial</button>
+          <Link to="/signup">Start 15 days free trial</Link>
         </div>
       </section>
 
@@ -79,7 +77,7 @@ const LandingPageMain = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button>Sign me up</button>
+          <Link to={`/signup?email=${email}`}>Sign me up</Link>
         </div>
       </section>
     </main>
