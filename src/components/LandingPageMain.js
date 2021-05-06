@@ -2,9 +2,12 @@ import MainImage from "../assets/main.svg";
 import { useHistory } from "react-router-dom";
 import FiveStarImage from "../assets/Stars.png";
 import { FcOk } from "react-icons/all";
+import { useState } from "react";
 
 const LandingPageMain = () => {
   const history = useHistory();
+
+  const [email, setEmail] = useState("");
 
   return (
     <main className="landing-main">
@@ -64,6 +67,19 @@ const LandingPageMain = () => {
         <div>
           <FcOk />
           <p>Priotize tasks according to their importance</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>What are you waiting for! Start your free trial now!</h2>
+        <div>
+          <input
+            type="text"
+            placeholder="Type your email here"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button>Sign me up</button>
         </div>
       </section>
     </main>
