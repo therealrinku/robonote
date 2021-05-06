@@ -32,6 +32,8 @@
   section:nth-child(2) {
     margin-top: 300px;
     text-align: center;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -42,19 +44,21 @@
 }
 
 @media (max-width: 700px) {
-  section:first-child {
-    margin-bottom: 30px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    img {
-      width: 75vw;
-    }
-
-    div:first-child {
+  .landing-main {
+    section:first-child {
       margin-bottom: 30px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      img {
+        width: 75vw;
+      }
+
+      div:first-child {
+        margin-bottom: 30px;
+      }
     }
   }
 }

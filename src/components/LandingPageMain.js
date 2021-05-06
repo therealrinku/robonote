@@ -1,5 +1,6 @@
 import MainImage from "../assets/main.svg";
 import { useHistory } from "react-router-dom";
+import { FcExpand, FcBarChart, FcUpRight } from "react-icons/all";
 
 const LandingPageMain = () => {
   const history = useHistory();
@@ -20,7 +21,22 @@ const LandingPageMain = () => {
         </div>
       </section>
 
-      <section></section>
+      <section>
+        <div>
+          <FcExpand />
+          <p>Simple and Easy to use design</p>
+        </div>
+
+        <div>
+          <FcBarChart />
+          <p>Weekly report</p>
+        </div>
+
+        <div>
+          <FcUpRight />
+          <p>Drag and Drop functionality</p>
+        </div>
+      </section>
     </main>
   );
 };
