@@ -6,6 +6,7 @@ import * as userActions from "../redux/user/userActions";
 import Auth from "../pages/Auth";
 import LandingPage from "../pages/LandingPage";
 import Homepage from "../pages/Homepage";
+import Layout from "./Layout";
 
 const App = ({ CURRENTUSER, LOGIN_WITH_EMAIL }) => {
   const localStorageEmail = localStorage.getItem("email");
@@ -15,8 +16,8 @@ const App = ({ CURRENTUSER, LOGIN_WITH_EMAIL }) => {
   }
 
   return (
-    <Fragment>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/login" exact component={Auth} />
@@ -24,8 +25,8 @@ const App = ({ CURRENTUSER, LOGIN_WITH_EMAIL }) => {
           <Route path="/home" exact component={Homepage} />
         </Switch>
         {CURRENTUSER ? <Redirect to="/home" /> : null}
-      </BrowserRouter>
-    </Fragment>
+      </Layout>
+    </BrowserRouter>
   );
 };
 

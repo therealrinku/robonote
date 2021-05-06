@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import Arrows from "../components/Arrows";
-import Footer from "../components/Footer";
-import Nav2 from "../components/Nav2";
 import TodoPage from "../components/TodoPage";
-import * as userActions from "../redux/user/userActions";
 import moment from "moment";
 import { Redirect } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import * as todosActions from "../redux/todos/todosActions";
 
-const Homepage = ({ allTodos, signOut, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
+const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
   const [datePlus, setDatePlus] = useState(0);
 
   const createDate = (addNum) => {
@@ -29,8 +26,6 @@ const Homepage = ({ allTodos, signOut, currentUser, fetchTodos, addTodo, deleteT
 
   return (
     <div className="homepage">
-      <Nav2 currentUser={currentUser} SIGNOUT={signOut} />
-
       <div className="daily--todo-list">
         <DragDropContext onDragEnd={dragEndActions}>
           {dateArrays.map((e, i) => {
@@ -51,7 +46,6 @@ const Homepage = ({ allTodos, signOut, currentUser, fetchTodos, addTodo, deleteT
 
       <Arrows setDatePlus={setDatePlus} />
       {!currentUser ? <Redirect to="/" /> : null}
-      <Footer />
     </div>
   );
 };
@@ -65,7 +59,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(userActions.SIGNOUT()),
     deleteTodo: (user, date, fulltodolist, todovalue) =>
       dispatch(todosActions.DELETE_TODO(user, date, fulltodolist, todovalue)),
     updateTodo: (user, date, fulltodolist, todovalue) =>

@@ -1,7 +1,9 @@
 import LogoImage from "../assets/Logo.png";
 import HelpTooltip from "./HelpTooltip";
+import { connect } from "react-redux";
+import * as userActions from "../redux/user/userActions";
 
-const Nav2 = ({ history, currentUser, SIGNOUT }) => {
+const Nav2 = ({ history, currentUser, signOut }) => {
   return (
     <nav className="homepage--nav">
       <section>
@@ -14,10 +16,16 @@ const Nav2 = ({ history, currentUser, SIGNOUT }) => {
       <section>
         <HelpTooltip />
         <p>{currentUser?.slice(0, currentUser?.indexOf("@"))}</p>
-        <button onClick={SIGNOUT}>Logout</button>
+        <button onClick={signOut}>Logout</button>
       </section>
     </nav>
   );
 };
 
-export default Nav2;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(userActions.SIGNOUT()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Nav2);

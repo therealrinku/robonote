@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/all";
-import Nav1 from "../components/Nav1";
-import Footer from "../components/Footer";
 import ErrorViewer from "../components/ErrorViewer";
 import * as userActions from "../redux/user/userActions";
 import { connect } from "react-redux";
@@ -32,8 +30,6 @@ const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
 
   return (
     <div className="auth--page">
-      <Nav1 />
-
       <div className="auth--title">
         <p>{signupMode ? "Get free trial without credit card." : "Start your journey to the moon."}</p>
       </div>
@@ -65,8 +61,6 @@ const Auth = ({ history, CURRENTUSER, ERROR, LOADING, LOGIN, SIGNUP }) => {
 
         {ERROR ? <ErrorViewer error={ERROR} /> : null}
       </form>
-      <Footer />
-
       {CURRENTUSER ? <Redirect to="/home" /> : null}
     </div>
   );
