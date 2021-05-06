@@ -1,10 +1,9 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <section className="footer">
+    <footer>
+      <p>2020@Falloora Inc</p>
       <p>Made with ❤ in Nepal</p>
-    </section>
+    </footer>
   );
 };
 
