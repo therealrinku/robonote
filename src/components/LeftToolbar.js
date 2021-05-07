@@ -2,7 +2,7 @@ import { VscHome, CgChevronLeft } from "react-icons/all";
 
 const LeftToolbar = ({ setDatePlus }) => {
   return (
-    <div className="toolbar--left">
+    <div className="toolbar left">
       <button onClick={() => setDatePlus((prev) => prev - 1)}>
         <CgChevronLeft />
       </button>
