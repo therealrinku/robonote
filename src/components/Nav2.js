@@ -1,4 +1,3 @@
-import LogoImage from "../assets/Logo.png";
 import HelpTooltip from "./HelpTooltip";
 import { connect } from "react-redux";
 import * as userActions from "../redux/user/userActions";
@@ -8,7 +7,6 @@ const Nav2 = ({ history, currentUser, signOut }) => {
     <nav className="homepage--nav">
       <section>
         <button className="logo" onClick={() => history.push("/home")}>
-          <img src={LogoImage} alt="logo" />
           <p>Falloora</p>
         </button>
       </section>
