@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import Arrows from "../components/Arrows";
 import TodoPage from "../components/TodoPage";
 import moment from "moment";
 import { Redirect } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import * as todosActions from "../redux/todos/todosActions";
+import LeftToolbar from "../components/LeftToolbar";
+import RightToolbar from "../components/RightToolbar";
 
 const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
   const [datePlus, setDatePlus] = useState(0);
@@ -26,6 +27,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
 
   return (
     <div className="homepage">
+      <LeftToolbar setDatePlus={setDatePlus} />
       <div className="daily--todo-list">
         <DragDropContext onDragEnd={dragEndActions}>
           {dateArrays.map((e, i) => {
@@ -43,8 +45,8 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
           })}
         </DragDropContext>
       </div>
+      <RightToolbar setDatePlus={setDatePlus} />
 
-      <Arrows setDatePlus={setDatePlus} />
       {!currentUser ? <Redirect to="/" /> : null}
     </div>
   );
