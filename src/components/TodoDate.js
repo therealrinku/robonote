@@ -1,15 +1,12 @@
 import moment from "moment";
 
 const TodoDate = ({ formatedDate }) => {
-  const formatedTodaysDate = moment(moment(new Date())).format(
-    "ddd MMM Do YYYY"
-  );
+  const TodayDate = moment(new Date());
+  const dateDiff = moment(formatedDate).diff(TodayDate, "days");
 
-  const isToday = formatedDate === formatedTodaysDate;
   return (
     <div className="todo--date">
-      <i className={isToday ? "date-today" : null}></i>
-      <p>{formatedDate}</p>
+      <p style={dateDiff < 0 ? { color: "grey" } : null}>{formatedDate}</p>
     </div>
   );
 };
