@@ -1,10 +1,15 @@
 import { AiOutlineCalendar, CgChevronRight } from "react-icons/all";
 import Calendar from "react-calendar";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 
-const RightToolbar = ({ setDatePlus }) => {
+const RightToolbar = ({ setDatePlus, currentDate, setCurrentDate }) => {
   const [showCalendar, setShowCalendar] = useState(false);
+
+  const toggleAndSetDate = (e) => {
+    setShowCalendar(false);
+    setCurrentDate(e);
+  };
 
   return (
     <div className="toolbars">
@@ -20,7 +25,7 @@ const RightToolbar = ({ setDatePlus }) => {
 
       {showCalendar ? (
         <div className="calendar">
-          <Calendar />
+          <Calendar value={currentDate} onChange={toggleAndSetDate} />
         </div>
       ) : null}
     </div>

@@ -9,10 +9,11 @@ import LeftToolbar from "../components/LeftToolbar";
 import RightToolbar from "../components/RightToolbar";
 
 const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, updateTodo }) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
 
   const createDate = (addNum) => {
-    return moment(moment(new Date()).add({ days: addNum })).format("ddd MMM D YYYY");
+    return moment(currentDate).add({ days: addNum }).format("ddd MMM D YYYY");
   };
 
   const dateArrays = [datePlus - 1, datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
@@ -27,7 +28,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
 
   return (
     <div className="homepage">
-      <LeftToolbar setDatePlus={setDatePlus} />
+      <LeftToolbar setDatePlus={setDatePlus} setCurrentDate={setCurrentDate} />
       <div className="daily--todo-list">
         <DragDropContext onDragEnd={dragEndActions}>
           {dateArrays.map((e, i) => {
@@ -45,7 +46,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
           })}
         </DragDropContext>
       </div>
-      <RightToolbar setDatePlus={setDatePlus} />
+      <RightToolbar setDatePlus={setDatePlus} currentDate={currentDate} setCurrentDate={setCurrentDate} />
 
       {!currentUser ? <Redirect to="/" /> : null}
     </div>
