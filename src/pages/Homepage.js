@@ -12,7 +12,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
   const [datePlus, setDatePlus] = useState(0);
 
   const createDate = (addNum) => {
-    return moment(moment(new Date()).add({ days: addNum })).format("ddd MMM Do YYYY");
+    return moment(moment(new Date()).add({ days: addNum })).format("ddd MMM D YYYY");
   };
 
   const dateArrays = [datePlus - 1, datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
