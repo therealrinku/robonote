@@ -7,7 +7,7 @@ const LeftToolbar = ({ setDatePlus }) => {
         <CgChevronLeft />
       </button>
 
-      <button onClick={() => setDatePlus((prev) => prev - 1)}>
+      <button onClick={() => setDatePlus(0)}>
         <VscHome />
       </button>
     </div>
