@@ -7,7 +7,7 @@ const RightToolbar = ({ setDatePlus }) => {
   const [showCalendar, setShowCalendar] = useState(false);
 
   return (
-    <Fragment>
+    <div className="toolbars">
       <div className="toolbar right">
         <button onClick={() => setDatePlus((prev) => prev + 1)}>
           <CgChevronRight />
@@ -23,7 +23,7 @@ const RightToolbar = ({ setDatePlus }) => {
           <Calendar />
         </div>
       ) : null}
-    </Fragment>
+    </div>
   );
 };
 
