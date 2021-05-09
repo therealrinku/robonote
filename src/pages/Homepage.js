@@ -28,7 +28,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
 
   return (
     <div className="homepage">
-      <LeftToolbar setDatePlus={setDatePlus} setCurrentDate={setCurrentDate} />
+      <LeftToolbar setDatePlus={setDatePlus} setCurrentDate={setCurrentDate} currentDate={currentDate} />
       <div className="daily--todo-list">
         <DragDropContext onDragEnd={dragEndActions}>
           {dateArrays.map((e, i) => {
@@ -46,7 +46,7 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
           })}
         </DragDropContext>
       </div>
-      <RightToolbar setDatePlus={setDatePlus} currentDate={currentDate} setCurrentDate={setCurrentDate} />
+      <RightToolbar setDatePlus={setDatePlus} />
 
       {!currentUser ? <Redirect to="/" /> : null}
     </div>

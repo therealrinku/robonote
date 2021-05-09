@@ -4,14 +4,14 @@
   margin-top: 110px;
 
   button {
+    font-size: 20px;
     border: none;
     background: none;
     outline: none;
-    font-size: 40px;
   }
 
-  button:last-child {
-    font-size: 20px;
+  button:first-child {
+    font-size: 40px;
   }
 
   button:hover {
@@ -19,13 +19,22 @@
   }
 }
 
-.toolbars .right {
+.toolbars .left {
   position: relative;
+
+  button:nth-child(2) {
+    margin-bottom: 8px;
+  }
+
+  button:last-child {
+    font-size: 18px;
+  }
 }
 
 .toolbars .calendar {
   position: absolute;
-  z-index: 1;
-  right: 2px;
+  z-index: 2;
+  left: 2px;
   margin-top: 1px;
+  background: white;
 }
