@@ -1,11 +1,8 @@
-import TodoDate from "./TodoDate";
-import TodoList from "./TodoList";
-import TodoAddForm from "./TodoAddForm";
-import DummyLines from "./DummyLines";
 import Loader from "./Loader";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
+import moment from "moment";
 
 const TodoPage = ({
   formatedDate,
@@ -28,6 +25,13 @@ const TodoPage = ({
       fetchTodos(currentUser, formatedDate);
     }
   }, []);
+
+  //to check if date is before today
+  const TodayDate = moment(new Date());
+  const dateDiff = moment(formatedDate).diff(TodayDate, "days");
+
+  //checking todos length
+  const todosLength = todosObject[0]?.todos.length || 0;
 
   const DeleteTodo = (todoValue) => {
     deleteTodo(currentUser, formatedDate, allTodos, todoValue);
@@ -55,12 +59,47 @@ const TodoPage = ({
           style={snapshot.isDraggingOver ? { background: "lightgreen" } : null}
         >
           {loading ? <Loader /> : null}
-          <TodoDate formatedDate={formatedDate} datePlus={datePlus} />
-          <TodoList todos={todosObject[0]?.todos || []} UpdateTodo={UpdateTodo} DeleteTodo={DeleteTodo} />
+
+          {/*todos date*/}
+          <div className="todo--date">
+            <p style={dateDiff < 0 ? { color: "grey" } : null}>{formatedDate}</p>
+          </div>
+
+          {/*todos list*/}
+          <div className="todo--list">
+            {todosObject[0]?.todos.map((todo, i) => {
+              return (
+                <Draggable draggableId={todo.value} key={i} index={i}>
+                  {(provided) => (
+                    <li
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                      className={todo.done ? "done--todo draggable" : "draggable"}
+                      onClick={() => UpdateTodo(todo.value)}
+                      onDoubleClick={() => DeleteTodo(todo.value)}
+                    >
+                      {todo.value}
+                    </li>
+                  )}
+                </Draggable>
+              );
+            })}
+          </div>
+
+          {/*new todo form*/}
           {todosObject[0]?.todos.length === 12 ? null : (
-            <TodoAddForm newTodo={newTodo} setNewTodo={setNewTodo} AddTodo={AddNewTodo} />
+            <form className="todo--add-form" onSubmit={AddNewTodo}>
+              <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
+            </form>
           )}
-          <DummyLines todosLength={todosObject[0]?.todos.length || 0} />
+
+          {/*extra dummy lines*/}
+          <div className="dummy--lines">
+            {[...Array(todosLength <= 11 ? 12 - todosLength + 1 : 1)].map((_, i) => {
+              return <li key={i}></li>;
+            })}
+          </div>
           {provided.placeholder}
         </main>
       )}
