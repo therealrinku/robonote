@@ -1,4 +1,3 @@
-import HelpTooltip from "./HelpTooltip";
 import { connect } from "react-redux";
 import * as userActions from "../redux/user/userActions";
 
@@ -12,7 +11,6 @@ const Nav2 = ({ history, currentUser, signOut }) => {
       </section>
 
       <section>
-        <HelpTooltip />
         <p>{currentUser?.slice(0, currentUser?.indexOf("@"))}</p>
         <button onClick={signOut}>Logout</button>
       </section>
