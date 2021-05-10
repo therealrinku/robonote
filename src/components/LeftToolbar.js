@@ -19,7 +19,14 @@ const LeftToolbar = ({ setDatePlus, currentDate, setCurrentDate }) => {
   //to hide calendar on outside click
   useEffect(() => {
     window.onclick = (event) => {
-      if (event.target.parentNode.className !== "calendar-open-button") {
+      const exclude_classname = [
+        "react-calendar__navigation",
+        "react-calendar__navigation__label",
+        "calendar-open-button",
+        "react-calendar__tile react-calendar__year-view__months__month",
+        "react-calendar",
+      ];
+      if (!exclude_classname.includes(event.target.parentNode.className)) {
         setShowCalendar(false);
       }
     };
