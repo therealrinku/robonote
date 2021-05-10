@@ -1,6 +1,6 @@
 import { VscHome, CgChevronLeft, AiOutlineCalendar } from "react-icons/all";
 import Calendar from "react-calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-calendar/dist/Calendar.css";
 
 const LeftToolbar = ({ setDatePlus, currentDate, setCurrentDate }) => {
@@ -16,6 +16,15 @@ const LeftToolbar = ({ setDatePlus, currentDate, setCurrentDate }) => {
     setCurrentDate(e);
   };
 
+  //to hide calendar on outside click
+  useEffect(() => {
+    window.onclick = (event) => {
+      if (event.target.parentNode.className !== "calendar-open-button") {
+        setShowCalendar(false);
+      }
+    };
+  }, []);
+
   return (
     <div className="toolbars">
       <div className="toolbar left">
@@ -27,7 +36,7 @@ const LeftToolbar = ({ setDatePlus, currentDate, setCurrentDate }) => {
           <VscHome />
         </button>
 
-        <button onClick={() => setShowCalendar((prev) => !prev)}>
+        <button onClick={() => setShowCalendar((prev) => !prev)} className="calendar-open-button">
           <AiOutlineCalendar />
         </button>
       </div>
