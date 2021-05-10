@@ -75,15 +75,17 @@ const TodoPage = ({
               return (
                 <Draggable draggableId={todo.value} key={i} index={i}>
                   {(provided) => (
-                    <div className="flex">
+                    <div
+                      className="flex"
+                      onMouseEnter={() => setShowDeleteButtonId(i)}
+                      onMouseLeave={() => setShowDeleteButtonId(null)}
+                    >
                       <li
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                         className={todo.done ? "done--todo draggable" : "draggable"}
                         onClick={() => UpdateTodo(todo.value)}
-                        onMouseEnter={() => setShowDeleteButtonId(i)}
-                        onMouseLeave={() => setShowDeleteButtonId(null)}
                       >
                         {todo.value}
                       </li>
