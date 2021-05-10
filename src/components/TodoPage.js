@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import moment from "moment";
+import { VscClose } from "react-icons/all";
 
 const TodoPage = ({
   formatedDate,
@@ -71,16 +72,20 @@ const TodoPage = ({
               return (
                 <Draggable draggableId={todo.value} key={i} index={i}>
                   {(provided) => (
-                    <li
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
-                      className={todo.done ? "done--todo draggable" : "draggable"}
-                      onClick={() => UpdateTodo(todo.value)}
-                      onDoubleClick={() => DeleteTodo(todo.value)}
-                    >
-                      {todo.value}
-                    </li>
+                    <div className="flex">
+                      <li
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        className={todo.done ? "done--todo draggable" : "draggable"}
+                        onClick={() => UpdateTodo(todo.value)}
+                      >
+                        {todo.value}
+                      </li>
+                      <button className="delete-btn" onClick={() => DeleteTodo(todo.value)}>
+                        <VscClose />
+                      </button>
+                    </div>
                   )}
                 </Draggable>
               );
