@@ -20,6 +20,9 @@ const TodoPage = ({
   const [newTodo, setNewTodo] = useState("");
   const todosObject = allTodos.filter((data) => data.date === formatedDate);
 
+  //for showing hiding delete btn on mouse enter and leave
+  const [showDeleteButtonId, setShowDeleteButtonId] = useState(false);
+
   useEffect(() => {
     setNewTodo("");
     if (!todosObject[0]?.date) {
@@ -79,12 +82,16 @@ const TodoPage = ({
                         ref={provided.innerRef}
                         className={todo.done ? "done--todo draggable" : "draggable"}
                         onClick={() => UpdateTodo(todo.value)}
+                        onMouseEnter={() => setShowDeleteButtonId(i)}
+                        onMouseLeave={() => setShowDeleteButtonId(null)}
                       >
                         {todo.value}
                       </li>
-                      <button className="delete-btn" onClick={() => DeleteTodo(todo.value)}>
-                        <VscClose />
-                      </button>
+                      {showDeleteButtonId === i ? (
+                        <button className="delete-btn" onClick={() => DeleteTodo(todo.value)}>
+                          <VscClose />
+                        </button>
+                      ) : null}
                     </div>
                   )}
                 </Draggable>
