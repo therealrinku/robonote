@@ -89,11 +89,15 @@ const TodoPage = ({
                       >
                         {todo.value}
                       </li>
-                      {showDeleteButtonId === i ? (
-                        <button className="delete-btn" onClick={() => DeleteTodo(todo.value)}>
-                          <VscClose />
-                        </button>
-                      ) : null}
+
+                      <button
+                        id="mobile-delete-btn"
+                        style={showDeleteButtonId !== i ? { display: "none" } : null}
+                        className="delete-btn"
+                        onClick={() => DeleteTodo(todo.value)}
+                      >
+                        <VscClose />
+                      </button>
                     </div>
                   )}
                 </Draggable>
