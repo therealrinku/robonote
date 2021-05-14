@@ -19,10 +19,17 @@ const Homepage = ({ allTodos, currentUser, fetchTodos, addTodo, deleteTodo, upda
   const dateArrays = [datePlus - 1, datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
 
   const dragEndActions = (result) => {
-    if (result.source.droppableId !== result.destination.droppableId) {
+    const { source, destination } = result;
+
+    //return if dropped outside container;
+    if (!destination) {
+      return;
+    }
+
+    if (source.droppableId !== destination.droppableId) {
       //console.log(currentUser, result.source.droppableId, allTodos, result.draggableId);
-      addTodo(currentUser, result.destination.droppableId, allTodos, result.draggableId);
-      deleteTodo(currentUser, result.source.droppableId, allTodos, result.draggableId);
+      addTodo(currentUser, destination.droppableId, allTodos, result.draggableId);
+      deleteTodo(currentUser, source.droppableId, allTodos, result.draggableId);
     }
   };
 
