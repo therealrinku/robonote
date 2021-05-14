@@ -4,10 +4,9 @@ import Concat from "../../utilities/Concat";
 import DoneUndone from "../../utilities/DoUndo";
 import Pop from "../../utilities/Pop";
 
-export const DELETE_TODO = (currentUser, todosDate, initialFullTodos, todoValue) => async (dispatch) => {
+export const DELETE_TODO = (todosDate, initialFullTodos, todoValue) => async (dispatch) => {
   try {
     const response = Pop(initialFullTodos, todosDate, todoValue);
-    await UpdateTodos(currentUser, todosDate, response.updatedTodos);
     dispatch({
       type: todosActionTypes.DELETE_TODO,
       payload: response.updatedTodoList,
@@ -20,10 +19,9 @@ export const DELETE_TODO = (currentUser, todosDate, initialFullTodos, todoValue)
   }
 };
 
-export const UPDATE_TODO = (currentUser, todosDate, initialFullTodos, todoValue) => async (dispatch) => {
+export const UPDATE_TODO = (todosDate, initialFullTodos, todoValue) => async (dispatch) => {
   try {
     const response = DoneUndone(initialFullTodos, todosDate, todoValue);
-    await UpdateTodos(currentUser, todosDate, response.updatedTodos);
     dispatch({
       type: todosActionTypes.UPDATE_TODO,
       payload: response.updatedTodoList,
@@ -52,10 +50,9 @@ export const FETCH_TODOS = (currentUser, todosDate) => async (dispatch) => {
   }
 };
 
-export const ADD_TODO = (currentUser, todosDate, initialFullTodos, newTodo) => async (dispatch) => {
+export const ADD_TODO = (todosDate, initialFullTodos, newTodo) => async (dispatch) => {
   try {
     const response = Concat(initialFullTodos, todosDate, newTodo);
-    await UpdateTodos(currentUser, todosDate, response.updatedTodos);
     dispatch({
       type: todosActionTypes.ADD_TODO,
       payload: response.updatedTodoList,
