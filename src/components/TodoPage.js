@@ -60,7 +60,7 @@ const TodoPage = ({
           className="todo--page container"
           {...provided.droppableProps}
           ref={provided.innerRef}
-          style={snapshot.isDraggingOver ? { background: "lightgreen" } : null}
+          style={snapshot.isDraggingOver ? { background: "rgba(0,0,0,0.04)" } : null}
         >
           {loading ? <Loader /> : null}
 
