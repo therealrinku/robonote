@@ -70,6 +70,14 @@
     position: relative;
   }
 
+  .dragging {
+    background: rgba(0, 0, 0, 0.09);
+
+    li {
+      border: none;
+    }
+  }
+
   .delete-btn {
     position: absolute;
     right: 1px;

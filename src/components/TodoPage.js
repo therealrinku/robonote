@@ -74,16 +74,16 @@ const TodoPage = ({
             {todosObject[0]?.todos.map((todo, i) => {
               return (
                 <Draggable draggableId={todo.value} key={i} index={i}>
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <div
-                      className="flex"
+                      className={snapshot.isDragging ? "flex dragging" : "flex"}
                       onMouseEnter={() => setShowDeleteButtonId(i)}
                       onMouseLeave={() => setShowDeleteButtonId(null)}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
                     >
                       <li
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
                         className={todo.done ? "done--todo draggable" : "draggable"}
                         onClick={() => UpdateTodo(todo.value)}
                       >
