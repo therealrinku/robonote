@@ -73,7 +73,7 @@ const TodoPage = ({
           <div className="todo--list">
             {todosObject[0]?.todos.map((todo, i) => {
               return (
-                <Draggable draggableId={todo.value} key={i} index={i}>
+                <Draggable draggableId={todo.value} key={todo.value} index={i}>
                   {(provided, snapshot) => (
                     <div
                       className={snapshot.isDragging ? "flex dragging" : "flex"}
