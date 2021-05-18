@@ -4,13 +4,12 @@
 }
 
 .homeSectionOne section {
-  border: solid 1px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: stretch;
   width: 330px;
   margin: auto;
-  height: 35px;
+  height: 40px;
 }
 
 .homeSectionOne h2 {
@@ -19,7 +18,7 @@
 }
 
 .homeSectionOne img {
-  width: 50%;
+  width: 45%;
   height: auto;
   display: block;
   margin: auto;
@@ -32,12 +31,18 @@
   outline: none;
   width: 65%;
   padding: 8px;
+  border-radius: 5px;
+}
+
+.homeSectionOne input {
+  border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
 .homeSectionOne button {
   width: 36%;
-  background: #cbd0f3;
-  font-size: 13px;
+  background: #dce1fd;
+  font-size: 15px;
+  margin-left: 10px;
 }
 
 .homeSectionTwo {

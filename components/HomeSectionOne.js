@@ -11,7 +11,7 @@ const HomepageOne = () => {
       <h2>Snaptask is your new todo list manager for maximum productivity.</h2>
       <section>
         <input type="text" placeholder="Type your email here" />
-        <button onClick={() => router.push("/signup")}>Get Started Now</button>
+        <button onClick={() => router.push("/signup")}>Signup</button>
       </section>
     </div>
   );
