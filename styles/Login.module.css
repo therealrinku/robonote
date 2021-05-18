@@ -58,3 +58,7 @@
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.loginPage button:hover {
+  background: #517ed1;
+}
