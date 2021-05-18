@@ -1,0 +1,33 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul:first-child {
+  font-weight: bold;
+}
+
+.nav ul:last-child button {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  font-size: 18px;
+  background: #dce1fd;
+  border: none;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav ul:last-child button:hover {
+  background: #cbd0f3;
+}
