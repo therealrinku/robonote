@@ -1,6 +1,7 @@
 import loginPageStyles from "../styles/Login.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import Meta from "../components/Meta";
 
 const signupPage = () => {
   //form handlers
@@ -12,6 +13,7 @@ const signupPage = () => {
 
   return (
     <div className={loginPageStyles.loginPage}>
+      <Meta title="Snaptask- Signup" />
       <div>
         <form>
           <label for="email">Email</label>
