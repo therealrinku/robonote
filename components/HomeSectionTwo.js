@@ -1,0 +1,35 @@
+import homepageStyles from "../styles/Home.module.css";
+import { AiOutlineDrag } from "react-icons/ai";
+import { VscListFilter } from "react-icons/vsc";
+import { BiMoon } from "react-icons/bi";
+
+const HomeSectionTwo = () => {
+  return (
+    <div className={homepageStyles.homeSectionTwo}>
+      <div>
+        <section>
+          <li>
+            <AiOutlineDrag />
+          </li>
+          <p>Drag and Drop functionality.</p>
+        </section>
+
+        <section>
+          <li>
+            <VscListFilter />
+          </li>
+          <p>Easy to use simple layout.</p>
+        </section>
+
+        <section>
+          <li>
+            <BiMoon />
+          </li>
+          <p>Dark mode for night.</p>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default HomeSectionTwo;
