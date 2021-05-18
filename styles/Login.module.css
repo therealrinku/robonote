@@ -1,5 +1,5 @@
 .loginPage {
-  margin-top: 12vh;
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
 .loginPage p {
   text-align: center;
   font-size: 13px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .loginPage a {
@@ -46,7 +46,7 @@
 .loginPage label {
   margin-bottom: 5px;
   font-size: 13px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .loginPage button {
@@ -56,9 +56,19 @@
   padding: 9px 10px;
   border: none;
   border-radius: 5px;
-  margin-bottom: 20px;
 }
 
 .loginPage button:hover {
   background: #517ed1;
+}
+
+.loginPage section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.loginPage section p {
+  margin-top: 4px;
+  font-size: 12px;
 }
