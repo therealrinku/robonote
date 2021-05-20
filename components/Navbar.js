@@ -10,11 +10,8 @@ const Navbar = () => {
       </ul>
 
       <ul>
-        <Link href="/login">
-          <button>
-            <FiUser />
-          </button>
-        </Link>
+        <Link href="/login">Login</Link>
+        <Link href="/signup">Signup</Link>
       </ul>
     </nav>
   );

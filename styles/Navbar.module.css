@@ -12,23 +12,24 @@
 }
 
 .nav ul:first-child {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.2px;
   font-weight: bold;
 }
 
-.nav ul:last-child button {
-  border-radius: 50%;
-  height: 35px;
-  width: 35px;
-  font-size: 18px;
-  background: #dce1fd;
-  border: none;
-  padding: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.nav ul:last-child a {
+  font-size: 14px;
 }
 
-.nav ul:last-child button:hover {
-  background: #cbd0f3;
+.nav ul:last-child a:last-child {
+  margin-left: 12px;
+  background: #52be80;
+  color: white;
+  padding: 9px 15px;
+  border-radius: 8px;
+}
+
+.nav ul:last-child a:last-child:hover {
+  background: #379c63;
 }
