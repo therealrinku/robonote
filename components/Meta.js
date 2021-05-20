@@ -5,7 +5,7 @@ const Meta = ({ title, description }) => {
     <Head>
       <title>{title}</title>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Actor&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       <meta name="description" content={description} />
     </Head>
   );
