@@ -132,7 +132,16 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 859px) and (min-width: 800px) {
+  .homeSectionOne input,
+  .homeSectionOne button {
+    width: 300px;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 410px) {
   .homeSectionOne input,
   .homeSectionOne button {
     margin: auto;
