@@ -1,4 +1,4 @@
-import homepageStyles from "../styles/Home.module.css";
+import homeSectionOneStyles from "../styles/HomeSectionOne.module.css";
 import { useRouter } from "next/router";
 import MainImage from "../assets/MainImage.svg";
 
@@ -6,7 +6,7 @@ const HomepageOne = () => {
   const router = useRouter();
 
   return (
-    <div className={homepageStyles.homeSectionOne}>
+    <div className={homeSectionOneStyles.homeSectionOne}>
       <section>
         <h2>Snaptask is your new todo list manager to help you acheive your goals.</h2>
         <div>

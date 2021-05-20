@@ -1,11 +1,11 @@
-import homepageStyles from "../styles/Home.module.css";
+import homeSectionTwoStyles from "../styles/HomeSectionTwo.module.css";
 import { AiOutlineDrag } from "react-icons/ai";
 import { VscListFilter } from "react-icons/vsc";
 import { BiMoon } from "react-icons/bi";
 
 const HomeSectionTwo = () => {
   return (
-    <div className={homepageStyles.homeSectionTwo}>
+    <div className={homeSectionTwoStyles.homeSectionTwo}>
       <div>
         <section>
           <li>
