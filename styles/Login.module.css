@@ -17,9 +17,9 @@
 }
 
 .loginPage div {
-  background: white;
+  background: rgba(175, 172, 172, 0.04);
   max-width: 440px;
-  box-shadow: 0 5px 20px 0 rgb(21 27 38 / 8%);
+  box-shadow: 0 5px 20px 0 rgb(21 27 38 / 15%);
   border-radius: 8px;
   width: calc(100% - 16px);
   margin-top: 80px;
@@ -51,7 +51,7 @@
 
 .loginPage button {
   margin-top: 15px;
-  background: #6495ed;
+  background: #52be80;
   color: white;
   padding: 9px 10px;
   border: none;
@@ -59,7 +59,7 @@
 }
 
 .loginPage button:hover {
-  background: #517ed1;
+  background: #379c63;
 }
 
 .loginPage section {

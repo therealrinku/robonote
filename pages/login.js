@@ -34,15 +34,6 @@ const loginPage = () => {
           </p>
         </form>
       </div>
-
-      <style jsx global>{`
-        body {
-          background: #f6f8f9;
-        }
-        nav {
-          background: #f6f8f9 !important;
-        }
-      `}</style>
     </div>
   );
 };
