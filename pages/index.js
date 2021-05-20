@@ -1,3 +1,4 @@
+import HomeSectionFour from "../components/HomeSectionFour";
 import HomeSectionOne from "../components/HomeSectionOne";
 import HomeSectionThree from "../components/HomeSectionThree";
 import HomeSectionTwo from "../components/HomeSectionTwo";
@@ -10,6 +11,7 @@ export default function Home() {
       <HomeSectionOne />
       <HomeSectionTwo />
       <HomeSectionThree />
+      <HomeSectionFour />
     </>
   );
 }
