@@ -1,15 +1,27 @@
 .homeSectionOne {
-  margin-top: 15vh;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  max-width: 1500px;
+  width: 90vw;
+  margin: auto;
+  margin-top: 18vh;
 }
 
 .homeSectionOne section {
+  width: 50%;
+}
+
+.homeSectionOne section:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.homeSectionOne section:first-child div {
   display: flex;
   align-items: center;
-  justify-content: stretch;
-  width: 330px;
-  margin: auto;
-  height: 40px;
+  flex-wrap: wrap;
+  margin-left: 17px;
 }
 
 .homeSectionOne h2 {
@@ -18,7 +30,8 @@
 }
 
 .homeSectionOne img {
-  width: 45%;
+  width: 40vw;
+  max-width: 700px;
   height: auto;
   display: block;
   margin: auto;
@@ -29,20 +42,54 @@
   height: 100%;
   border: none;
   outline: none;
-  width: 65%;
-  padding: 8px;
   border-radius: 5px;
+  padding: 12px 20px;
 }
 
 .homeSectionOne input {
+  padding-left: 6px;
   border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
 .homeSectionOne button {
-  width: 36%;
-  background: #dce1fd;
+  background: #52be80;
   font-size: 15px;
   margin-left: 10px;
+  color: white;
+}
+
+.homeSectionOne button:hover {
+  background: #379c63;
+}
+
+/*media query for section one */
+@media (max-width: 799px) {
+  .homeSectionOne {
+    flex-direction: column-reverse;
+  }
+
+  .homeSectionOne section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .homeSectionOne section:first-child div {
+    margin: auto;
+  }
+
+  .homeSectionOne img {
+    margin-top: 50px;
+    width: 75vw;
+  }
+}
+
+@media (max-width: 380px) {
+  .homeSectionOne input,
+  .homeSectionOne button {
+    margin: auto;
+    width: 85vw;
+    margin-top: 10px;
+  }
 }
 
 .homeSectionTwo {
