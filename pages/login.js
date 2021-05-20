@@ -15,9 +15,9 @@ const loginPage = () => {
       <Meta title="Snaptask - Login" />
       <div>
         <form>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type={showPassword ? "text" : "password"}
             id="password"

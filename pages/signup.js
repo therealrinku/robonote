@@ -16,16 +16,16 @@ const signupPage = () => {
       <Meta title="Snaptask- Signup" />
       <div>
         <form>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type={showPassword ? "text" : "password"}
             id="password"
             value={password1}
             onChange={(e) => setPassword1(e.target.value)}
           />
-          <label for="password2">Repeat password</label>
+          <label htmlFor="password2">Repeat password</label>
           <input
             type={showPassword ? "text" : "password"}
             id="password2"
