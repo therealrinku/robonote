@@ -1,0 +1,65 @@
+.homeSectionThree {
+  margin: 20vh 20px 100px 20px;
+  max-width: 1500px;
+  display: flex;
+  justify-content: center;
+}
+
+.homeSectionThree section {
+  display: block;
+  margin: 20px auto 0;
+  text-align: left;
+  max-width: 475px;
+  border-radius: 6px;
+  padding: 16px 23px 7px 16px;
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: rgba(68, 68, 68, 0.04);
+}
+
+.homeSectionThree section div {
+  display: flex;
+  align-items: center;
+}
+
+.homeSectionThree div:last-child {
+  margin-left: 10px;
+}
+
+.homeSectionThree section div span {
+  margin-left: 9px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.homeSectionThree img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.homeSectionThree p {
+  margin-left: 44px;
+  margin-top: -3px;
+  font-size: 14px;
+}
+
+@media (max-width: 799px) {
+  .homeSectionThree {
+    flex-direction: column;
+    width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeSectionThree section {
+    width: 85vw;
+    max-width: 85vw;
+  }
+
+  .homeSectionThree > div:last-child {
+    margin-left: -2px;
+  }
+}
