@@ -2,7 +2,7 @@ import todoDetailModalStyles from "../styles/TodoDetailModal.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 
-const TodoDetailModal = ({ close, todo, date }) => {
+export default function TodoDetailModal({ close, todo, date }) {
   return (
     <div className={todoDetailModalStyles.todoDetailModal}>
       <div>
@@ -19,6 +19,4 @@ const TodoDetailModal = ({ close, todo, date }) => {
       <p>{todo}</p>
     </div>
   );
-};
-
-export default TodoDetailModal;
+}

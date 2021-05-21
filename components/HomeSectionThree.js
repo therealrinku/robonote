@@ -1,6 +1,6 @@
 import HomeSectionThreeStyles from "../styles/HomeSectionThree.module.css";
 
-const HomeSectionThree = () => {
+export default function HomeSectionThree() {
   const reviews = [
     {
       userImageUrl: "https://bit.ly/2T9n057",
@@ -67,6 +67,4 @@ const HomeSectionThree = () => {
       </div>
     </div>
   );
-};
-
-export default HomeSectionThree;
+}

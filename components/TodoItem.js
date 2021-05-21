@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import Backdrop from "./Backdrop";
 import TodoDetailModal from "./TodoDetailModal";
 
-const TodoItem = ({ todo, date }) => {
+export default function TodoItem({ todo, date }) {
   const [showDetailModal, setShowDetailModal] = useState(false);
 
   //toggle detail modal
@@ -36,6 +36,4 @@ const TodoItem = ({ todo, date }) => {
       `}</style>
     </>
   );
-};
-
-export default TodoItem;
+}

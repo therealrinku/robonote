@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Meta = ({ title, description }) => {
+export default function Meta({ title, description }) {
   return (
     <Head>
       <title>{title}</title>
@@ -9,11 +9,9 @@ const Meta = ({ title, description }) => {
       <meta name="description" content={description} />
     </Head>
   );
-};
+}
 
 Meta.defaultProps = {
   title: "Snaptask",
   description: "Your daily task manager.",
 };
-
-export default Meta;

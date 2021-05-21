@@ -2,7 +2,7 @@ import homeSectionOneStyles from "../styles/HomeSectionOne.module.css";
 import { useRouter } from "next/router";
 import MainImage from "../assets/MainImage.svg";
 
-const HomepageOne = () => {
+export default function HomepageOne() {
   const router = useRouter();
 
   return (
@@ -20,6 +20,4 @@ const HomepageOne = () => {
       </section>
     </div>
   );
-};
-
-export default HomepageOne;
+}

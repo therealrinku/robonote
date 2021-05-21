@@ -1,4 +1,4 @@
-const Backdrop = ({ toggle }) => {
+export default function Backdrop({ toggle }) {
   return (
     <div onClick={toggle}>
       <style jsx>{`
@@ -13,6 +13,4 @@ const Backdrop = ({ toggle }) => {
       `}</style>
     </div>
   );
-};
-
-export default Backdrop;
+}

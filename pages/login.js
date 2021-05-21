@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Meta from "../components/Meta";
 
-const loginPage = () => {
+export default function loginPage() {
   //form handlers
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +36,4 @@ const loginPage = () => {
       </div>
     </div>
   );
-};
-
-export default loginPage;
+}

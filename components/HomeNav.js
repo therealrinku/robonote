@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BiDotsVertical, BiMoon } from "react-icons/bi";
 import { RiHome2Line } from "react-icons/ri";
 
-const HomeNav = ({ setDatePlus }) => {
+export default function HomeNav({ setDatePlus }) {
   return (
     <div className={homeNavStyles.homeNav}>
       <button onClick={() => setDatePlus((prev) => prev - 1)}>
@@ -23,6 +23,4 @@ const HomeNav = ({ setDatePlus }) => {
       </button>
     </div>
   );
-};
-
-export default HomeNav;
+}

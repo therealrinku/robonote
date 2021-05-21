@@ -1,6 +1,6 @@
 import homeSectionFourStyles from "../styles/HomeSectionFour.module.css";
 
-const HomeSectionFour = () => {
+export default function HomeSectionFour() {
   const quotes = [
     {
       text: "There is no greatness where there is not simplicity, goodness, and truth.",
@@ -23,6 +23,4 @@ const HomeSectionFour = () => {
       <p>{selectedQuote.author}</p>
     </div>
   );
-};
-
-export default HomeSectionFour;
+}

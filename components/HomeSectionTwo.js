@@ -3,7 +3,7 @@ import { AiOutlineDrag } from "react-icons/ai";
 import { VscListFilter } from "react-icons/vsc";
 import { BiMoon } from "react-icons/bi";
 
-const HomeSectionTwo = () => {
+export default function HomeSectionTwo() {
   return (
     <div className={homeSectionTwoStyles.homeSectionTwo}>
       <div>
@@ -30,6 +30,4 @@ const HomeSectionTwo = () => {
       </div>
     </div>
   );
-};
-
-export default HomeSectionTwo;
+}

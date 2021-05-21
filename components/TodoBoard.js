@@ -3,7 +3,7 @@ import moment from "moment";
 import TodoItem from "../components/TodoItem";
 import { useState } from "react";
 
-const TodoBoard = ({ todos, todosDate }) => {
+export default function TodoBoard({ todos, todosDate }) {
   //check if date is past
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
@@ -41,6 +41,4 @@ const TodoBoard = ({ todos, todosDate }) => {
       </div>
     </>
   );
-};
-
-export default TodoBoard;
+}

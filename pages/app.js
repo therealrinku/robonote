@@ -5,7 +5,7 @@ import HomeNav from "../components/HomeNav";
 import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 
-const home = () => {
+export default function home() {
   const todos = [
     ["brush", "ass"],
     ["headache", "dunk"],
@@ -48,6 +48,4 @@ const home = () => {
       `}</style>
     </div>
   );
-};
-
-export default home;
+}
