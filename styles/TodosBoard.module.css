@@ -8,8 +8,7 @@
 
 .todosBoard p {
   text-align: center;
-  font-weight: bold;
-  box-sizing: border-box;
+  font-size: 14px;
 }
 
 .todosBoard section:first-child {
