@@ -38,6 +38,11 @@
   font-size: 15px;
 }
 
+.todoDetailModal button:first-child {
+  font-size: 13px;
+  margin-top: 1px;
+}
+
 .todoDetailModal input {
   border: none;
   word-break: break-all;
