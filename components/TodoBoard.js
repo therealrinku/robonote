@@ -3,7 +3,7 @@ import todosBoardStyles from "../styles/TodosBoard.module.css";
 const TodoBoard = ({ todos, todosDate }) => {
   return (
     <>
-      <p className="date">{todosDate}</p>
+      <p>{todosDate}</p>
       <input type="text" />
       <div className={todosBoardStyles.todos}>
         {todos.map((todo, i) => {
