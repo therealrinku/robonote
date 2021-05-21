@@ -1,11 +1,20 @@
 import appStyles from "../styles/App.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
+import { useState } from "react";
 
 const TodoBoard = ({ todos, todosDate }) => {
   //check if date is past
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
+
+  //new todo form handler
+  const [newTodo, setNewTodo] = useState("");
+
+  //new todo submitter
+  const AddNewTodo = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -20,7 +29,9 @@ const TodoBoard = ({ todos, todosDate }) => {
       </div>
 
       {/*new todo input*/}
-      <input type="text" />
+      <form onSubmit={AddNewTodo}>
+        <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
+      </form>
 
       {/*dummy lines*/}
       <div>
