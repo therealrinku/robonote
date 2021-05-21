@@ -1,8 +1,9 @@
 import Meta from "../components/Meta";
-import TodosBoard from "../components/TodosBoard";
 import { useState } from "react";
 import moment from "moment";
 import HomeNav from "../components/HomeNav";
+import appStyles from "../styles/App.module.css";
+import TodoBoard from "../components/TodoBoard";
 
 const home = () => {
   const todos = [
@@ -23,10 +24,23 @@ const home = () => {
 
   return (
     <div style={{ marginTop: "3vh" }}>
-      <HomeNav setDatePlus={setDatePlus} />
       <Meta title="Snaptask-App" />
-      <TodosBoard dates={dates} todos={todos} />
 
+      {/*option section*/}
+      <HomeNav setDatePlus={setDatePlus} />
+
+      {/*todo boards*/}
+      <div className={appStyles.todosBoard}>
+        {dates.map((e, i) => {
+          return (
+            <section key={i}>
+              <TodoBoard todos={todos[i]} todosDate={e} />
+            </section>
+          );
+        })}
+      </div>
+
+      {/*hiding landing page navbar */}
       <style jsx global>{`
         nav {
           display: none !important;

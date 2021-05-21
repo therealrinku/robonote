@@ -1,4 +1,4 @@
-import todosBoardStyles from "../styles/TodosBoard.module.css";
+import appStyles from "../styles/App.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
 
@@ -11,7 +11,7 @@ const TodoBoard = ({ todos, todosDate }) => {
     <>
       <p style={dateDiff < 0 ? { color: "grey" } : null}>{todosDate}</p>
       <input type="text" />
-      <div className={todosBoardStyles.todos}>
+      <div className={appStyles.todos}>
         {todos.map((todo, i) => {
           return <TodoItem key={i} todo={todo} />;
         })}
