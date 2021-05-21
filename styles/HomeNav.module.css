@@ -20,10 +20,11 @@
   align-items: center;
   justify-content: center;
   margin-left: 10px;
+  background: rgb(231, 230, 230);
 }
 
 .homeNav button:hover {
-  background: rgb(231, 230, 230);
+  background: rgb(226, 221, 221);
 }
 
 .homeNav button:first-child {
