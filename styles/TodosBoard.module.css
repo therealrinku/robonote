@@ -2,7 +2,6 @@
   display: flex;
   width: 90vw;
   margin: auto;
-  justify-content: center;
   margin-bottom: 40px;
   overflow: hidden;
 }
@@ -18,13 +17,13 @@
 }
 
 .todosBoard section {
+  flex: 1 1 0px;
   height: 100%;
   border: solid 1px rgba(0, 0, 0, 0.2);
   border-left: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: fit-content;
 }
 
 .todosBoard li,
