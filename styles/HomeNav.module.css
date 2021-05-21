@@ -22,6 +22,12 @@
   margin-left: 10px;
 }
 
+.homeNav button:hover {
+  background: rgb(231, 230, 230);
+}
+
 .homeNav button:first-child {
   margin: 0;
+  background: black;
+  color: white;
 }

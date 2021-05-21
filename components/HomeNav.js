@@ -1,10 +1,13 @@
 import homeNavStyles from "../styles/HomeNav.module.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { BiDotsVertical } from "react-icons/bi";
+import { BiDotsVertical, BiMoon } from "react-icons/bi";
 
 const HomeNav = ({ setDatePlus }) => {
   return (
     <div className={homeNavStyles.homeNav}>
+      <button>
+        <BiMoon />
+      </button>
       <button>
         <BiDotsVertical />
       </button>
