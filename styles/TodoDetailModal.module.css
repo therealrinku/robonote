@@ -36,8 +36,16 @@
   outline: none;
   background: inherit;
   font-size: 15px;
-  margin-top: 3px;
-  color: red;
+}
+
+.todoDetailModal input {
+  border: none;
+  word-break: break-all;
+}
+
+.todoDetailModal input:focus {
+  border-top: none;
+  background: whitesmoke;
 }
 
 @media (max-width: 500px) {
