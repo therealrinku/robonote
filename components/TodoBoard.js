@@ -35,8 +35,8 @@ const TodoBoard = ({ todos, todosDate }) => {
 
       {/*dummy lines*/}
       <div>
-        {[...Array(14 - todos.length + 1)].map((line) => {
-          return <li key={line}></li>;
+        {[...Array(14 - todos.length + 1)].map((line, i) => {
+          return <li key={i}></li>;
         })}
       </div>
     </>
