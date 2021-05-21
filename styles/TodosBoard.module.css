@@ -1,6 +1,7 @@
 .todosBoard {
   display: flex;
   width: 90vw;
+  max-width: 1500px;
   margin: auto;
   margin-bottom: 40px;
   overflow: hidden;

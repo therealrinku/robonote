@@ -2,6 +2,7 @@ import Meta from "../components/Meta";
 import TodosBoard from "../components/TodosBoard";
 import { useState } from "react";
 import moment from "moment";
+import HomeNav from "../components/HomeNav";
 
 const home = () => {
   const todos = [
@@ -21,7 +22,8 @@ const home = () => {
   const dates = [datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
 
   return (
-    <div style={{ marginTop: "15vh" }}>
+    <div style={{ marginTop: "3vh" }}>
+      <HomeNav />
       <Meta title="Snaptask-App" />
       <TodosBoard dates={dates} todos={todos} />
 
