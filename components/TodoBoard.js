@@ -1,9 +1,14 @@
 import todosBoardStyles from "../styles/TodosBoard.module.css";
+import moment from "moment";
 
 const TodoBoard = ({ todos, todosDate }) => {
+  //check if date is past
+  const todayDate = moment(new Date());
+  const dateDiff = moment(todosDate).diff(todayDate, "days");
+
   return (
     <>
-      <p>{todosDate}</p>
+      <p style={dateDiff < 0 ? { color: "grey" } : null}>{todosDate}</p>
       <input type="text" />
       <div className={todosBoardStyles.todos}>
         {todos.map((todo, i) => {
