@@ -23,7 +23,7 @@ const home = () => {
 
   return (
     <div style={{ marginTop: "3vh" }}>
-      <HomeNav />
+      <HomeNav setDatePlus={setDatePlus} />
       <Meta title="Snaptask-App" />
       <TodosBoard dates={dates} todos={todos} />
 
