@@ -6,7 +6,7 @@ const TodoItem = ({ todo }) => {
       {/*hover effect */}
       <style jsx>{`
         li:hover {
-          cursor: pointer;
+          cursor: default;
         }
       `}</style>
     </>
