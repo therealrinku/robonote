@@ -2,6 +2,7 @@ import todoDetailModalStyles from "../styles/TodoDetailModal.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { ImPencil2 } from "react-icons/im";
+import { MdDone } from "react-icons/all";
 import { useState } from "react";
 
 export default function TodoDetailModal({ close, todo, date }) {
@@ -26,6 +27,10 @@ export default function TodoDetailModal({ close, todo, date }) {
         </span>
 
         <span>
+          <button>
+            <MdDone />
+          </button>
+
           <button onClick={focusInputField}>
             <ImPencil2 />
           </button>

@@ -39,6 +39,11 @@
 }
 
 .todoDetailModal button:first-child {
+  font-size: 16.5px;
+  margin-top: 1px;
+}
+
+.todoDetailModal button:nth-child(2) {
   font-size: 13px;
   margin-top: 1px;
 }
