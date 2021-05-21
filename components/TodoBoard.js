@@ -1,5 +1,6 @@
 import todosBoardStyles from "../styles/TodosBoard.module.css";
 import moment from "moment";
+import TodoItem from "../components/TodoItem";
 
 const TodoBoard = ({ todos, todosDate }) => {
   //check if date is past
@@ -12,7 +13,7 @@ const TodoBoard = ({ todos, todosDate }) => {
       <input type="text" />
       <div className={todosBoardStyles.todos}>
         {todos.map((todo, i) => {
-          return <li key={i}>{todo}</li>;
+          return <TodoItem key={i} todo={todo} />;
         })}
       </div>
       <div>
