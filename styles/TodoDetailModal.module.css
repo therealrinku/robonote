@@ -1,9 +1,17 @@
 .todoDetailModal {
   position: fixed;
-  top: 10vh;
+  top: 17vh;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  border-radius: 8px;
   box-shadow: 0 5px 20px 0 rgb(21 27 38 / 15%);
+  z-index: 2;
+  padding: 15px;
+  min-width: 450px;
+}
+
+@media (max-width: 500px) {
+  .todoDetailModal {
+    min-width: 95vw;
+  }
 }
