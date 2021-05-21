@@ -40,3 +40,17 @@
   box-sizing: border-box;
   width: 100%;
 }
+
+.todos li:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 799px) {
+  .todosBoard section {
+    display: none;
+  }
+
+  .todosBoard section:first-child {
+    display: block;
+  }
+}
