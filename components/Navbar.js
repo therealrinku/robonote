@@ -1,6 +1,5 @@
 import navbarStyles from "../styles/Navbar.module.css";
 import Link from "next/link";
-import { FiUser } from "react-icons/fi";
 
 const Navbar = () => {
   return (
