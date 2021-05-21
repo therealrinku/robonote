@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import Backdrop from "./Backdrop";
 import TodoDetailModal from "./TodoDetailModal";
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, date }) => {
   const [showDetailModal, setShowDetailModal] = useState(false);
 
   //toggle detail modal
@@ -23,7 +23,7 @@ const TodoItem = ({ todo }) => {
       {/*todo detail modal */}
       {showDetailModal ? (
         <Fragment>
-          <TodoDetailModal close={toggleDetailModal} todo={todo} />
+          <TodoDetailModal close={toggleDetailModal} todo={todo} date={date} />
           <Backdrop toggle={toggleDetailModal} />
         </Fragment>
       ) : null}

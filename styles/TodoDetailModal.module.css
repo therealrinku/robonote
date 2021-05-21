@@ -6,8 +6,38 @@
   background: white;
   box-shadow: 0 5px 20px 0 rgb(21 27 38 / 15%);
   z-index: 2;
-  padding: 15px;
   min-width: 450px;
+  padding: 15px;
+}
+
+.todoDetailModal p {
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.todoDetailModal span,
+.todoDetailModal div {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+}
+
+.todoDetailModal div {
+  justify-content: space-between;
+}
+
+.todoDetailModal span p {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.todoDetailModal button {
+  border: none;
+  outline: none;
+  background: inherit;
+  font-size: 15px;
+  margin-top: 3px;
+  color: red;
 }
 
 @media (max-width: 500px) {

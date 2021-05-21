@@ -24,7 +24,7 @@ const TodoBoard = ({ todos, todosDate }) => {
       {/* todo list*/}
       <div className={appStyles.todos}>
         {todos.map((todo, i) => {
-          return <TodoItem key={i} todo={todo} />;
+          return <TodoItem key={i} todo={todo} date={todosDate} />;
         })}
       </div>
 
