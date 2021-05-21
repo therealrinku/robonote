@@ -9,13 +9,20 @@ const TodoBoard = ({ todos, todosDate }) => {
 
   return (
     <>
+      {/* date */}
       <p style={dateDiff < 0 ? { color: "grey" } : null}>{todosDate}</p>
-      <input type="text" />
+
+      {/* todo list*/}
       <div className={appStyles.todos}>
         {todos.map((todo, i) => {
           return <TodoItem key={i} todo={todo} />;
         })}
       </div>
+
+      {/*new todo input*/}
+      <input type="text" />
+
+      {/*dummy lines*/}
       <div>
         {[...Array(14 - todos.length + 1)].map((line) => {
           return <li key={line}></li>;
