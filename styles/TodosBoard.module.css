@@ -1,0 +1,48 @@
+.todosBoard {
+  display: flex;
+  width: 90vw;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.todosBoard p {
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.todosBoard section:first-child {
+  border-left: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.todosBoard section {
+  height: 100%;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-left: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: fit-content;
+}
+
+.todosBoard li,
+.todosBoard input {
+  border: none;
+  outline: none;
+  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 5px;
+  font-size: 14px;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.todos li:hover {
+  cursor: move;
+}
