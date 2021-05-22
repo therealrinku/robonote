@@ -1,4 +1,3 @@
-import Meta from "../components/Meta";
 import { useState } from "react";
 import moment from "moment";
 import HomeNav from "../components/HomeNav";
@@ -16,8 +15,6 @@ export default function home() {
 
   return (
     <div style={{ marginTop: "3vh" }}>
-      <Meta title="Snaptask-App" />
-
       {/*option section*/}
       <HomeNav setDatePlus={setDatePlus} />
 
