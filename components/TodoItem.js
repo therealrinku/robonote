@@ -18,7 +18,7 @@ export default function TodoItem({ todo, date }) {
 
   return (
     <>
-      <li style={todo.completed ? { textDecoration: "line-through" } : null} onClick={toggleDetailModal}>
+      <li style={todo.completed ? { color: "grey" } : null} onClick={toggleDetailModal}>
         {todo.title}
       </li>
 
