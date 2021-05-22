@@ -9,7 +9,10 @@ export default function home() {
   const todos = [
     ["brush", "ass"],
     ["headache", "dunk"],
-    ["different asses and bigger boobs if my eyse are black or blues", "testes"],
+    [
+      "different asses and bigger boobs if my eyse are black or blues or if it's true or reverse who else knows that",
+      "testes",
+    ],
     ["tetth ahce", "zello is my best asest better than bloddy bitcoin"],
   ];
 

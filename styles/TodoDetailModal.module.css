@@ -6,6 +6,7 @@
   background: white;
   box-shadow: 0 5px 20px 0 rgb(21 27 38 / 15%);
   z-index: 2;
+  max-width: 450px;
   min-width: 450px;
   padding: 15px;
 }
@@ -24,6 +25,7 @@
 
 .todoDetailModal div {
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .todoDetailModal span p {
@@ -40,22 +42,11 @@
 
 .todoDetailModal button:first-child {
   font-size: 16.5px;
-  margin-top: 1px;
 }
 
-.todoDetailModal button:nth-child(2) {
+.todoDetailModal button:last-child {
   font-size: 13px;
-  margin-top: 1px;
-}
-
-.todoDetailModal input {
-  border: none;
-  word-break: break-all;
-}
-
-.todoDetailModal input:focus {
-  border-top: none;
-  background: whitesmoke;
+  color: rgb(196, 56, 56);
 }
 
 @media (max-width: 500px) {
