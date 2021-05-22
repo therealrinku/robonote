@@ -3,6 +3,7 @@ import moment from "moment";
 import HomeNav from "../components/HomeNav";
 import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
+import Meta from "../components/Meta";
 
 export default function home() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -15,6 +16,7 @@ export default function home() {
 
   return (
     <div style={{ marginTop: "3vh" }}>
+      <Meta />
       {/*option section*/}
       <HomeNav setDatePlus={setDatePlus} />
 
