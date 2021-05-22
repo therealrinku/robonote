@@ -6,7 +6,7 @@ import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 
 export default function home() {
-  const todos = [];
+  const todos = [[], [], [], []];
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
   const createDate = (daysToAdd) => {
