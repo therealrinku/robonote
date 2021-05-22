@@ -18,12 +18,14 @@ export default function TodoItem({ todo, date }) {
 
   return (
     <>
-      <li onClick={toggleDetailModal}>{todo}</li>
+      <li style={todo.completed ? { textDecoration: "line-through" } : null} onClick={toggleDetailModal}>
+        {todo.title}
+      </li>
 
       {/*todo detail modal */}
       {showDetailModal ? (
         <Fragment>
-          <TodoDetailModal close={toggleDetailModal} todo={todo} date={date} />
+          <TodoDetailModal close={toggleDetailModal} todo={todo.title} date={date} />
           <Backdrop toggle={toggleDetailModal} />
         </Fragment>
       ) : null}

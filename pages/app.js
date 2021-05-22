@@ -5,17 +5,7 @@ import HomeNav from "../components/HomeNav";
 import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 
-export default function home() {
-  const todos = [
-    ["brush", "ass"],
-    ["headache", "dunk"],
-    [
-      "different asses and bigger boobs if my eyse are black or blues or if it's true or reverse who else knows that",
-      "testes",
-    ],
-    ["tetth ahce", "zello is my best asest better than bloddy bitcoin"],
-  ];
-
+export default function home({ todos }) {
   //date generate
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
@@ -51,4 +41,21 @@ export default function home() {
       `}</style>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const users = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+  const data = await users.json();
+
+  const parsed = [];
+
+  data.slice(0, 4).forEach((d) => {
+    parsed.push([{ title: d.title, completed: d.completed }]);
+  });
+
+  return {
+    props: {
+      todos: parsed,
+    }, // will be pased to the page component as props
+  };
 }
