@@ -6,7 +6,6 @@ import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 
 export default function home() {
-  const todos = [[], [], [], []];
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
   const createDate = (daysToAdd) => {
@@ -27,7 +26,7 @@ export default function home() {
         {dates.map((e, i) => {
           return (
             <section key={i}>
-              <TodoBoard todos={todos[i]} todosDate={e} />
+              <TodoBoard todosDate={e} />
             </section>
           );
         })}

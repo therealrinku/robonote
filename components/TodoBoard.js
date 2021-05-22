@@ -1,12 +1,16 @@
 import appStyles from "../styles/App.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "../firebase/main";
 
-export default function TodoBoard({ todos, todosDate }) {
+export default function TodoBoard({ todosDate }) {
   //check if date is past
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
+
+  //todos
+  const [todos, setTodos] = useState([]);
 
   //new todo form handler
   const [newTodo, setNewTodo] = useState("");
@@ -15,6 +19,14 @@ export default function TodoBoard({ todos, todosDate }) {
   const AddNewTodo = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    db.collection("test")
+      .doc(todosDate)
+      .onSnapshot((doc) => {
+        setTodos(doc.data()?.todos || []);
+      });
+  }, [todosDate]);
 
   return (
     <>
