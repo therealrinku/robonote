@@ -5,8 +5,8 @@ import HomeNav from "../components/HomeNav";
 import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 
-export default function home({ todos }) {
-  //date generate
+export default function home() {
+  const todos = [];
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
   const createDate = (daysToAdd) => {
@@ -41,21 +41,4 @@ export default function home({ todos }) {
       `}</style>
     </div>
   );
-}
-
-export async function getStaticProps(context) {
-  const users = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
-  const data = await users.json();
-
-  const parsed = [];
-
-  data.slice(0, 4).forEach((d) => {
-    parsed.push([{ title: d.title, completed: d.completed }]);
-  });
-
-  return {
-    props: {
-      todos: parsed,
-    }, // will be pased to the page component as props
-  };
 }
