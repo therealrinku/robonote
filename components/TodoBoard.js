@@ -18,13 +18,17 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     e.preventDefault();
     //new todo object
     const newTodoObject = { title: newTodo, completed: false, serial: todos.length + 1 };
-    //updating locally
+    //index of board
     const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
-    const fullTodoListCopy = [...fullTodoList];
-    const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
-    fullTodoListCopy[indexOfBoard].todos = [...boardTodos, newTodoObject];
-    setFullTodos(fullTodoListCopy);
-    console.log(boardTodos);
+    //if todos exists in that date then append on it else create a brand new todo list
+    if (indexOfBoard >= 0) {
+      const fullTodoListCopy = [...fullTodoList];
+      const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
+      fullTodoListCopy[indexOfBoard].todos = [...boardTodos, newTodoObject];
+      setFullTodos(fullTodoListCopy);
+    } else {
+      setFullTodos((prev) => [...prev, { date: todosDate, todos: [newTodoObject] }]);
+    }
 
     //updating in db
     db.collection("test")
