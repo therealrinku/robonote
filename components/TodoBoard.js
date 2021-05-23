@@ -6,7 +6,6 @@ import { db } from "../firebase/main";
 
 export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
-  console.log(todos);
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
 
