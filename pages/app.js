@@ -17,7 +17,7 @@ export default function home() {
   //creating dates depending on currentDate plus addedDate
   const dates = [datePlus, datePlus + 1, datePlus + 2, datePlus + 3].map((e) => createDate(e));
 
-  //todos storage
+  //all todos storage
   const [todos, setTodos] = useState([]);
 
   //loading handler
@@ -25,14 +25,14 @@ export default function home() {
 
   //getting all todo list for all dates
   useEffect(() => {
-    const data = [];
-    db.collection("test").onSnapshot((docs) => {
-      docs.forEach((doc) => {
-        data.push({ date: doc.id, todos: doc.data()?.todos || [] });
+    db.collection("test")
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          setTodos((prev) => [...prev, { date: doc.id, todos: doc.data()?.todos || [] }]);
+        });
+        setLoading(false);
       });
-    });
-    setTodos(data);
-    setLoading(false);
   }, []);
 
   return (
