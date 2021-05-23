@@ -2,6 +2,7 @@ import appStyles from "../styles/App.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
 import { useState } from "react";
+import { db } from "../firebase/main";
 
 export default function TodoBoard({ todosDate, todos }) {
   //check if date is past
@@ -14,6 +15,14 @@ export default function TodoBoard({ todosDate, todos }) {
   //new todo submitter
   const AddNewTodo = (e) => {
     e.preventDefault();
+    db.collection("test")
+      .doc(todosDate)
+      .set({
+        todos: [...todos, { title: newTodo, completed: false, serial: todos.length + 1 }],
+      })
+      .then(() => {
+        setNewTodo("");
+      });
   };
 
   return (
