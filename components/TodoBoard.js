@@ -52,10 +52,11 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
 
         break;
     }
+
+    //update in db
     db.collection("test").doc(todosDate).set({ todos: finalUpdatedTodoList });
   };
 
-  //new todo submitter
   const AddNewTodo = (e) => {
     e.preventDefault();
     actionPerformer("createnew");
