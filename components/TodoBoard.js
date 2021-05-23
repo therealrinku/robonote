@@ -4,7 +4,7 @@ import TodoItem from "../components/TodoItem";
 import { useState } from "react";
 import { db } from "../firebase/main";
 
-export default function TodoBoard({ todosDate, todos }) {
+export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
   console.log(todos);
   const todayDate = moment(new Date());
@@ -16,10 +16,21 @@ export default function TodoBoard({ todosDate, todos }) {
   //new todo submitter
   const AddNewTodo = (e) => {
     e.preventDefault();
+    //new todo object
+    const newTodoObject = { title: newTodo, completed: false, serial: todos.length + 1 };
+    //updating locally
+    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
+    const fullTodoListCopy = [...fullTodoList];
+    const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
+    fullTodoListCopy[indexOfBoard].todos = [...boardTodos, newTodoObject];
+    setFullTodos(fullTodoListCopy);
+    console.log(boardTodos);
+
+    //updating in db
     db.collection("test")
       .doc(todosDate)
       .set({
-        todos: [...todos, { title: newTodo, completed: false, serial: todos.length + 1 }],
+        todos: [...todos, newTodoObject],
       });
     setNewTodo("");
   };

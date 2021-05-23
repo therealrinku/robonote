@@ -50,7 +50,12 @@ export default function home() {
             {dates.map((e, i) => {
               return (
                 <section key={i}>
-                  <TodoBoard todosDate={e} todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []} />
+                  <TodoBoard
+                    todosDate={e}
+                    fullTodoList={todos}
+                    setFullTodos={setTodos}
+                    todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []}
+                  />
                 </section>
               );
             })}
