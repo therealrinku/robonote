@@ -50,6 +50,19 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     db.collection("test").doc(todosDate).set({ todos: boardTodos });
   };
 
+  //delete todo
+  const deleteTodo = (indexOfTodo) => {
+    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
+    const fullTodoListCopy = [...fullTodoList];
+    const boardTodos = [...fullTodoList[indexOfBoard]?.todos];
+    const filteredTodos = boardTodos.filter((_, i) => i !== indexOfTodo);
+    fullTodoListCopy[indexOfBoard].todos = filteredTodos;
+    setFullTodos(fullTodoListCopy);
+
+    //updating in db.
+    db.collection("test").doc(todosDate).set({ todos: filteredTodos });
+  };
+
   return (
     <>
       {/* date */}
@@ -58,7 +71,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
       {/* todo list*/}
       <div className={appStyles.todos}>
         {todos.map((todo, i) => {
-          return <TodoItem key={i} index={i} todo={todo} date={todosDate} doUndo={doUndo} />;
+          return <TodoItem key={i} index={i} todo={todo} date={todosDate} doUndo={doUndo} deleteTodo={deleteTodo} />;
         })}
       </div>
 

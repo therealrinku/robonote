@@ -3,10 +3,16 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { MdDone } from "react-icons/md";
 
-export default function TodoDetailModal({ close, todo, date, doUndo, index }) {
+export default function TodoDetailModal({ close, todo, date, doUndo, index, deleteTodo }) {
   //do undo and close
   const DOUNDO = () => {
     doUndo(index);
+    close();
+  };
+
+  //delete and close
+  const DELETE = () => {
+    deleteTodo(index);
     close();
   };
 
@@ -23,7 +29,7 @@ export default function TodoDetailModal({ close, todo, date, doUndo, index }) {
             <MdDone />
           </button>
 
-          <button>
+          <button onClick={DELETE}>
             <RiDeleteBin7Line />
           </button>
         </span>

@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import Backdrop from "./Backdrop";
 import TodoDetailModal from "./TodoDetailModal";
 
-export default function TodoItem({ todo, date, index, doUndo }) {
+export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
   const [showDetailModal, setShowDetailModal] = useState(false);
 
   //toggle detail modal
@@ -25,7 +25,14 @@ export default function TodoItem({ todo, date, index, doUndo }) {
       {/*todo detail modal */}
       {showDetailModal ? (
         <Fragment>
-          <TodoDetailModal close={toggleDetailModal} todo={todo.title} date={date} doUndo={doUndo} index={index} />
+          <TodoDetailModal
+            deleteTodo={deleteTodo}
+            close={toggleDetailModal}
+            todo={todo.title}
+            date={date}
+            doUndo={doUndo}
+            index={index}
+          />
           <Backdrop toggle={toggleDetailModal} />
         </Fragment>
       ) : null}
