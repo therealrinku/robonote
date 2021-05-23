@@ -5,6 +5,7 @@ import appStyles from "../styles/App.module.css";
 import TodoBoard from "../components/TodoBoard";
 import Meta from "../components/Meta";
 import { db } from "../firebase/main";
+import Spinner from "../components/Spinner";
 
 export default function home() {
   //date stuffs
@@ -19,6 +20,9 @@ export default function home() {
   //todos storage
   const [todos, setTodos] = useState([]);
 
+  //loading handler
+  const [loading, setLoading] = useState(true);
+
   //getting all todo list for all dates
   useEffect(() => {
     const data = [];
@@ -28,24 +32,31 @@ export default function home() {
       });
     });
     setTodos(data);
+    setLoading(false);
   }, []);
 
   return (
-    <div style={{ marginTop: "3vh" }}>
+    <>
       <Meta />
-      {/*option section*/}
-      <HomeNav setDatePlus={setDatePlus} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div style={{ marginTop: "3vh" }}>
+          {/*option section*/}
+          <HomeNav setDatePlus={setDatePlus} />
 
-      {/*todo boards*/}
-      <div className={appStyles.todosBoard}>
-        {dates.map((e, i) => {
-          return (
-            <section key={i}>
-              <TodoBoard todosDate={e} todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []} />
-            </section>
-          );
-        })}
-      </div>
+          {/*todo boards*/}
+          <div className={appStyles.todosBoard}>
+            {dates.map((e, i) => {
+              return (
+                <section key={i}>
+                  <TodoBoard todosDate={e} todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []} />
+                </section>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/*hiding landing page navbar */}
       <style jsx global>{`
@@ -53,6 +64,6 @@ export default function home() {
           display: none !important;
         }
       `}</style>
-    </div>
+    </>
   );
 }
