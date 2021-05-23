@@ -1,9 +1,10 @@
 import todoDetailModalStyles from "../styles/TodoDetailModal.module.css";
-import { AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineCalendar, AiOutlineRedo } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { MdDone } from "react-icons/md";
+import { FcCheckmark } from "react-icons/fc";
 
-export default function TodoDetailModal({ close, todo, date, doUndo, index, deleteTodo }) {
+export default function TodoDetailModal({ completed, close, todo, date, doUndo, index, deleteTodo }) {
   //do undo and close
   const DOUNDO = () => {
     doUndo(index);
@@ -22,12 +23,11 @@ export default function TodoDetailModal({ close, todo, date, doUndo, index, dele
         <span>
           <AiOutlineCalendar />
           <p>{date}</p>
+          <i style={{ marginLeft: "8px" }}>{completed ? <FcCheckmark /> : null}</i>
         </span>
 
         <span>
-          <button onClick={DOUNDO}>
-            <MdDone />
-          </button>
+          <button onClick={DOUNDO}>{completed ? <AiOutlineRedo /> : <MdDone />}</button>
 
           <button onClick={DELETE}>
             <RiDeleteBin7Line />

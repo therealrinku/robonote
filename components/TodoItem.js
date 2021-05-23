@@ -32,6 +32,7 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
             date={date}
             doUndo={doUndo}
             index={index}
+            completed={todo.completed}
           />
           <Backdrop toggle={toggleDetailModal} />
         </Fragment>
