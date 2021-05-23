@@ -6,61 +6,60 @@ import { db } from "../firebase/main";
 
 export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
+  console.log(todos);
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
 
   //new todo form handler
   const [newTodo, setNewTodo] = useState("");
 
+  //action performer to reuse same code
+  const actionPerformer = (actionType, indexOfTodo) => {
+    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
+    const fullTodoListCopy = [...fullTodoList];
+    const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
+
+    //new todo
+    const newTodoObject = { title: newTodo, completed: false, serial: todos.length + 1 };
+
+    //for final data
+    let finalUpdatedTodoList = [];
+
+    switch (actionType) {
+      case "createnew":
+        finalUpdatedTodoList = [...todos, newTodoObject];
+        if (indexOfBoard >= 0) {
+          fullTodoListCopy[indexOfBoard].todos = [...boardTodos, newTodoObject];
+          setFullTodos(fullTodoListCopy);
+        } else {
+          setFullTodos((prev) => [...prev, { date: todosDate, todos: [newTodoObject] }]);
+        }
+        break;
+
+      case "doundo":
+        boardTodos[indexOfTodo].completed = !boardTodos[indexOfTodo].completed;
+        fullTodoListCopy[indexOfBoard].todos = boardTodos;
+        setFullTodos(fullTodoListCopy);
+        finalUpdatedTodoList = boardTodos;
+
+        break;
+
+      case "delete":
+        const filteredTodos = boardTodos.filter((_, i) => i !== indexOfTodo);
+        fullTodoListCopy[indexOfBoard].todos = filteredTodos;
+        setFullTodos(fullTodoListCopy);
+        finalUpdatedTodoList = filteredTodos;
+
+        break;
+    }
+    db.collection("test").doc(todosDate).set({ todos: finalUpdatedTodoList });
+  };
+
   //new todo submitter
   const AddNewTodo = (e) => {
     e.preventDefault();
-    //new todo object
-    const newTodoObject = { title: newTodo, completed: false, serial: todos.length + 1 };
-    //index of board
-    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
-    //if todos exists in that date then append on it else create a brand new todo list
-    if (indexOfBoard >= 0) {
-      const fullTodoListCopy = [...fullTodoList];
-      const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
-      fullTodoListCopy[indexOfBoard].todos = [...boardTodos, newTodoObject];
-      setFullTodos(fullTodoListCopy);
-    } else {
-      setFullTodos((prev) => [...prev, { date: todosDate, todos: [newTodoObject] }]);
-    }
-
-    //updating in db
-    db.collection("test")
-      .doc(todosDate)
-      .set({ todos: [...todos, newTodoObject] });
-    //clearing input field
+    actionPerformer("createnew");
     setNewTodo("");
-  };
-
-  //toggling done and undone
-  const doUndo = (indexOfTodo) => {
-    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
-    const fullTodoListCopy = [...fullTodoList];
-    const boardTodos = [...fullTodoList[indexOfBoard]?.todos];
-    boardTodos[indexOfTodo].completed = !boardTodos[indexOfTodo].completed;
-    fullTodoListCopy[indexOfBoard].todos = boardTodos;
-    setFullTodos(fullTodoListCopy);
-
-    //updating in db.
-    db.collection("test").doc(todosDate).set({ todos: boardTodos });
-  };
-
-  //delete todo
-  const deleteTodo = (indexOfTodo) => {
-    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
-    const fullTodoListCopy = [...fullTodoList];
-    const boardTodos = [...fullTodoList[indexOfBoard]?.todos];
-    const filteredTodos = boardTodos.filter((_, i) => i !== indexOfTodo);
-    fullTodoListCopy[indexOfBoard].todos = filteredTodos;
-    setFullTodos(fullTodoListCopy);
-
-    //updating in db.
-    db.collection("test").doc(todosDate).set({ todos: filteredTodos });
   };
 
   return (
@@ -71,7 +70,16 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
       {/* todo list*/}
       <div className={appStyles.todos}>
         {todos.map((todo, i) => {
-          return <TodoItem key={i} index={i} todo={todo} date={todosDate} doUndo={doUndo} deleteTodo={deleteTodo} />;
+          return (
+            <TodoItem
+              key={i}
+              index={i}
+              todo={todo}
+              date={todosDate}
+              doUndo={(indexOfTodo) => actionPerformer("doundo", indexOfTodo)}
+              deleteTodo={(indexOfTodo) => actionPerformer("delete", indexOfTodo)}
+            />
+          );
         })}
       </div>
 
