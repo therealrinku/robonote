@@ -32,10 +32,22 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     //updating in db
     db.collection("test")
       .doc(todosDate)
-      .set({
-        todos: [...todos, newTodoObject],
-      });
+      .set({ todos: [...todos, newTodoObject] });
+    //clearing input field
     setNewTodo("");
+  };
+
+  //toggling done and undone
+  const doUndo = (indexOfTodo) => {
+    const indexOfBoard = fullTodoList.findIndex((e) => e.date === todosDate);
+    const fullTodoListCopy = [...fullTodoList];
+    const boardTodos = [...fullTodoList[indexOfBoard]?.todos];
+    boardTodos[indexOfTodo].completed = !boardTodos[indexOfTodo].completed;
+    fullTodoListCopy[indexOfBoard].todos = boardTodos;
+    setFullTodos(fullTodoListCopy);
+
+    //updating in db.
+    db.collection("test").doc(todosDate).set({ todos: boardTodos });
   };
 
   return (
@@ -46,7 +58,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
       {/* todo list*/}
       <div className={appStyles.todos}>
         {todos.map((todo, i) => {
-          return <TodoItem key={i} todo={todo} date={todosDate} />;
+          return <TodoItem key={i} index={i} todo={todo} date={todosDate} doUndo={doUndo} />;
         })}
       </div>
 

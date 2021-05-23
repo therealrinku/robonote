@@ -3,7 +3,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { MdDone } from "react-icons/md";
 
-export default function TodoDetailModal({ close, todo, date }) {
+export default function TodoDetailModal({ todo, date, doUndo, index }) {
   return (
     <div className={todoDetailModalStyles.todoDetailModal}>
       <div>
@@ -13,7 +13,7 @@ export default function TodoDetailModal({ close, todo, date }) {
         </span>
 
         <span>
-          <button>
+          <button onClick={() => doUndo(index)}>
             <MdDone />
           </button>
 
