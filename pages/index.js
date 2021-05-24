@@ -6,20 +6,21 @@ import UserContext from "../userContext";
 import { db } from "../firebase/main";
 
 export default function Home() {
-  const [tokenIsThere, setTokenIsThere] = useState(false);
   const { currentUserEmail, setEmailAddress } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loginToken = localStorage.getItem("loginToken");
+    if (!loginToken) {
+      setLoading(false);
+    }
     if (loginToken && !currentUserEmail) {
       db.collection("users")
         .doc(loginToken)
         .get()
         .then((doc) => {
-          setEmailAddress(doc.data().email);
+          setEmailAddress(doc.data()?.email);
           setLoading(false);
-          setTokenIsThere(true);
         });
     }
   }, []);
@@ -27,7 +28,7 @@ export default function Home() {
   return (
     <>
       <Meta />
-      {tokenIsThere ? <HomePage /> : <LandingPage />}
+      {!loading ? <>{currentUserEmail ? <HomePage /> : <LandingPage />}</> : null}
     </>
   );
 }
