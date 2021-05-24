@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
 import HomeNav from "../components/HomeNav";
-import appStyles from "../styles/App.module.css";
+import homeStyles from "../styles/HomePage.module.css";
 import TodoBoard from "../components/TodoBoard";
-import Meta from "../components/Meta";
 import { db } from "../firebase/main";
 import Spinner from "../components/Spinner";
 
-export default function home() {
+export default function HomePage() {
   //date stuffs
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
@@ -37,7 +36,6 @@ export default function home() {
 
   return (
     <>
-      <Meta />
       {loading ? (
         <Spinner />
       ) : (
@@ -46,7 +44,7 @@ export default function home() {
           <HomeNav setDatePlus={setDatePlus} />
 
           {/*todo boards*/}
-          <div className={appStyles.todosBoard}>
+          <div className={homeStyles.todosBoard}>
             {dates.map((e, i) => {
               return (
                 <section key={i}>

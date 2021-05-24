@@ -1,4 +1,4 @@
-import appStyles from "../styles/App.module.css";
+import homePageStyles from "../styles/HomePage.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
 import { useState } from "react";
@@ -69,7 +69,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
       <p style={dateDiff < 0 ? { color: "grey" } : null}>{todosDate}</p>
 
       {/* todo list*/}
-      <div className={appStyles.todos}>
+      <div className={homePageStyles.todos}>
         {todos.map((todo, i) => {
           return (
             <TodoItem
