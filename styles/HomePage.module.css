@@ -54,7 +54,7 @@
 
 .darkMode section,
 .darkMode section:first-child {
-  border-color: white;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .darkMode button,
@@ -62,12 +62,12 @@
 .darkMode li,
 .darkMode p {
   color: white;
-  border-color: rgb(214, 214, 214);
-  background: black;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: inherit;
 }
 
 .darkMode button {
-  border: solid 1px rgb(214, 214, 214);
+  border: solid 1px rgba(255, 255, 255, 0.2);
 }
 
 .darkMode button:hover {

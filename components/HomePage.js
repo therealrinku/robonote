@@ -68,14 +68,10 @@ export default function HomePage() {
         </div>
       )}
 
-      {/*hiding landing page navbar */}
       <style jsx global>{`
-        nav {
-          display: none !important;
-        }
         body,
         html {
-          background: ${darkMode ? "black" : "white"} !important;
+          background: ${darkMode ? "#303030" : "white"} !important;
         }
       `}</style>
     </div>
