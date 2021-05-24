@@ -52,6 +52,7 @@
   }
 }
 
+/* for Dark mode*/
 .darkMode section,
 .darkMode section:first-child {
   border-color: rgba(255, 255, 255, 0.2);
@@ -66,10 +67,22 @@
   background: inherit;
 }
 
+.darkMode div {
+  background: #303030;
+}
+
+.darkMode span {
+  color: white;
+}
+
 .darkMode button {
   border: solid 1px rgba(255, 255, 255, 0.2);
 }
 
 .darkMode button:hover {
   background: #3b3a3a;
+}
+
+.darkMode div button:hover {
+  background: #303030;
 }
