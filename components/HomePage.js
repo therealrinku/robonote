@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import moment from "moment";
 import HomeNav from "../components/HomeNav";
 import homeStyles from "../styles/HomePage.module.css";
 import TodoBoard from "../components/TodoBoard";
 import { db } from "../firebase/main";
 import Spinner from "../components/Spinner";
+import UserContext from "../userContext";
 
 export default function HomePage() {
   //date stuffs
@@ -22,9 +23,12 @@ export default function HomePage() {
   //loading handler
   const [loading, setLoading] = useState(true);
 
+  //getting current user email from context
+  const { currentUserEmail } = useContext(UserContext);
+
   //getting all todo list for all dates
   useEffect(() => {
-    db.collection("test")
+    db.collection(currentUserEmail)
       .get()
       .then((docs) => {
         docs.forEach((doc) => {

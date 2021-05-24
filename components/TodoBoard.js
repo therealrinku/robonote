@@ -1,8 +1,9 @@
 import homePageStyles from "../styles/HomePage.module.css";
 import moment from "moment";
 import TodoItem from "../components/TodoItem";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { db } from "../firebase/main";
+import UserContext from "../userContext";
 
 export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
@@ -12,6 +13,9 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
 
   //new todo form handler
   const [newTodo, setNewTodo] = useState("");
+
+  //getting current user email from context
+  const { currentUserEmail } = useContext(UserContext);
 
   //action performer to reuse same code
   const actionPerformer = (actionType, indexOfTodo) => {
@@ -54,7 +58,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     }
 
     //update in db
-    db.collection("test").doc(todosDate).set({ todos: finalUpdatedTodoList });
+    db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
   };
 
   const AddNewTodo = (e) => {
