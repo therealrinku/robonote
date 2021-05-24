@@ -19,7 +19,7 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
 
   return (
     <>
-      <Draggable draggableId={todo.title + index + date} index={index}>
+      <Draggable draggableId={date + todo.title} index={index}>
         {(provided, snapshot) => (
           <li
             ref={provided.innerRef}
