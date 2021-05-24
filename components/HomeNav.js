@@ -1,9 +1,19 @@
 import homeNavStyles from "../styles/HomeNav.module.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { BiDotsVertical, BiMoon } from "react-icons/bi";
+import { BiMoon } from "react-icons/bi";
 import { RiHome2Line } from "react-icons/ri";
+import { AiOutlinePoweroff } from "react-icons/ai";
+import { useContext } from "react";
+import UserContext from "../userContext";
 
 export default function HomeNav({ setDatePlus }) {
+  const { setEmailAddress } = useContext(UserContext);
+
+  const logOut = () => {
+    localStorage.setItem("loginToken", null);
+    setEmailAddress("");
+  };
+
   return (
     <div className={homeNavStyles.homeNav}>
       <button onClick={() => setDatePlus((prev) => prev - 1)}>
@@ -18,8 +28,8 @@ export default function HomeNav({ setDatePlus }) {
       <button>
         <BiMoon />
       </button>
-      <button>
-        <BiDotsVertical />
+      <button onClick={logOut}>
+        <AiOutlinePoweroff />
       </button>
     </div>
   );
