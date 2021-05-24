@@ -72,3 +72,11 @@
   margin-top: 4px;
   font-size: 12px;
 }
+
+.loginPage button:disabled {
+  opacity: 0.6;
+}
+
+.loginPage button:disabled:hover {
+  cursor: unset;
+}

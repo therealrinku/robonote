@@ -2,20 +2,52 @@ import loginPageStyles from "../styles/Login.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import Meta from "../components/Meta";
+import { auth } from "../firebase/main";
+import { useRouter } from "next/router";
 
 export default function signupPage() {
-  //form handlers
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   //show hide password
   const [showPassword, setShowPassword] = useState(false);
 
+  //error handler
+  const [error, setError] = useState("");
+
+  const [signingUp, setSigningUp] = useState(false);
+
+  const router = useRouter();
+
+  //signup
+  const signUp = (e) => {
+    e.preventDefault();
+    if (email.includes("@") && !email.includes(" ")) {
+      if (password1.length >= 8) {
+        if (password1 === password2) {
+          //store user to db if form is fine
+          setSigningUp(true);
+          auth
+            .createUserWithEmailAndPassword(email, password1)
+            .then(() => {
+              router.push("/login");
+            })
+            .catch((err) => {
+              setSigningUp(false);
+              setError(err.message);
+            });
+        } else setError("Passwords didn't match.");
+      } else setError("Password must be 8 characters long.");
+    } else setError("Email must be valid");
+  };
+
   return (
     <div className={loginPageStyles.loginPage}>
       <Meta title="Snaptask- Signup" />
       <div>
-        <form>
+        <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
+
+        <form onSubmit={signUp}>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
           <label htmlFor="password">Password</label>
@@ -32,7 +64,7 @@ export default function signupPage() {
             value={password2}
             onChange={(e) => setPassword2(e.target.value)}
           />
-          <button>Signup</button>
+          <button disabled={signingUp}>Signup</button>
           <section>
             <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
             <p>Show Password</p>
