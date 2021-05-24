@@ -17,12 +17,9 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
     }
   };
 
-  //1 if done and 0 if not done
-  const doneStatusCode = todo.completed ? 1 : 0;
-
   return (
     <>
-      <Draggable draggableId={todo.title + "{" + doneStatusCode + index + date} index={index}>
+      <Draggable draggableId={todo.title + index + date} index={index}>
         {(provided, snapshot) => (
           <li
             ref={provided.innerRef}
