@@ -26,7 +26,15 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             onClick={toggleDetailModal}
-            className={snapshot.isDragging ? "dragging" : todo.completed ? "completed" : null}
+            className={
+              snapshot.isDragging && todo.completed
+                ? "dragging completed"
+                : snapshot.isDragging
+                ? "dragging"
+                : todo.completed
+                ? "completed"
+                : null
+            }
           >
             {todo.title}
           </li>
