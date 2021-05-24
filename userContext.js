@@ -1,5 +1,5 @@
 import React from "react";
 
-const UserContext = React.createContext({ email: "", setEmailAddress: () => {} });
+const UserContext = React.createContext({ currentUserEmail: "", setEmailAddress: () => {} });
 
 export default UserContext;

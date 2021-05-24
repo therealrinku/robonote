@@ -4,11 +4,11 @@ import "../styles/globals.css";
 import UserContext from "../userContext";
 
 export default function MyApp({ Component, pageProps }) {
-  const [email, setEmailAddress] = useState("");
+  const [currentUserEmail, setEmailAddress] = useState("");
 
   return (
     <Layout>
-      <UserContext.Provider value={{ email, setEmailAddress }}>
+      <UserContext.Provider value={{ currentUserEmail, setEmailAddress }}>
         <Component {...pageProps} />
       </UserContext.Provider>
     </Layout>
