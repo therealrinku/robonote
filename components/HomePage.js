@@ -42,9 +42,20 @@ export default function HomePage() {
       });
   }, []);
 
-  //
-  const onDragEnd = (obj) => {
-    console.log(obj);
+  const onDragEnd = (data) => {
+    const { source, destination, draggableId } = data;
+    //draggedTodo
+    const lastIndexOfSeperator = draggableId.lastIndexOf("{");
+    const todoTitle = draggableId.slice(0, lastIndexOfSeperator);
+    const selectedTodo = {
+      title: todoTitle,
+    };
+    if (source && destination) {
+      //if source and destionation
+      if (source.droppableId === destination.droppableId) {
+        console.log(selectedTodo);
+      }
+    }
   };
 
   return (
