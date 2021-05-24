@@ -1,6 +1,6 @@
 import loginPageStyles from "../styles/Login.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { auth, db } from "../firebase/main";
@@ -14,6 +14,8 @@ export default function loginPage() {
   const [loggingIn, setLoggingIn] = useState(false);
 
   const router = useRouter();
+  //context function
+  const { setEmailAddress } = useContext(UserContext);
 
   const logIn = (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ export default function loginPage() {
             docs.forEach((doc) => {
               localStorage.setItem("loginToken", doc.id);
             });
+            setEmailAddress(email);
           });
       })
       .catch((err) => {
