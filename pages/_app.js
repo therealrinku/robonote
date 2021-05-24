@@ -1,10 +1,15 @@
 import Layout from "../components/Layout";
 import "../styles/globals.css";
+import UserContext from "../userContext";
 
 export default function MyApp({ Component, pageProps }) {
+  const [email, setEmail] = useState("");
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <UserContext value={{ email, setEmail }}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </UserContext>
   );
 }
