@@ -42,11 +42,11 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={darkMode ? homeStyles.darkMode : null}>
+    <>
       {loading ? (
         <Spinner />
       ) : (
-        <div style={{ marginTop: "3vh" }}>
+        <div style={{ marginTop: "3vh" }} className={darkMode ? homeStyles.darkMode : null}>
           {/*option section*/}
           <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={setDarkMode} />
 
@@ -74,6 +74,6 @@ export default function HomePage() {
           background: ${darkMode ? "#303030" : "white"} !important;
         }
       `}</style>
-    </div>
+    </>
   );
 }
