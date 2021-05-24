@@ -31,7 +31,7 @@ export default function signupPage() {
             .createUserWithEmailAndPassword(email, password1)
             .then(() => {
               db.collection("users")
-                .add({ email: email })
+                .add({ email: email, signedUpOn: new Date() })
                 .then(() => {
                   router.push("/login");
                 });
