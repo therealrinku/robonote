@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import Backdrop from "./Backdrop";
 import TodoDetailModal from "./TodoDetailModal";
+import { Draggable } from "react-beautiful-dnd";
 
 export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
   const [showDetailModal, setShowDetailModal] = useState(false);
@@ -18,9 +19,19 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
 
   return (
     <>
-      <li style={todo.completed ? { color: "grey" } : null} onClick={toggleDetailModal}>
-        {todo.title}
-      </li>
+      <Draggable draggableId={todo.title + index + date} index={index}>
+        {(provided, snapshot) => (
+          <li
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            onClick={toggleDetailModal}
+            className={todo.completed ? "completed" : null}
+          >
+            {todo.title}
+          </li>
+        )}
+      </Draggable>
 
       {/*todo detail modal */}
       {showDetailModal ? (
@@ -42,6 +53,9 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
       <style jsx>{`
         li:hover {
           cursor: default;
+        }
+        .completed {
+          color: grey;
         }
       `}</style>
     </>

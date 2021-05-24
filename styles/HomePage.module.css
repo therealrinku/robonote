@@ -52,7 +52,6 @@
   }
 }
 
-/* for Dark mode*/
 .darkMode section,
 .darkMode section:first-child {
   border-color: rgba(255, 255, 255, 0.2);

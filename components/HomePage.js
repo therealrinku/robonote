@@ -6,6 +6,7 @@ import TodoBoard from "../components/TodoBoard";
 import { db } from "../firebase/main";
 import Spinner from "../components/Spinner";
 import UserContext from "../userContext";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 export default function HomePage() {
   //date stuffs
@@ -41,6 +42,11 @@ export default function HomePage() {
       });
   }, []);
 
+  //
+  const onDragEnd = (obj) => {
+    console.log(obj);
+  };
+
   return (
     <>
       {loading ? (
@@ -51,20 +57,27 @@ export default function HomePage() {
           <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={setDarkMode} />
 
           {/*todo boards*/}
-          <div className={homeStyles.todosBoard}>
-            {dates.map((e, i) => {
-              return (
-                <section key={i}>
-                  <TodoBoard
-                    todosDate={e}
-                    fullTodoList={todos}
-                    setFullTodos={setTodos}
-                    todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []}
-                  />
-                </section>
-              );
-            })}
-          </div>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div className={homeStyles.todosBoard}>
+              {dates.map((e, i) => {
+                return (
+                  <Droppable droppableId={e} key={i}>
+                    {(provided, snapshot) => (
+                      <section ref={provided.innerRef}>
+                        <TodoBoard
+                          todosDate={e}
+                          fullTodoList={todos}
+                          setFullTodos={setTodos}
+                          todos={todos[todos.findIndex((td) => td.date === e)]?.todos || []}
+                        />
+                        {provided.placeholder}
+                      </section>
+                    )}
+                  </Droppable>
+                );
+              })}
+            </div>
+          </DragDropContext>
         </div>
       )}
 
