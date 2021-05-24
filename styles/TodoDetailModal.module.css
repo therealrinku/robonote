@@ -40,6 +40,10 @@
   font-size: 18px;
 }
 
+.todoDetailModal button:first-child {
+  font-size: 17px;
+}
+
 .todoDetailModal button:last-child {
   font-size: 15px;
   color: red;
