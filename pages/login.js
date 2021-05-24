@@ -44,31 +44,33 @@ export default function loginPage() {
   };
 
   return (
-    <div className={loginPageStyles.loginPage}>
+    <>
       <Navbar />
-      <Meta title="Snaptask - Login" />
-      <div>
-        <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
-        <form onSubmit={logIn}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
-          <label htmlFor="password">Password</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button disabled={loggingIn}>Login</button>
-          <section>
-            <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
-            <p>Show Password</p>
-          </section>
-          <p>
-            Don't have an account? <Link href="/signup">Sign up</Link>
-          </p>
-        </form>
+      <div className={loginPageStyles.loginPage}>
+        <Meta title="Snaptask - Login" />
+        <div>
+          <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
+          <form onSubmit={logIn}>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
+            <label htmlFor="password">Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button disabled={loggingIn}>Login</button>
+            <section>
+              <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
+              <p>Show Password</p>
+            </section>
+            <p>
+              Don't have an account? <Link href="/signup">Sign up</Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

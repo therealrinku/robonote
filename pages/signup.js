@@ -47,40 +47,42 @@ export default function signupPage() {
   };
 
   return (
-    <div className={loginPageStyles.loginPage}>
+    <>
       <Navbar />
-      <Meta title="Snaptask- Signup" />
-      <div>
-        <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
+      <div className={loginPageStyles.loginPage}>
+        <Meta title="Snaptask- Signup" />
+        <div>
+          <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
 
-        <form onSubmit={signUp}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
-          <label htmlFor="password">Password</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            value={password1}
-            onChange={(e) => setPassword1(e.target.value)}
-          />
-          <label htmlFor="password2">Repeat password</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password2"
-            value={password2}
-            onChange={(e) => setPassword2(e.target.value)}
-          />
-          <button disabled={signingUp}>Signup</button>
-          <section>
-            <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
-            <p>Show Password</p>
-          </section>
-          <p style={{ opacity: "0.6" }}>By signing up, you agree to our terms and policies.</p>
-          <p>
-            Already have an account? <Link href="/login">Login</Link>
-          </p>
-        </form>
+          <form onSubmit={signUp}>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
+            <label htmlFor="password">Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={password1}
+              onChange={(e) => setPassword1(e.target.value)}
+            />
+            <label htmlFor="password2">Repeat password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password2"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+            />
+            <button disabled={signingUp}>Signup</button>
+            <section>
+              <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
+              <p>Show Password</p>
+            </section>
+            <p style={{ opacity: "0.6" }}>By signing up, you agree to our terms and policies.</p>
+            <p>
+              Already have an account? <Link href="/login">Login</Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
