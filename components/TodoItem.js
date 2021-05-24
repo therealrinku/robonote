@@ -26,7 +26,7 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             onClick={toggleDetailModal}
-            className={todo.completed ? "completed" : null}
+            className={snapshot.isDragging ? "dragging" : todo.completed ? "completed" : null}
           >
             {todo.title}
           </li>
@@ -56,6 +56,10 @@ export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
         }
         .completed {
           color: grey;
+        }
+        .dragging {
+          border: none;
+          background: rgba(0, 0, 0, 0.1);
         }
       `}</style>
     </>
