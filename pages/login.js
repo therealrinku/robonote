@@ -32,6 +32,7 @@ export default function loginPage() {
               localStorage.setItem("loginToken", doc.id);
             });
             setEmailAddress(email);
+            router.push("/");
           });
       })
       .catch((err) => {
