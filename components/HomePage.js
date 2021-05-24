@@ -26,6 +26,9 @@ export default function HomePage() {
   //getting current user email from context
   const { currentUserEmail } = useContext(UserContext);
 
+  //dark mode
+  const [darkMode, setDarkMode] = useState(false);
+
   //getting all todo list for all dates
   useEffect(() => {
     db.collection(currentUserEmail)
@@ -39,13 +42,13 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <div className={darkMode ? homeStyles.darkMode : null}>
       {loading ? (
         <Spinner />
       ) : (
         <div style={{ marginTop: "3vh" }}>
           {/*option section*/}
-          <HomeNav setDatePlus={setDatePlus} />
+          <HomeNav setDatePlus={setDatePlus} setDarkMode={setDarkMode} />
 
           {/*todo boards*/}
           <div className={homeStyles.todosBoard}>
@@ -70,7 +73,11 @@ export default function HomePage() {
         nav {
           display: none !important;
         }
+        body,
+        html {
+          background: ${darkMode ? "black" : "white"} !important;
+        }
       `}</style>
-    </>
+    </div>
   );
 }

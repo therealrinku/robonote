@@ -6,7 +6,7 @@ import { AiOutlinePoweroff } from "react-icons/ai";
 import { useContext } from "react";
 import UserContext from "../userContext";
 
-export default function HomeNav({ setDatePlus }) {
+export default function HomeNav({ setDatePlus, setDarkMode }) {
   const { setEmailAddress } = useContext(UserContext);
 
   const logOut = () => {
@@ -25,7 +25,7 @@ export default function HomeNav({ setDatePlus }) {
       <button onClick={() => setDatePlus(0)}>
         <RiHome2Line />
       </button>
-      <button>
+      <button onClick={() => setDarkMode((prev) => !prev)}>
         <BiMoon />
       </button>
       <button onClick={logOut}>

@@ -51,3 +51,25 @@
     display: block;
   }
 }
+
+.darkMode section,
+.darkMode section:first-child {
+  border-color: white;
+}
+
+.darkMode button,
+.darkMode input,
+.darkMode li,
+.darkMode p {
+  color: white;
+  border-color: rgb(214, 214, 214);
+  background: black;
+}
+
+.darkMode button {
+  border: solid 1px rgb(214, 214, 214);
+}
+
+.darkMode button:hover {
+  background: black;
+}
