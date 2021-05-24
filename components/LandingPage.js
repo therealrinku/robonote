@@ -4,6 +4,7 @@ import MainImage from "../assets/MainImage.svg";
 import { AiOutlineDrag } from "react-icons/ai";
 import { VscListFilter } from "react-icons/vsc";
 import { BiMoon } from "react-icons/bi";
+import Navbar from "../components/Navbar";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -61,6 +62,7 @@ export default function LandingPage() {
 
   return (
     <>
+      <Navbar />
       <div className={landingPageStyles.sectionOne}>
         <section>
           <h2>Snaptask is your new todo list manager to help you acheive your goals.</h2>

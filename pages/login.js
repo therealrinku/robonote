@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { auth, db } from "../firebase/main";
+import Navbar from "../components/Navbar";
 
 export default function loginPage() {
   const [email, setEmail] = useState("");
@@ -43,6 +44,7 @@ export default function loginPage() {
 
   return (
     <div className={loginPageStyles.loginPage}>
+      <Navbar />
       <Meta title="Snaptask - Login" />
       <div>
         <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
