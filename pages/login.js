@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Meta from "../components/Meta";
 import { useRouter } from "next/router";
-import { auth } from "../firebase/main";
+import { auth, db } from "../firebase/main";
 
 export default function loginPage() {
   const [email, setEmail] = useState("");
@@ -20,7 +20,17 @@ export default function loginPage() {
     setLoggingIn(true);
     auth
       .signInWithEmailAndPassword(email, password)
-      .then()
+      .then(() => {
+        //getting login token from db and storing in local storage
+        db.collection("users")
+          .where("email", "==", email)
+          .get()
+          .then((docs) => {
+            docs.forEach((doc) => {
+              localStorage.setItem("loginToken", doc.id);
+            });
+          });
+      })
       .catch((err) => {
         setError(err.message);
         setLoggingIn(false);
