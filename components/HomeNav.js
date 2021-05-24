@@ -3,10 +3,11 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BiMoon } from "react-icons/bi";
 import { RiHome2Line } from "react-icons/ri";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import { RiLightbulbFlashLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../userContext";
 
-export default function HomeNav({ setDatePlus, setDarkMode }) {
+export default function HomeNav({ setDatePlus, darkMode, setDarkMode }) {
   const { setEmailAddress } = useContext(UserContext);
 
   const logOut = () => {
@@ -25,9 +26,7 @@ export default function HomeNav({ setDatePlus, setDarkMode }) {
       <button onClick={() => setDatePlus(0)}>
         <RiHome2Line />
       </button>
-      <button onClick={() => setDarkMode((prev) => !prev)}>
-        <BiMoon />
-      </button>
+      <button onClick={() => setDarkMode((prev) => !prev)}>{darkMode ? <RiLightbulbFlashLine /> : <BiMoon />}</button>
       <button onClick={logOut}>
         <AiOutlinePoweroff />
       </button>

@@ -48,7 +48,7 @@ export default function HomePage() {
       ) : (
         <div style={{ marginTop: "3vh" }}>
           {/*option section*/}
-          <HomeNav setDatePlus={setDatePlus} setDarkMode={setDarkMode} />
+          <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={setDarkMode} />
 
           {/*todo boards*/}
           <div className={homeStyles.todosBoard}>
