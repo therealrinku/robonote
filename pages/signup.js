@@ -2,7 +2,7 @@ import loginPageStyles from "../styles/Login.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import Meta from "../components/Meta";
-import { auth } from "../firebase/main";
+import { auth, db } from "../firebase/main";
 import { useRouter } from "next/router";
 
 export default function signupPage() {
@@ -30,7 +30,11 @@ export default function signupPage() {
           auth
             .createUserWithEmailAndPassword(email, password1)
             .then(() => {
-              router.push("/login");
+              db.collection("users")
+                .add({ email: email })
+                .then(() => {
+                  router.push("/login");
+                });
             })
             .catch((err) => {
               setSigningUp(false);
