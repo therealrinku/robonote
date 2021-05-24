@@ -5,6 +5,7 @@ import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { auth, db } from "../firebase/main";
 import Navbar from "../components/Navbar";
+import UserContext from "../userContext";
 
 export default function loginPage() {
   const [email, setEmail] = useState("");
