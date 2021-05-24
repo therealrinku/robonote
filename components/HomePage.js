@@ -44,17 +44,27 @@ export default function HomePage() {
 
   const onDragEnd = (data) => {
     const { source, destination, draggableId } = data;
-    //draggedTodo
-    const lastIndexOfSeperator = draggableId.lastIndexOf("{");
-    const todoTitle = draggableId.slice(0, lastIndexOfSeperator);
-    const selectedTodo = {
-      title: todoTitle,
-    };
     if (source && destination) {
       //if source and destionation
-      if (source.droppableId === destination.droppableId) {
-        console.log(selectedTodo);
+      const indexOfSourceBoard = todos.findIndex((e) => e.date === source.droppableId);
+      const indexOfDestinationBoard = todos.findIndex((e) => e.date === destination.droppableId);
+
+      const fullTodoListCopy = [...todos];
+      const sourceBoardTodos = [...todos[indexOfSourceBoard]?.todos];
+      const destinationBoardTodos = [...(todos[indexOfDestinationBoard]?.todos || [])];
+      //switching positions
+      const sourceTodo = sourceBoardTodos[source.index];
+      const destionationTodo = destinationBoardTodos[destination.index];
+      sourceBoardTodos[source.index] = destionationTodo;
+      destinationBoardTodos[destination.index] = sourceTodo;
+      //removing from source and adding to the destination
+      fullTodoListCopy[indexOfSourceBoard].todos.splice(source.index, 1);
+      if (fullTodoListCopy[indexOfDestinationBoard]?.todos) {
+        fullTodoListCopy[indexOfDestinationBoard].todos.splice(destination.index, 0, sourceTodo);
+      } else {
+        fullTodoListCopy.push({ date: destination.droppableId, todos: [sourceTodo] });
       }
+      setTodos(fullTodoListCopy);
     }
   };
 
