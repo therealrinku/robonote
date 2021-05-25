@@ -30,8 +30,14 @@ export default function HomePage() {
   //dark mode
   const [darkMode, setDarkMode] = useState(false);
 
-  //getting all todo list for all dates
   useEffect(() => {
+    //switching automatically to dark mode.
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode === "ON") {
+      setDarkMode(true);
+    }
+
+    //getting all todo list for all dates
     db.collection(currentUserEmail)
       .get()
       .then((docs) => {
@@ -78,6 +84,13 @@ export default function HomePage() {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+
+    if (!darkMode) localStorage.setItem("darkMode", "ON");
+    else localStorage.removeItem("darkMode");
+  };
+
   return (
     <>
       {loading ? (
@@ -85,7 +98,7 @@ export default function HomePage() {
       ) : (
         <div style={{ marginTop: "3vh" }} className={darkMode ? homeStyles.darkMode : null}>
           {/*option section*/}
-          <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={setDarkMode} />
+          <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
 
           {/*todo boards*/}
           <DragDropContext onDragEnd={onDragEnd}>
