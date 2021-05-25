@@ -65,6 +65,16 @@ export default function HomePage() {
         fullTodoListCopy.push({ date: destination.droppableId, todos: [sourceTodo] });
       }
       setTodos(fullTodoListCopy);
+
+      const updatedSourceTodos = fullTodoListCopy[indexOfSourceBoard].todos;
+      const updatedDestionationTodos = fullTodoListCopy[indexOfDestinationBoard].todos;
+
+      //update in db
+      db.collection(currentUserEmail).doc(destination.droppableId).set({ todos: updatedDestionationTodos });
+
+      if (source.droppableId !== destination.droppableId) {
+        db.collection(currentUserEmail).doc(source.droppableId).set({ todos: updatedSourceTodos });
+      }
     }
   };
 
