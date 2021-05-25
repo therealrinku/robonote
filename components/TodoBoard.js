@@ -23,7 +23,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     const boardTodos = [...(fullTodoList[indexOfBoard]?.todos || [])];
 
     //new todo
-    const newTodoObject = { title: newTodo, completed: false, serial: todos.length + 1 };
+    const newTodoObject = { title: newTodo, completed: false };
 
     //for final data
     let finalUpdatedTodoList = [];
