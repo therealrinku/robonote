@@ -211,21 +211,11 @@
   }
 }
 
-.sectionFour {
-  margin-top: 20vh;
-  background: whitesmoke;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-}
-
 .footer {
   background: whitesmoke;
   padding: 5px 0 5px 0;
   text-align: center;
+  margin-top: 20vh;
 }
 
 .footer p:first-child {
