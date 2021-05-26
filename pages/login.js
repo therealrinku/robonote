@@ -49,7 +49,6 @@ export default function loginPage() {
       <div className={loginPageStyles.loginPage}>
         <Meta title="Snaptask - Login" />
         <div>
-          <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
           <form onSubmit={logIn}>
             <label htmlFor="email">Email</label>
             <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
@@ -65,6 +64,7 @@ export default function loginPage() {
               <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
               <p>Show Password</p>
             </section>
+            <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
             <p>
               Don't have an account? <Link href="/signup">Sign up</Link>
             </p>

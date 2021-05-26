@@ -52,8 +52,6 @@ export default function signupPage() {
       <div className={loginPageStyles.loginPage}>
         <Meta title="Snaptask- Signup" />
         <div>
-          <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
-
           <form onSubmit={signUp}>
             <label htmlFor="email">Email</label>
             <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
@@ -77,6 +75,7 @@ export default function signupPage() {
               <p>Show Password</p>
             </section>
             <p style={{ opacity: "0.6" }}>By signing up, you agree to our terms and policies.</p>
+            <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
             <p>
               Already have an account? <Link href="/login">Login</Link>
             </p>
