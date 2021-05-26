@@ -69,7 +69,7 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
   return (
     <>
       {/* date */}
-      <p style={dateDiff < 0 ? { color: "grey" } : null}>{todosDate}</p>
+      <p style={dateDiff < 0 ? { color: "grey", textAlign: "center" } : { textAlign: "center" }}>{todosDate}</p>
 
       {/* todo list*/}
       <div className={homePageStyles.todos}>

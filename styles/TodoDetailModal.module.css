@@ -11,11 +11,6 @@
   padding: 15px;
 }
 
-.todoDetailModal p {
-  white-space: pre-wrap;
-  text-align: left;
-}
-
 .todoDetailModal span,
 .todoDetailModal div {
   display: flex;
@@ -25,26 +20,34 @@
 
 .todoDetailModal div {
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: -4px;
 }
 
-.todoDetailModal span p {
-  margin-left: 5px;
+.todoDetailModal div span p {
   font-size: 12px;
+  margin-left: 5px;
 }
 
-.todoDetailModal button {
+.todoDetailModal p:last-child {
+  font-size: 13.5px;
+}
+
+.todoDetailModal div span button {
   border: none;
   outline: none;
   background: inherit;
   font-size: 18px;
 }
 
-.todoDetailModal button:first-child {
+.todoDetailModal div span button:hover {
+  background: inherit;
+}
+
+.todoDetailModal div span button:first-child {
   font-size: 17px;
 }
 
-.todoDetailModal button:last-child {
+.todoDetailModal div span button:last-child {
   font-size: 15px;
   color: red;
 }
