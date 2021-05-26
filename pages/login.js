@@ -64,7 +64,7 @@ export default function loginPage() {
               <input type="checkbox" value={showPassword} onChange={() => setShowPassword((prev) => !prev)} />
               <p>Show Password</p>
             </section>
-            <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
+            <p style={{ fontSize: "12px", color: "red", marginLeft: "10px" }}>{error}</p>
             <p>
               Don't have an account? <Link href="/signup">Sign up</Link>
             </p>
