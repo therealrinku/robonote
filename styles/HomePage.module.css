@@ -43,6 +43,10 @@
 }
 
 @media (max-width: 799px) {
+  .todosBoard {
+    width: 95vw;
+  }
+
   .todosBoard section {
     display: none;
   }
