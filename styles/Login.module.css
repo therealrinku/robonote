@@ -80,3 +80,15 @@
 .loginPage button:disabled:hover {
   cursor: unset;
 }
+
+@media (max-width: 500px) {
+  .loginPage div {
+    border: none;
+    box-shadow: none;
+    margin-top: 20px;
+  }
+
+  .loginPage form {
+    width: 95%;
+  }
+}
