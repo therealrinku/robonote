@@ -4,7 +4,7 @@
   max-width: 1500px;
   width: 90vw;
   margin: auto;
-  margin-top: 18vh;
+  margin-top: 15vh;
 }
 
 .sectionOne section {
@@ -170,7 +170,7 @@
 }
 
 .sectionThree div:last-child {
-  margin-left: 10px;
+  margin-left: 1vw;
 }
 
 .sectionThree section div span {
