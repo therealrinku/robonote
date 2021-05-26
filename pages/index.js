@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     const loginToken = localStorage.getItem("loginToken");
-    if (!loginToken) {
+    if (!loginToken || currentUserEmail) {
       setLoading(false);
     }
     if (loginToken && !currentUserEmail) {
