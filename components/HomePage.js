@@ -70,10 +70,12 @@ export default function HomePage() {
       } else {
         fullTodoListCopy.push({ date: destination.droppableId, todos: [sourceTodo] });
       }
+
       setTodos(fullTodoListCopy);
 
       const updatedSourceTodos = fullTodoListCopy[indexOfSourceBoard].todos;
-      const updatedDestionationTodos = fullTodoListCopy[indexOfDestinationBoard].todos;
+      const indexOfDestinationBoardUpdated = fullTodoListCopy.findIndex((e) => e.date === destination.droppableId);
+      const updatedDestionationTodos = fullTodoListCopy[indexOfDestinationBoardUpdated].todos;
 
       //update in db
       db.collection(currentUserEmail).doc(destination.droppableId).set({ todos: updatedDestionationTodos });
