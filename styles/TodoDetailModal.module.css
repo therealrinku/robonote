@@ -30,6 +30,7 @@
 
 .todoDetailModal p:last-child {
   font-size: 13.5px;
+  white-space: pre-wrap;
 }
 
 .todoDetailModal div span button {
