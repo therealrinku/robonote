@@ -34,3 +34,11 @@
 .nav ul:last-child a:last-child:hover {
   background: #379c63;
 }
+
+.hideSignupLink a:last-child {
+  display: none;
+}
+
+.hideLoginLink a:first-child {
+  display: none;
+}
