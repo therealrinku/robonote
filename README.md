@@ -1,4 +1,4 @@
-## Snaptask
+## Snaptask(a todo app)
 
 ### Live Website
 * https://snapta-sk.web.app
