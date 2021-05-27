@@ -1,13 +1,20 @@
 import landingPageStyles from "../styles/LandingPage.module.css";
 import { useRouter } from "next/router";
 import MainImage from "../assets/MainImage.svg";
-import { AiOutlineDrag } from "react-icons/ai";
-import { VscListFilter } from "react-icons/vsc";
-import { BiMoon } from "react-icons/bi";
 import Navbar from "../components/Navbar";
+import DragDropVideo from "../assets/dnd.mp4";
+import SimpleLayoutVideo from "../assets/sim.mp4";
+import DarkModeVideo from "../assets/dm.mp4";
 
 export default function LandingPage() {
   const router = useRouter();
+
+  //features
+  const features = [
+    { video: DragDropVideo, title: "Drag and drop todos." },
+    { video: SimpleLayoutVideo, title: "Simple and easy to use layout." },
+    { video: DarkModeVideo, title: "Dark mode for eye compatibitlity at night." },
+  ];
 
   //reviews
   const reviews = [
@@ -61,28 +68,16 @@ export default function LandingPage() {
       </div>
 
       <div className={landingPageStyles.sectionTwo}>
-        <div>
-          <section>
-            <li>
-              <AiOutlineDrag />
-            </li>
-            <p>Drag and Drop functionality.</p>
-          </section>
-
-          <section>
-            <li>
-              <VscListFilter />
-            </li>
-            <p>Easy to use simple layout.</p>
-          </section>
-
-          <section>
-            <li>
-              <BiMoon />
-            </li>
-            <p>Dark mode for night.</p>
-          </section>
-        </div>
+        {features.map((feature, i) => {
+          return (
+            <section key={i}>
+              <h4>{feature.title}</h4>
+              <video muted autoPlay loop play>
+                <source src={feature.video} type="video/mp4" />
+              </video>
+            </section>
+          );
+        })}
       </div>
 
       <div className={landingPageStyles.sectionThree}>
