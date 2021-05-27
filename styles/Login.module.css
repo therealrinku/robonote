@@ -62,17 +62,6 @@
   background: #379c63;
 }
 
-.loginPage section {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.loginPage section p {
-  margin-top: 3px;
-  font-size: 11.8px;
-}
-
 .loginPage button:disabled {
   opacity: 0.6;
 }
