@@ -24,10 +24,8 @@ export default function HomePage() {
   //loading handler
   const [loading, setLoading] = useState(true);
 
-  //getting current user email from context
   const { currentUserEmail } = useContext(UserContext);
 
-  //dark mode
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -49,9 +47,8 @@ export default function HomePage() {
   }, []);
 
   const onDragEnd = (data) => {
-    const { source, destination, draggableId } = data;
+    const { source, destination } = data;
     if (source && destination) {
-      //if source and destionation
       const indexOfSourceBoard = todos.findIndex((e) => e.date === source.droppableId);
       const indexOfDestinationBoard = todos.findIndex((e) => e.date === destination.droppableId);
 
