@@ -156,7 +156,7 @@
   display: block;
   margin: 20px auto 0;
   text-align: left;
-  max-width: 475px;
+  max-width: 480px;
   border-radius: 6px;
   padding: 16px 23px 7px 16px;
   box-sizing: border-box;
@@ -170,7 +170,7 @@
 }
 
 .sectionThree div:last-child {
-  margin-left: 1vw;
+  margin-left: 1.2vw;
 }
 
 .sectionThree section div span {
