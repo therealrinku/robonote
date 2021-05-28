@@ -4,8 +4,9 @@
  https://snapta-sk.web.app
 
 ### Used Technologies
-* Next.js
-* HTML,CSS and JS
+* Next.js 
+* React.js
+* CSS
 * React Context API
 * Firebase-Authentication, firestore and hosting
 
