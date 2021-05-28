@@ -1,7 +1,7 @@
 ## Snaptask(a todo app)
 
 ### Live Website
-* https://snapta-sk.web.app
+ https://snapta-sk.web.app
 
 ### Used Technologies
 * Next.js
