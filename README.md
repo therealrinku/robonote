@@ -5,7 +5,6 @@
 
 ### Used Technologies
 * Next.js 
-* React.js
 * CSS
 * React Context API
 * Firebase-Authentication, firestore and hosting
