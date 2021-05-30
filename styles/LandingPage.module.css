@@ -85,11 +85,11 @@
   margin: 20px auto 0;
   text-align: left;
   max-width: 480px;
-  border-radius: 6px;
+  border-radius: 5px;
   padding: 16px 23px 7px 16px;
   box-sizing: border-box;
   font-size: 15px;
-  background-color: rgba(68, 68, 68, 0.04);
+  background-color: #2b3441;
 }
 
 .sectionThree section div {

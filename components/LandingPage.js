@@ -23,7 +23,7 @@ export default function LandingPage() {
       img: <BiMoon />,
     },
     {
-      p: "Drag and drop todos to nearby dates if you have no time to do it today.",
+      p: "Drag and drop todos to nearby dates if you have no intentions of doing it today.",
       h4: "Drag and drop feature",
       img: <AiOutlineDrag />,
     },
@@ -96,39 +96,40 @@ export default function LandingPage() {
           })}
         </section>
 
+        <section className={landingPageStyles.sectionThree}>
+          <img src="https://image.flaticon.com/icons/png/128/889/889577.png" alt="quote" />
+          <div>
+            {reviews.splice(0, 3).map((review) => {
+              return (
+                <section>
+                  <div>
+                    <img src={review.userImageUrl} alt="user" />
+                    <span>{review.userName}</span>
+                  </div>
+
+                  <p>{review.review}</p>
+                </section>
+              );
+            })}
+          </div>
+
+          <div>
+            {reviews.splice(-3).map((review) => {
+              return (
+                <section>
+                  <div>
+                    <img src={review.userImageUrl} alt="user" />
+                    <span>{review.userName}</span>
+                  </div>
+
+                  <p>{review.review}</p>
+                </section>
+              );
+            })}
+          </div>
+        </section>
+
         {/*
-      <div className={landingPageStyles.sectionThree}>
-        <div>
-          {reviews.splice(0, 3).map((review) => {
-            return (
-              <section>
-                <div>
-                  <img src={review.userImageUrl} alt="user" />
-                  <span>{review.userName}</span>
-                </div>
-
-                <p>{review.review}</p>
-              </section>
-            );
-          })}
-        </div>
-
-        <div>
-          {reviews.splice(-3).map((review) => {
-            return (
-              <section>
-                <div>
-                  <img src={review.userImageUrl} alt="user" />
-                  <span>{review.userName}</span>
-                </div>
-
-                <p>{review.review}</p>
-              </section>
-            );
-          })}
-        </div>
-      </div>
-
       <footer className={landingPageStyles.footer}>
         <p>2021 Snaptask Inc</p>
         <p>Made in Nepal</p>
