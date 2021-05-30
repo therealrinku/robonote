@@ -150,17 +150,13 @@
 .footer {
   background: #2b3441;
   padding: 50px 0;
-  text-align: center;
+  text-align: left;
   margin-top: 20vh;
 }
 
-.footer div {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 90%;
+.footer section {
+  width: 90vw;
   margin: auto;
-  text-align: left;
 }
 
 .footer a,
@@ -175,26 +171,4 @@
 
 .footer a:hover {
   color: #0a81ab;
-}
-
-.footer ul {
-  display: flex;
-  align-items: center;
-}
-
-.footer ul p {
-  margin-left: 5px;
-}
-
-@media (max-width: 500px) {
-  .footer div {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  }
-
-  .footer section:last-child {
-    margin-top: 30px;
-  }
 }

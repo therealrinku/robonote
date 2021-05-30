@@ -84,7 +84,6 @@ export default function LandingPage() {
             With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
             like yoxx are already using taskyoxx.
           </p>
-
           <button onClick={() => router.push("/signup")}>Get Started</button>
         </section>
 
@@ -134,32 +133,13 @@ export default function LandingPage() {
         </section>
 
         <footer className={landingPageStyles.footer}>
-          <div>
-            <section>
-              <h4>taskyoxx</h4>
-              <p>we are a gurkhali company, you know the brave ones!</p>
-              <Link href="/demo">Try demo</Link>
-              <Link href="/login">Login</Link>
-              <Link href="/signup">Signup</Link>
-            </section>
-
-            <section>
-              <ul>
-                <MdLocationSearching />
-                <p>Nepal</p>
-              </ul>
-
-              <ul>
-                <RiPhoneFill />
-                <p>110-291-392</p>
-              </ul>
-
-              <ul>
-                <AiOutlineMail />
-                <p>arcy2032@gmail.com</p>
-              </ul>
-            </section>
-          </div>
+          <section>
+            <h4>taskyoxx</h4>
+            <p>we are a gurkhali company, you know the brave ones!</p>
+            <Link href="/demo">Try demo</Link>
+            <Link href="/login">Login</Link>
+            <Link href="/signup">Signup</Link>
+          </section>
         </footer>
       </main>
     </>
