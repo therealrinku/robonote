@@ -48,6 +48,12 @@
   background: #0b8dbd;
 }
 
+@media (max-width: 700px) {
+  .sectionOne img {
+    width: 75vw;
+  }
+}
+
 .sectionTwo {
   margin: auto;
   margin-top: 20vh;
