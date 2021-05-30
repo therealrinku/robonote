@@ -27,6 +27,16 @@
 
 .nav ul:last-child a:last-child {
   margin-left: 3vw;
+  padding: 9px 16px;
+  width: 180px;
+  border-radius: 50px;
+  border: none;
+  background: #0a81ab;
+}
+
+.nav ul:last-child a:last-child:hover {
+  color: white;
+  background: #0b8dbd;
 }
 
 .hideSignupLink a:last-child {
