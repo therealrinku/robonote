@@ -21,10 +21,6 @@
   font-size: 13px;
 }
 
-.nav ul:last-child a:hover {
-  color: #0a81ab;
-}
-
 .nav ul:last-child a:last-child {
   margin-left: 3vw;
   padding: 8px 16px;
