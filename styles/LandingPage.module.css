@@ -9,7 +9,6 @@
   margin: auto;
   padding-top: 10vh;
   text-align: center;
-  padding-bottom: 50px;
 }
 
 .sectionOne p,
@@ -49,7 +48,7 @@
 
 .sectionTwo {
   margin: auto;
-  margin-top: 10vh;
+  margin-top: 13vh;
   width: 90vw;
   text-align: center;
   display: grid;
