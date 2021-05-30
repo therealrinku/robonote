@@ -41,7 +41,7 @@ export default function LandingPage() {
   //reviews
   const reviews = [
     {
-      userImageUrl: "https://bit.ly/2T9n057",
+      userImageUrl: "https://bit.ly/3i4iL5g",
       userName: "Jennifer Rodriguez",
       review: "Snaptask is simply the best todo app i have ever used.",
     },
@@ -61,12 +61,12 @@ export default function LandingPage() {
       review: "I wanted a todo app with less distractive looks and simple design , well i got one now.",
     },
     {
-      userImageUrl: "https://bit.ly/3416CFK",
+      userImageUrl: "https://bit.ly/2RNBhEf",
       userName: "Tony Heaton",
       review: "My search for best todo app has come to an end , thanks to snaptask.",
     },
     {
-      userImageUrl: "https://bit.ly/3hG8P1t",
+      userImageUrl: "https://bit.ly/3fPkfgQ",
       userName: "Bella Porch",
       review: "Best todo app i have ever seen, minimal and simple no hassle.",
     },
