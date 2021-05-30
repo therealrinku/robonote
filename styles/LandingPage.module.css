@@ -126,14 +126,14 @@
 @media (max-width: 599px) {
   .sectionThree {
     flex-direction: column;
-    width: 85vw;
+    width: 95vw;
     margin-left: auto;
     margin-right: auto;
   }
 
   .sectionThree section {
-    width: 85vw;
-    max-width: 85vw;
+    width: 93vw;
+    max-width: 93vw;
   }
 
   .sectionThree > div:last-child {
