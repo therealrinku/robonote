@@ -89,9 +89,9 @@ export default function LandingPage() {
         </section>
 
         <section className={landingPageStyles.sectionTwo}>
-          {features.map((feature) => {
+          {features.map((feature, i) => {
             return (
-              <div>
+              <div key={i}>
                 <i>{feature.img}</i>
                 <h4>{feature.h4}</h4>
                 <p>{feature.p}</p>
@@ -103,9 +103,9 @@ export default function LandingPage() {
         <section className={landingPageStyles.sectionThree}>
           <img src="https://image.flaticon.com/icons/png/128/889/889577.png" alt="quote" />
           <div>
-            {reviews.splice(0, 3).map((review) => {
+            {reviews.splice(0, 3).map((review, i) => {
               return (
-                <section>
+                <section key={i}>
                   <div>
                     <img src={review.userImageUrl} alt="user" />
                     <span>{review.userName}</span>
@@ -118,9 +118,9 @@ export default function LandingPage() {
           </div>
 
           <div>
-            {reviews.splice(-3).map((review) => {
+            {reviews.splice(-3).map((review, i) => {
               return (
-                <section>
+                <section key={i}>
                   <div>
                     <img src={review.userImageUrl} alt="user" />
                     <span>{review.userName}</span>
