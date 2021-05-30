@@ -1,38 +1,32 @@
 .nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-  background: white;
+  background: inherit;
+  color: white;
   z-index: 1;
 }
 
-.nav ul:first-child {
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 1.2px;
-  font-weight: bold;
+.nav div {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav ul:last-child a {
-  font-size: 14px;
+  font-size: 13px;
+}
+
+.nav ul:last-child a:hover {
+  color: #0a81ab;
 }
 
 .nav ul:last-child a:last-child {
-  margin-left: 12px;
-  background: #52be80;
-  color: white;
-  padding: 9px 15px;
-  border-radius: 5px;
-}
-
-.nav ul:last-child a:last-child:hover {
-  background: #379c63;
+  margin-left: 3vw;
 }
 
 .hideSignupLink a:last-child {

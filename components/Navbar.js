@@ -8,22 +8,22 @@ export default function Navbar() {
 
   return (
     <nav className={navbarStyles.nav}>
-      <ul>
-        <Link href="/">Snaptask</Link>
-      </ul>
+      <div>
+        <Link href="/">taskyoxx</Link>
 
-      <ul
-        className={
-          pathname === "/signup"
-            ? navbarStyles.hideSignupLink
-            : pathname === "/login"
-            ? navbarStyles.hideLoginLink
-            : null
-        }
-      >
-        <Link href="/login">Login</Link>
-        <Link href="/signup">Signup</Link>
-      </ul>
+        <ul
+          className={
+            pathname === "/signup"
+              ? navbarStyles.hideSignupLink
+              : pathname === "/login"
+              ? navbarStyles.hideLoginLink
+              : null
+          }
+        >
+          <Link href="/login">Login</Link>
+          <Link href="/signup">Signup</Link>
+        </ul>
+      </div>
     </nav>
   );
 }

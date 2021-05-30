@@ -2,18 +2,36 @@ import landingPageStyles from "../styles/LandingPage.module.css";
 import { useRouter } from "next/router";
 import MainImage from "../assets/MainImage.svg";
 import Navbar from "../components/Navbar";
-import DragDropVideo from "../assets/dnd.mp4";
-import SimpleLayoutVideo from "../assets/sim.mp4";
-import DarkModeVideo from "../assets/dm.mp4";
+import { GoBrowser } from "react-icons/go";
+import { BiMoon } from "react-icons/bi";
+import { AiOutlineDrag } from "react-icons/ai";
+import { RiStarLine } from "react-icons/ri";
 
 export default function LandingPage() {
   const router = useRouter();
 
   //features
   const features = [
-    { video: DragDropVideo, title: "Drag and drop todos." },
-    { video: SimpleLayoutVideo, title: "Simple and easy to use layout." },
-    { video: DarkModeVideo, title: "Dark mode for eye compatibitlity at night." },
+    {
+      p: "Simplicity is very important for the peace of mind, that's why we've created simple and minimal layout.",
+      h4: "Easy to use simple and minimal design",
+      img: <GoBrowser />,
+    },
+    {
+      p: "Dark mode is considered a very important feature these days, so how could we miss that.",
+      h4: "Default dark mode for better eye",
+      img: <BiMoon />,
+    },
+    {
+      p: "Drag and drop todos to nearby dates if you have no time to do it today.",
+      h4: "Drag and drop feature",
+      img: <AiOutlineDrag />,
+    },
+    {
+      p: "We update taskyoxx regularly to remove bugs and most importantly we listen to your suggestions.",
+      h4: "Regular improvements",
+      img: <RiStarLine />,
+    },
   ];
 
   //reviews
@@ -53,33 +71,32 @@ export default function LandingPage() {
   return (
     <>
       <Navbar />
-      <div className={landingPageStyles.sectionOne}>
-        <section>
-          <h2>Snaptask is your new todo list manager to help you acheive your goals.</h2>
-          <div>
-            <input type="text" placeholder="Type your email here" />
-            <button onClick={() => router.push("/signup")}>Start for free</button>
-          </div>
-        </section>
-
-        <section>
+      <main className={landingPageStyles.landingPage}>
+        <section className={landingPageStyles.sectionOne}>
           <img src={MainImage} alt="test" />
+
+          <h2>taskyoxx is a new todo list manager for your better productivity and organization.</h2>
+          <p>
+            With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
+            like yoxx are already using taskyoxx.
+          </p>
+
+          <button onClick={() => router.push("/signup")}>Get Started</button>
         </section>
-      </div>
 
-      <div className={landingPageStyles.sectionTwo}>
-        {features.map((feature, i) => {
-          return (
-            <section key={i}>
-              <h4>{feature.title}</h4>
-              <video muted autoPlay loop play>
-                <source src={feature.video} type="video/mp4" />
-              </video>
-            </section>
-          );
-        })}
-      </div>
+        <section className={landingPageStyles.sectionTwo}>
+          {features.map((feature) => {
+            return (
+              <div>
+                <i>{feature.img}</i>
+                <h4>{feature.h4}</h4>
+                <p>{feature.p}</p>
+              </div>
+            );
+          })}
+        </section>
 
+        {/*
       <div className={landingPageStyles.sectionThree}>
         <div>
           {reviews.splice(0, 3).map((review) => {
@@ -115,7 +132,8 @@ export default function LandingPage() {
       <footer className={landingPageStyles.footer}>
         <p>2021 Snaptask Inc</p>
         <p>Made in Nepal</p>
-      </footer>
+        </footer>*/}
+      </main>
     </>
   );
 }
