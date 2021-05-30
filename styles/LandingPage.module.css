@@ -33,7 +33,9 @@
   margin-bottom: 25px;
 }
 
-.sectionOne button {
+.sectionOne button,
+.sectionFour button,
+.sectionFour input {
   padding: 15px 20px;
   width: 180px;
   border-radius: 50px;

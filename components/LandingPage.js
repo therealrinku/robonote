@@ -77,7 +77,7 @@ export default function LandingPage() {
       <Navbar />
       <main className={landingPageStyles.landingPage}>
         <section className={landingPageStyles.sectionOne}>
-          <img src={MainImage} alt="test" />
+          <img src={MainImage} alt="main" />
 
           <h2>taskyoxx is a new todo list manager for your better productivity and organization.</h2>
           <p>
