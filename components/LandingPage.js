@@ -6,6 +6,10 @@ import { GoBrowser } from "react-icons/go";
 import { BiMoon } from "react-icons/bi";
 import { AiOutlineDrag } from "react-icons/ai";
 import { RiStarLine } from "react-icons/ri";
+import { RiPhoneFill } from "react-icons/ri";
+import { AiOutlineMail } from "react-icons/ai";
+import { MdLocationSearching } from "react-icons/md";
+import Link from "next/link";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -129,11 +133,34 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/*
-      <footer className={landingPageStyles.footer}>
-        <p>2021 Snaptask Inc</p>
-        <p>Made in Nepal</p>
-        </footer>*/}
+        <footer className={landingPageStyles.footer}>
+          <div>
+            <section>
+              <h4>taskyoxx</h4>
+              <p>we are a gurkhali company, you know the brave ones!</p>
+              <Link href="/demo">Try demo</Link>
+              <Link href="/login">Login</Link>
+              <Link href="/signup">Signup</Link>
+            </section>
+
+            <section>
+              <ul>
+                <MdLocationSearching />
+                <p>Nepal</p>
+              </ul>
+
+              <ul>
+                <RiPhoneFill />
+                <p>110-291-392</p>
+              </ul>
+
+              <ul>
+                <AiOutlineMail />
+                <p>arcy2032@gmail.com</p>
+              </ul>
+            </section>
+          </div>
+        </footer>
       </main>
     </>
   );
