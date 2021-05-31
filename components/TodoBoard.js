@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { db } from "../firebase/main";
 import UserContext from "../userContext";
 
-export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos }) {
+export default function TodoBoard({ demoMode, fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
@@ -57,7 +57,8 @@ export default function TodoBoard({ fullTodoList, todosDate, todos, setFullTodos
     }
 
     //update in db
-    db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
+
+    if (!demoMode) db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
   };
 
   const AddNewTodo = (e) => {

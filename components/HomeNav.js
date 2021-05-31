@@ -7,12 +7,14 @@ import { RiLightbulbFlashLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../userContext";
 
-export default function HomeNav({ setDatePlus, darkMode, setDarkMode }) {
+export default function HomeNav({ demoMode, setDatePlus, darkMode, setDarkMode }) {
   const { setEmailAddress } = useContext(UserContext);
 
   const logOut = () => {
-    localStorage.setItem("loginToken", null);
-    setEmailAddress("");
+    if (!demoMode) {
+      localStorage.setItem("loginToken", null);
+      setEmailAddress("");
+    }
   };
 
   return (

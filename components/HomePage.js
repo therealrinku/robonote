@@ -8,7 +8,7 @@ import Spinner from "../components/Spinner";
 import UserContext from "../userContext";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-export default function HomePage() {
+export default function HomePage({ demoMode, demoDates }) {
   //date stuffs
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
@@ -22,7 +22,7 @@ export default function HomePage() {
   const [todos, setTodos] = useState([]);
 
   //loading handler
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(demoMode ? false : true);
 
   const { currentUserEmail } = useContext(UserContext);
 
@@ -36,14 +36,16 @@ export default function HomePage() {
     }
 
     //getting all todo list for all dates
-    db.collection(currentUserEmail)
-      .get()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          setTodos((prev) => [...prev, { date: doc.id, todos: doc.data()?.todos || [] }]);
+    if (!demoMode) {
+      db.collection(currentUserEmail)
+        .get()
+        .then((docs) => {
+          docs.forEach((doc) => {
+            setTodos((prev) => [...prev, { date: doc.id, todos: doc.data()?.todos || [] }]);
+          });
+          setLoading(false);
         });
-        setLoading(false);
-      });
+    }
   }, []);
 
   const onDragEnd = (data) => {
@@ -75,10 +77,13 @@ export default function HomePage() {
       const updatedDestionationTodos = fullTodoListCopy[indexOfDestinationBoardUpdated].todos;
 
       //update in db
-      db.collection(currentUserEmail).doc(destination.droppableId).set({ todos: updatedDestionationTodos });
 
-      if (source.droppableId !== destination.droppableId) {
-        db.collection(currentUserEmail).doc(source.droppableId).set({ todos: updatedSourceTodos });
+      if (!demoMode) {
+        db.collection(currentUserEmail).doc(destination.droppableId).set({ todos: updatedDestionationTodos });
+
+        if (source.droppableId !== destination.droppableId) {
+          db.collection(currentUserEmail).doc(source.droppableId).set({ todos: updatedSourceTodos });
+        }
       }
     }
   };
@@ -97,7 +102,7 @@ export default function HomePage() {
       ) : (
         <div style={{ marginTop: "3vh" }} className={darkMode ? homeStyles.darkMode : null}>
           {/*option section*/}
-          <HomeNav setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
+          <HomeNav demoMode={demoMode} setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
 
           {/*todo boards*/}
           <DragDropContext onDragEnd={onDragEnd}>
@@ -108,6 +113,7 @@ export default function HomePage() {
                     {(provided, snapshot) => (
                       <section ref={provided.innerRef}>
                         <TodoBoard
+                          demoMode={demoMode}
                           todosDate={e}
                           fullTodoList={todos}
                           setFullTodos={setTodos}
