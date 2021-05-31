@@ -26,13 +26,13 @@ export default function HomePage({ demoMode, demoDates }) {
 
   const { currentUserEmail } = useContext(UserContext);
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
-    //switching automatically to dark mode.
-    const darkMode = localStorage.getItem("darkMode");
-    if (darkMode === "ON") {
-      setDarkMode(true);
+    //switching automatically to light mode.
+    const lightMode = localStorage.getItem("lightMode");
+    if (lightMode === "ON") {
+      setDarkMode(false);
     }
 
     //getting all todo list for all dates
@@ -91,8 +91,8 @@ export default function HomePage({ demoMode, demoDates }) {
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
 
-    if (!darkMode) localStorage.setItem("darkMode", "ON");
-    else localStorage.removeItem("darkMode");
+    if (darkMode) localStorage.setItem("lightMode", "ON");
+    else localStorage.removeItem("lightMode");
   };
 
   return (
