@@ -6,14 +6,19 @@ import { AiOutlinePoweroff } from "react-icons/ai";
 import { RiLightbulbFlashLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../userContext";
+import { useRouter } from "next/router";
 
 export default function HomeNav({ demoMode, setDatePlus, darkMode, setDarkMode }) {
   const { setEmailAddress } = useContext(UserContext);
+
+  const router = useRouter();
 
   const logOut = () => {
     if (!demoMode) {
       localStorage.setItem("loginToken", null);
       setEmailAddress("");
+    } else {
+      router.push("/");
     }
   };
 
