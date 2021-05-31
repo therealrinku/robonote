@@ -6,9 +6,6 @@ import { GoBrowser } from "react-icons/go";
 import { BiMoon } from "react-icons/bi";
 import { AiOutlineDrag, AiOutlineDollar } from "react-icons/ai";
 import { RiStarLine } from "react-icons/ri";
-import { RiPhoneFill } from "react-icons/ri";
-import { AiOutlineMail } from "react-icons/ai";
-import { MdLocationSearching } from "react-icons/md";
 import Link from "next/link";
 
 export default function LandingPage() {
@@ -143,6 +140,9 @@ export default function LandingPage() {
             </p>
             <p>What are you waiting for then? Just hop in</p>
             <button onClick={() => router.push("/signup")}>Get Started</button>
+            <p style={{ marginBottom: "-7px" }}>or</p>
+            <br />
+            <Link href="/demo">Try Demo</Link>
           </div>
         </section>
 
