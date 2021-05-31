@@ -76,7 +76,9 @@
 @media (max-width: 500px) {
   .loginPage div {
     background: inherit;
+    margin-top: -20vw;
   }
+
   .loginPage form {
     width: 95%;
   }
