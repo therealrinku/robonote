@@ -133,7 +133,7 @@ export default function HomePage({ demoMode, demoDates }) {
       <style jsx global>{`
         body,
         html {
-          background: ${darkMode ? "#303030" : "white"} !important;
+          background: ${darkMode ? "#222831" : "white"} !important;
         }
       `}</style>
     </>
