@@ -4,7 +4,7 @@ import MainImage from "../assets/MainImage.svg";
 import Navbar from "../components/Navbar";
 import { GoBrowser } from "react-icons/go";
 import { BiMoon } from "react-icons/bi";
-import { AiOutlineDrag } from "react-icons/ai";
+import { AiOutlineDrag, AiOutlineDollar } from "react-icons/ai";
 import { RiStarLine } from "react-icons/ri";
 import { RiPhoneFill } from "react-icons/ri";
 import { AiOutlineMail } from "react-icons/ai";
@@ -129,6 +129,20 @@ export default function LandingPage() {
                 </section>
               );
             })}
+          </div>
+        </section>
+
+        <section className={landingPageStyles.sectionFour}>
+          <div>
+            <i>
+              <AiOutlineDollar />
+            </i>
+            <p>
+              Well, you may be wondering if it's paid or free, well good for you because todoyoxx is currently free of
+              cost but if you really loved it, you can contribute to us through our paypal.
+            </p>
+            <p>What are you waiting for then? Just hop in</p>
+            <button onClick={() => router.push("/signup")}>Get Started</button>
           </div>
         </section>
 

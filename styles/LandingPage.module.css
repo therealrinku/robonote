@@ -34,8 +34,7 @@
 }
 
 .sectionOne button,
-.sectionFour button,
-.sectionFour input {
+.sectionFour button {
   padding: 15px 20px;
   width: 180px;
   border-radius: 50px;
@@ -44,7 +43,8 @@
   color: white;
 }
 
-.sectionOne button:hover {
+.sectionOne button:hover,
+.sectionFour button:hover {
   background: #0b8dbd;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .sectionThree {
-  margin: 20vh 20px 100px 20px;
+  margin: 20vh 20px 0 20px;
   max-width: 1500px;
   display: flex;
   justify-content: center;
@@ -145,6 +145,25 @@
   .sectionThree > div:last-child {
     margin-left: -2px;
   }
+}
+
+.sectionFour {
+  text-align: center;
+  background: #2b3441;
+  margin-top: 20vh;
+}
+
+.sectionFour div {
+  width: 90vw;
+  max-width: 1500px;
+  margin: auto;
+  padding: 10vw 18vw;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+
+.sectionFour i {
+  font-size: 50px;
 }
 
 .footer {
