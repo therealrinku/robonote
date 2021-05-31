@@ -48,7 +48,7 @@ export default function signupPage() {
     <>
       <Navbar />
       <div className={loginPageStyles.loginPage}>
-        <Meta title="Snaptask- Signup" />
+        <Meta title="taskyoxx- Signup" />
         <div>
           <form onSubmit={signUp}>
             <label htmlFor="email">Email</label>
