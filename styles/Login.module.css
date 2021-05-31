@@ -1,12 +1,12 @@
 .loginPage {
-  padding-top: 10vh;
+  padding-top: 5vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: #222831;
-  color: black;
+  color: white;
 }
 
 .loginPage p {
@@ -20,12 +20,12 @@
 }
 
 .loginPage div {
-  background: white;
+  background: #2b3441;
   max-width: 440px;
-  box-shadow: 0 5px 20px 0 rgb(21 27 38 / 15%);
   border-radius: 8px;
   width: calc(98% - 16px);
   margin-bottom: 20px;
+  padding-top: 15px;
 }
 
 .loginPage form {
@@ -33,16 +33,17 @@
   flex-direction: column;
   width: 75%;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .loginPage input {
-  border: solid 1px rgba(0, 0, 0, 0.2);
+  border: solid 1px rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   background: inherit;
   outline: none;
   margin-bottom: 20px;
   padding: 8px 12px;
+  color: white;
 }
 
 .loginPage label {
@@ -74,18 +75,8 @@
 
 @media (max-width: 500px) {
   .loginPage div {
-    border: none;
-    box-shadow: none;
-    margin-top: 20px;
     background: inherit;
-    color: white;
   }
-
-  .loginPage input {
-    border-color: rgba(255, 255, 255, 0.2);
-    color: white;
-  }
-
   .loginPage form {
     width: 95%;
   }
