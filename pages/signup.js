@@ -59,7 +59,7 @@ export default function signupPage() {
             <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} />
             <button disabled={signingUp}>Signup</button>
             <p style={{ opacity: "0.6" }}>By signing up, you agree to our terms and policies.</p>
-            <p style={{ fontSize: "12px", color: "red", position: "sticky", marginLeft: "10px" }}>{error}</p>
+            <p style={{ fontSize: "12px", color: "orange", marginLeft: "10px" }}>{error}</p>
             <p>
               Already have an account? <Link href="/login">Login</Link>
             </p>

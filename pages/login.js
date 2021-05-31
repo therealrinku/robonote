@@ -53,7 +53,7 @@ export default function loginPage() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <button disabled={loggingIn}>Login</button>
-            <p style={{ fontSize: "12px", color: "red", marginLeft: "10px" }}>{error}</p>
+            <p style={{ fontSize: "12px", color: "orange", marginLeft: "10px" }}>{error}</p>
             <p>
               Don't have an account? <Link href="/signup">Sign up</Link>
             </p>
