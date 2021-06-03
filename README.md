@@ -1,7 +1,7 @@
-## Snaptask(a todo app)
+## taskyoxx(a todo app)
 
 ### Live Website
- https://snapta-sk.web.app
+ https://taskyoxx.firebaseapp.com
 
 ### Used Technologies
 * Next.js 
