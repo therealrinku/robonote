@@ -40,12 +40,12 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/3i4iL5g",
       userName: "Jennifer Rodriguez",
-      review: "Snaptask is simply the best todo app i have ever used.",
+      review: "taskyoxx is simply the best todo app i have ever used.",
     },
     {
       userImageUrl: "https://bit.ly/33XNNn5",
       userName: "Abella Fernandes",
-      review: "Snaptask is very simple and easy to use todo app to get more done with less distractions.",
+      review: "taskyoxx is very simple and easy to use todo app to get more done with less distractions.",
     },
     {
       userImageUrl: "https://bit.ly/3fN3kf1",
@@ -60,7 +60,7 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/2RNBhEf",
       userName: "Tony Heaton",
-      review: "My search for best todo app has come to an end , thanks to snaptask.",
+      review: "My search for best todo app has come to an end , thanks to taskyoxx.",
     },
     {
       userImageUrl: "https://bit.ly/3fPkfgQ",
