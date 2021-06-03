@@ -135,7 +135,7 @@ export default function LandingPage() {
               <AiOutlineDollar />
             </i>
             <p>
-              Well, you may be wondering if it's paid or free, well good for you because todoyoxx is currently free of
+              Well, you may be wondering if it's paid or free, well good for you because taskyoxx is currently free of
               cost but if you really loved it, you can contribute to us through our paypal.
             </p>
             <p>What are you waiting for then? Just hop in</p>
