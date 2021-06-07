@@ -89,13 +89,13 @@ export default function TodoBoard({ demoMode, fullTodoList, todosDate, todos, se
       </div>
 
       {/*new todo input*/}
-      <form onSubmit={AddNewTodo}>
+      <form onSubmit={AddNewTodo} style={todos.length === 16 ? { display: "none" } : null}>
         <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
       </form>
 
       {/*dummy lines*/}
       <div>
-        {[...Array(14 - todos.length + 1)].map((line, i) => {
+        {[...Array(16 - todos.length)].map((_, i) => {
           return <li key={i}></li>;
         })}
       </div>
