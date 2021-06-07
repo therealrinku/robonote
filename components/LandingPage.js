@@ -149,7 +149,7 @@ export default function LandingPage() {
         <footer className={landingPageStyles.footer}>
           <section>
             <h4>taskyoxx</h4>
-            <p>we are a gurkhali company, you know the brave ones!</p>
+            <p>built in Nepal</p>
             <Link href="/demo">Try demo</Link>
             <Link href="/login">Login</Link>
             <Link href="/signup">Signup</Link>
