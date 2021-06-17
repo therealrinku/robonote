@@ -4,8 +4,7 @@
  https://taskyoxx.firebaseapp.com
 
 ### Used Technologies
-* Next.js 
-* CSS
+* Next.js
 * React Context API
 * Firebase-Authentication, firestore and hosting
 
