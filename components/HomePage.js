@@ -6,6 +6,7 @@ import TodoBoard from "../components/TodoBoard";
 import { db } from "../firebase/main";
 import Spinner from "../components/Spinner";
 import UserContext from "../userContext";
+import Meta from "./Meta";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 export default function HomePage({ demoMode, demoDates }) {
@@ -97,6 +98,7 @@ export default function HomePage({ demoMode, demoDates }) {
 
   return (
     <>
+      <Meta />
       {loading ? (
         <Spinner />
       ) : (

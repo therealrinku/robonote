@@ -1,6 +1,6 @@
 import landingPageStyles from "../styles/LandingPage.module.css";
 import { useRouter } from "next/router";
-import MainImage from "../assets/MainImage.svg";
+import MainImage from "./MainImage";
 import Navbar from "../components/Navbar";
 import { GoBrowser } from "react-icons/go";
 import { BiMoon } from "react-icons/bi";
@@ -74,9 +74,11 @@ export default function LandingPage() {
       <Navbar />
       <main className={landingPageStyles.landingPage}>
         <section className={landingPageStyles.sectionOne}>
-          <img src={MainImage} alt="main" />
+          <MainImage />
 
-          <h2>taskyoxx is a new todo list manager for your better productivity and organization.</h2>
+          <h2 style={{ marginTop: "25px" }}>
+            taskyoxx is a new todo list manager for your better productivity and organization.
+          </h2>
           <p>
             With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
             like yoxx are already using taskyoxx.
@@ -97,7 +99,10 @@ export default function LandingPage() {
         </section>
 
         <section className={landingPageStyles.sectionThree}>
-          <img src="https://image.flaticon.com/icons/png/128/889/889577.png" alt="quote" />
+          <img
+            src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/2x/external-quote-communication-royyan-wijaya-detailed-outline-royyan-wijaya.png"
+            alt="quote"
+          />
           <div>
             {reviews.splice(0, 3).map((review, i) => {
               return (
@@ -149,7 +154,7 @@ export default function LandingPage() {
         <footer className={landingPageStyles.footer}>
           <section>
             <h4>taskyoxx</h4>
-            <p>built in Nepal</p>
+            <p>Built with ❤️ </p>
             <Link href="/demo">Try demo</Link>
             <Link href="/login">Login</Link>
             <Link href="/signup">Signup</Link>
