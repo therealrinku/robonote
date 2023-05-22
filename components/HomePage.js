@@ -104,7 +104,7 @@ export default function HomePage({ demoMode, demoDates }) {
       ) : (
         <div style={{ marginTop: "3vh" }} className={darkMode ? homeStyles.darkMode : null}>
           {/*option section*/}
-          <HomeNav demoMode={demoMode} setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
+          <HomeNav currentDate={currentDate} setCurrentDate={setCurrentDate} demoMode={demoMode} setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
 
           {/*todo boards*/}
           <DragDropContext onDragEnd={onDragEnd}>
