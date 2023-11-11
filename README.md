@@ -1,7 +1,7 @@
-## taskyoxx(a todo app)
+## robonote(a todo and notes app)
 
 ### Live Website
- https://taskyoxx.firebaseapp.com
+ https://robonote.firebaseapp.com
 
 ### Used Technologies
 * Next.js

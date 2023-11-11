@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className={navbarStyles.nav}>
       <div>
-        <Link href="/">taskyoxx</Link>
+        <Link href="/">robonote</Link>
 
         <ul
           className={

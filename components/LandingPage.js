@@ -29,7 +29,7 @@ export default function LandingPage() {
       img: <AiOutlineDrag />,
     },
     {
-      p: "We update taskyoxx regularly to remove bugs and most importantly we listen to your suggestions.",
+      p: "We update robonote regularly to remove bugs and most importantly we listen to your suggestions.",
       h4: "Regular improvements",
       img: <RiStarLine />,
     },
@@ -40,12 +40,12 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/3i4iL5g",
       userName: "Jennifer Rodriguez",
-      review: "taskyoxx is simply the best todo app i have ever used.",
+      review: "robonote is simply the best todo app i have ever used.",
     },
     {
       userImageUrl: "https://bit.ly/33XNNn5",
       userName: "Abella Fernandes",
-      review: "taskyoxx is very simple and easy to use todo app to get more done with less distractions.",
+      review: "robonote is very simple and easy to use todo app to get more done with less distractions.",
     },
     {
       userImageUrl: "https://bit.ly/3fN3kf1",
@@ -60,7 +60,7 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/2RNBhEf",
       userName: "Tony Heaton",
-      review: "My search for best todo app has come to an end , thanks to taskyoxx.",
+      review: "My search for best todo app has come to an end , thanks to robonote.",
     },
     {
       userImageUrl: "https://bit.ly/3fPkfgQ",
@@ -77,11 +77,11 @@ export default function LandingPage() {
           <MainImage />
 
           <h2 style={{ marginTop: "25px" }}>
-            taskyoxx is a new todo list manager for your better productivity and organization.
+            robonote is a new todo list manager for your better productivity and organization.
           </h2>
           <p>
             With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
-            like yoxx are already using taskyoxx.
+            like yoxx are already using robonote.
           </p>
           <button onClick={() => router.push("/signup")}>Get Started</button>
         </section>
@@ -140,7 +140,7 @@ export default function LandingPage() {
               <AiOutlineDollar />
             </i>
             <p>
-              Well, you may be wondering if it's paid or free, well good for you because taskyoxx is currently free of
+              Well, you may be wondering if it's paid or free, well good for you because robonote is currently free of
               cost but if you really loved it, you can contribute to us through our paypal.
             </p>
             <p>What are you waiting for then? Just hop in</p>
@@ -153,7 +153,7 @@ export default function LandingPage() {
 
         <footer className={landingPageStyles.footer}>
           <section>
-            <h4>taskyoxx</h4>
+            <h4>robonote</h4>
             <p>Built with ❤️ </p>
             <Link href="/demo">Try demo</Link>
             <Link href="/login">Login</Link>
